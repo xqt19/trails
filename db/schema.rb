@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_03_101651) do
+ActiveRecord::Schema.define(version: 2019_12_03_162308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2019_12_03_101651) do
   create_table "activities", force: :cascade do |t|
     t.time "start_time"
     t.time "end_time"
-    t.string "name", default: "My Activity", null: false
+    t.string "name"
     t.text "description"
     t.string "location"
     t.bigint "trail_id"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2019_12_03_101651) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string "name", default: "List Item", null: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2019_12_03_101651) do
   end
 
   create_table "lists", force: :cascade do |t|
-    t.string "name", default: "My List", null: false
+    t.string "name"
     t.bigint "trail_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2019_12_03_101651) do
   end
 
   create_table "trails", force: :cascade do |t|
-    t.string "name", default: "My Trail", null: false
+    t.string "name"
     t.date "start_date"
     t.date "end_date"
     t.bigint "user_id"

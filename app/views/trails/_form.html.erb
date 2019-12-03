@@ -1,6 +1,14 @@
 <%= simple_form_for(trail) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :start_date, as: :string, input_html: { id: "trail_start_date_1i" } %>
-  <%= f.input :end_date, as: :string, input_html: { id: "trail_end_date_1i" } %>
+  <%= f.error_notification %>
+
+  <%= f.input :name, placeholder: "Trail #{ Trail.count + 1 }" %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+
+  <%= f.simple_fields_for :others do |o| %>
+    <%= o.input :email, input_html: { class: "form-control select2", multiple: "multiple" }, required: false,
+      collection: User.where.not(id: current_user).map { |user| user.email }, label: "Invite friends (email)", include_hidden: false %>
+  <% end %>
+
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
