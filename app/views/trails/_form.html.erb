@@ -1,6 +1,6 @@
 <%= simple_form_for(trail) do |f| %>
   <%= f.input :name %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
+  <%= f.input :start_date, as: :string, input_html: { id: "trail_start_date_1i" } %>
+  <%= f.input :end_date, as: :string, input_html: { id: "trail_end_date_1i" } %>
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
