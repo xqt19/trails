@@ -5,5 +5,9 @@ Rails.application.routes.draw do
 
   resources :trails do
     resources :activities, except: [:index]
+    resources :lists, except: [:index]
+  end
+
+  resources :users, only: [:show, :new, :create, :destroy] do
   end
 end
