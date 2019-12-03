@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-<<<<<<< HEAD
 puts "Destroying ItemCategories..."
 ItemCategory.destroy_all
 puts "Destroying Categories..."
@@ -149,9 +148,6 @@ twenty.save
 ItemCategory.create!(item: twenty, category: Category.find_by(name: "Travelling"))
 ItemCategory.create!(item: twenty, category: Category.find_by(name: "Chalet"))
 ItemCategory.create!(item: twenty, category: Category.find_by(name: "Outdoor Camping"))
-
-
-
 
 puts "creating 3 users Zache, Nesh and Xiu Qi"
 zache = User.create(name: "Zache", email: "1@lewagon.com", password: "password")
