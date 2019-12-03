@@ -1,7 +1,7 @@
 <% simple_form_for [@trail, @activity] do |f| -%>
 <%= f.input :name, label: 'Activity' %>
-<%= f.input :starts_time, as: :string, input_html: {class: "datepicker"}  %>
-<%= f.input :end_time, as: :string, input_html: {class: "datepicker"}  %>
+<%= f.input :starts_time, as: :string, input_html: {class: "timepicker"}  %>
+<%= f.input :end_time, as: :string, input_html: {class: "timepicker"}  %>
 <%= f.input :location %>
 <%= f.input :description %>
 <%= f.button :submit, "+", class: "btn btn-outline-dark" %>
