@@ -1,7 +1,7 @@
 class Trail < ApplicationRecord
   belongs_to :user
 
-  has_many :collabs
+  has_many :collabs, dependent: :destroy
   has_many :users, through: :collabs
   has_many :activities
 

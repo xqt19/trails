@@ -2,6 +2,7 @@
 @import "config/fonts";
 @import "config/colors";
 @import "config/bootstrap_variables";
+@import "select2/src/scss/core";
 
 // External libraries
 @import "bootstrap/scss/bootstrap";
@@ -11,3 +12,22 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+// Bootstrap simple_form
+$theme-colors: ( "bootstrap": #563d7c, "simpleform": #00617f );
+@import "simple_form-bootstrap/simple_form-bootstrap";
+
+// App sections
+@import "application/breadcrumb";
+@import "application/example";
+@import "application/flash";
+@import "application/footer";
+@import "application/header";
+@import "application/jumbotron";
+
+// Components
+@import "components/alert";
+@import "components/icon";
+
+// Syntax highlight
+@import "application/dracula";
