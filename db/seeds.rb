@@ -30,9 +30,9 @@ Collab.create(user_id: xq.id, trail_id: zache.trails.first.id)
 Collab.create(user_id: xq.id, trail_id: zache.trails.last.id)
 
 puts "adding activities to trail 1 and 2"
-Activity.create(trail_id: zache.trails.first.id, name: "Preparing to start fire", description: "Get the thongs and coal", start_time: Time.now, end_time: Time.now + 1)
-Activity.create(trail_id: zache.trails.first.id, name: "Cook the meats", description: "Marinate chicken, then skewer it, then put in on the fire!", start_time: Time.now + 1, end_time: Time.now + 2)
-Activity.create(trail_id: zache.trails.last.id, name: "Preparing for Japan trip", description: "Create a travelling template, then add items to bring, then delegate to someone.", start_time: Time.now + 6, end_time: Time.now + 7)
-Activity.create(trail_id: zache.trails.last.id, name: "Climb Mt. Fuji", description: "Create a hiking template, then add items to bring, then delegate to someone.", start_time: Time.now + 3, end_time: Time.now + 4)
+Activity.create(trail_id: zache.trails.first.id, name: "Preparing to start fire", description: "Get the thongs and coal", start_time: Time.now, end_time: Time.now + 3600)
+Activity.create(trail_id: zache.trails.first.id, name: "Cook the meats", description: "Marinate chicken, then skewer it, then put in on the fire!", start_time: Time.now + 3600, end_time: Time.now + 3600 * 2)
+Activity.create(trail_id: zache.trails.last.id, name: "Preparing for Japan trip", description: "Create a travelling template, then add items to bring, then delegate to someone.", start_time: Time.now + 3600 * 6, end_time: Time.now + 3600 * 7)
+Activity.create(trail_id: zache.trails.last.id, name: "Climb Mt. Fuji", description: "Create a hiking template, then add items to bring, then delegate to someone.", start_time: Time.now + 3600 * 3, end_time: Time.now + 3600 * 4)
 
 puts "Seeding finished!"
