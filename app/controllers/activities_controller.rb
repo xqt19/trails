@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   def show
-    # @trail = Trail.find(params[:trail_id])
+    @trail = Trail.find(params[:trail_id])
     @activity = Activity.find(params[:id])
   end
 
@@ -15,25 +15,25 @@ class ActivitiesController < ApplicationController
     @activity.trail = @trail
 
     if @activity.save
-      redirect_to #TODO
+      # redirect_to #TODO
     else
       render :new
     end
   end
 
   def edit
-    # @trail = Trail.find(params[:trail_id])
+    @trail = Trail.find(params[:trail_id])
     @activity = Activity.find(params[:id])
     @activity.trail = @trail
   end
 
   def update
-    # @trail = Trail.find(params[:trail_id])
+    @trail = Trail.find(params[:trail_id])
     @activity = Activity.find(params[:id])
     @activity.trail = @trail
     if @activity.update(activity_params)
       flash[:notice] = "Review Updated!"
-      redirect_to
+      # redirect_to
     else
       render :edit
     end
@@ -42,12 +42,12 @@ class ActivitiesController < ApplicationController
   def destroy
     @activity = Activity.find(params[:id])
     @activity.destroy
-    redirect_to #TODO
+    # redirect_to #TODO
   end
 
   private
 
   def activity_params
-    params.permit(:activity).require(:start_time, :end_time, :name, :description, :location)
+    params.require(:activity).permit(:start_time, :end_time, :name, :description, :location)
   end
 end
