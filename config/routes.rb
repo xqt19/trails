@@ -3,11 +3,10 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :trails do
+  resources :trails, except: [:index] do
     resources :activities, except: [:index]
-    resources :lists, except: [:index]
   end
 
-  resources :users, only: [:show, :new, :create, :destroy] do
-  end
+  resources :users, only: [:show, :new, :create, :destroy]
+  resources :lists, except: [:index]
 end

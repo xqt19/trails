@@ -8,8 +8,6 @@ flatpickr(".timepicker", {
   enableTime: true,
 })
 
-
-
 flatpickr("#trail_start_date_1i", {
   altInput: true,
   plugins: [new rangePlugin({ input: "#trail_end_date_1i"})]

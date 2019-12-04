@@ -1,11 +1,6 @@
 class TrailsController < ApplicationController
   before_action :set_trail, only: %i[show edit update destroy]
 
-  def index
-    @trails = Trail.all
-    @trails_count = Trail.count
-  end
-
   def show
   end
 
@@ -22,7 +17,7 @@ class TrailsController < ApplicationController
         create_collab(collab_users_arr, @trail)
       end
       flash[:notice] = "You created a new trail"
-      redirect_to trails_path
+      redirect_to root_path
     else
       render :new
     end
@@ -33,9 +28,12 @@ class TrailsController < ApplicationController
 
   def update
     if @trail.update(trail_params)
-      create_collab(params[:trail][:others][:email].reject(&:empty?), @trail)
+      if params[:trail][:others]
+        collab_users_arr = params[:trail][:others][:email]
+        create_collab(collab_users_arr, @trail)
+      end
       flash[:notice] = "Trail info updated!"
-      redirect_to trails_path
+      redirect_to root_path
     else
       flash[:alert] = "Something went wrong!"
       render :edit
@@ -44,7 +42,7 @@ class TrailsController < ApplicationController
 
   def destroy
     @trail.destroy
-    redirect_to trails_path
+    redirect_to root_path
   end
 
   private

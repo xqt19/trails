@@ -1,7 +1,0 @@
-<h1>My <%= "trail".pluralize(@trails_count) %> (<%= @trails_count %>)</h1>
-<%= link_to "+",  new_trail_path, class: "btn btn-primary" %>
-
-<% @trails.each do |trail| %>
-  <p><%= trail.name %></p>
-  <%= link_to "i", trail_path(trail) %>
-<% end %>
