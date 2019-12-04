@@ -22,9 +22,17 @@
 <h2>Planning List</h2>
 
 <!-- add template codes here -->
-<%= link_to "Add a template", new_list_path %>
+<%= link_to "Add a template", "#" %>
 
 <h2><%= @trail.start_date %> to <%= @trail.end_date %></h2>
 
 <!-- add day cards here -->
 <%= link_to "Add an activity", new_trail_activity_path(@trail) %>
+
+<% @activities.each do |activity| %>
+  <h2><%= activity.name %></h2>
+  <p><%= activity.description %></p>
+  <%= link_to "Show", activity_path(activity) %>
+  <%= link_to "Edit", edit_trail_activity_path(@trail, activity) %>
+  <%= link_to "Delete", trail_activity_path(@trail, activity), method: :delete, data: { confirm: "Are you sure?" } %>
+<% end %>
