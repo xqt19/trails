@@ -1,51 +1,55 @@
 class ActivitiesController < ApplicationController
+  before_action :set_trail, only: %i[new create edit update destroy]
+  before_action :set_activity, only: %i[show edit update destroy]
+
   def show
-    @trail = Trail.find(params[:trail_id])
     @activity = Activity.find(params[:id])
   end
 
   def new
-    @trail = Trail.find(params[:trail_id])
     @activity = Activity.new
+    @activity.trail = @trail
   end
 
   def create
-    @trail = Trail.find(params[:trail_id])
     @activity = Activity.new(activity_params)
     @activity.trail = @trail
-
     if @activity.save
-      # redirect_to #TODO
+      redirect_to trail_path(@trail)
     else
       render :new
     end
   end
 
   def edit
-    @trail = Trail.find(params[:trail_id])
-    @activity = Activity.find(params[:id])
     @activity.trail = @trail
   end
 
   def update
-    @trail = Trail.find(params[:trail_id])
     @activity = Activity.find(params[:id])
     @activity.trail = @trail
     if @activity.update(activity_params)
-      flash[:notice] = "Review Updated!"
-      # redirect_to
+      flash[:notice] = "Activity Updated!"
+      redirect_to trail_path(@trail)
     else
       render :edit
     end
   end
 
   def destroy
-    @activity = Activity.find(params[:id])
     @activity.destroy
-    # redirect_to #TODO
+    redirect_to trail_path(@trail)
   end
 
   private
+
+  def set_trail
+    @trail = Trail.find(params[:trail_id])
+  end
+
+  def set_activity
+    @activity = Activity.find(params[:id])
+  end
 
   def activity_params
     params.require(:activity).permit(:start_time, :end_time, :name, :description, :location)

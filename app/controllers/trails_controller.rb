@@ -2,6 +2,7 @@ class TrailsController < ApplicationController
   before_action :set_trail, only: %i[show edit update destroy]
 
   def show
+    @activities = Activity.where(trail_id: @trail.id)
   end
 
   def new
