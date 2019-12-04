@@ -6,3 +6,23 @@
   border: 1px solid grey !important;
   border-radius: 50%;
 }
+.add-activity-btn{
+  padding: 0px 5px !important;
+  border: 1px solid grey !important;
+  border-radius: 50%;
+}
+
+#modal-form-box{
+  form{
+    display: none
+  }
+  height: 0px;
+  z-index: -1;
+  &.open{
+    height: auto;
+    z-index: 0;
+    form{
+      display: block
+    }
+  }
+}

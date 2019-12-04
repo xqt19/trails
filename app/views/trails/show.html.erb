@@ -1,60 +1,55 @@
 
+
+<h1><%= @trail.name %> Board</h1>
 <div class="d-flex align-items-center" id="activity-horizontal-container" style="flex-wrap: nowrap; overflow: auto ">
-  <%# date = @trail.start_date %>
-  <%# until @trail.end_date + 1 == date %>
   <% @activities.each do |date, activities|%>
-
-
-
-
-                <div class ="datecard" style = "flex: 0 0 auto">
-
-
-                  <div class="card" style="width: 18rem; height:300px" >
-                    <div class="card-body d-flex flex-column text-center justify-content-between">
-                      <h5 class="card-title"><%#= date.strftime('%d %b %Y') %></h5>
-                      <%# if array.empty? %>
-                      <h1><%= date %></h1>
-                      <h2 class="card-text"> NO ACTIVITIES TODAY! </h2>
-                      <%# else %>
-                      <% activities.take(2).each do |activity| %>
-                      <div style= "border: 1px solid black">
-                      <p class="card-text"><%= activity.name %></p>
-                      <p class="card-text"><% activity.start_time %></p>
-                      </div>
-                      <% end %>
-                      <%# end %>
-                      <%= form_tag list_activity_trail_path(@trail), method: :get, remote:true do %>
-                        <%= hidden_field_tag 'date', date %>
-                        <button class="btn btn-primary" type="submit" data-toggle="modal" data-target="#exampleModalLong">See more</button>
-                      <% end %>
-                    </div>
-                  </div>
-
-                </div>
-
-        <!-- Modal -->
-
-
-  <%# date += 1 %>
+    <div class ="datecard" style = "flex: 0 0 auto">
+      <div class="card" style="width: 18rem; height:300px" >
+        <div class="card-body d-flex flex-column text-center justify-content-between">
+          <h5 class="card-title"><%= date.strftime('%d %b %Y')%></h5>
+          <% if activities.empty? %>
+            <h3>No Activities</h3>
+          <% end %>
+          <% activities.take(2).each do |activity| %>
+          <div style= "border: 1px solid black">
+          <p class="card-text"><%= activity.name %></p>
+          <p class="card-text"><% activity.start_time %></p>
+          </div>
+          <% end %>
+          <%# end %>
+          <%= form_tag list_activity_trail_path(@trail), method: :get, remote:true do %>
+            <%= hidden_field_tag 'date', date %>
+            <button class="btn btn-primary" type="submit" data-toggle="modal" data-target="#exampleModalLong">See more</button>
+          <% end %>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
-                      <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                          <div class="modal-content d-flex align-items-center" style= "position: relative">
-                            <button type="button" class="close-modal-btn close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            <div class="modal-header">
-                              <h2 class="modal-title" id="activity-modal-title"></h2>
-                            </div>
-                            <div id='activity-modal-content' class="modal-body">
-                             </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
 
+
+
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content d-flex align-items-center" style= "position: relative">
+      <button type="button" class="close-modal-btn close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      <div class="modal-header">
+        <h2 class="modal-title" id="activity-modal-title"></h2>
+      </div>
+      <div id='activity-modal-content' class="modal-body">
+       </div>
+       <div class="modal-footer">
+        <button type="button" class="add-activity-btn"><span aria-hidden="true">&plus;</span></button>
+      </div>
+      <div id= "modal-form-box" class="">
+        <%= render "activities/form", trail:@trail, activity:Activity.new %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

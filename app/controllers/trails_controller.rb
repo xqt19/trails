@@ -7,7 +7,14 @@ class TrailsController < ApplicationController
   end
 
   def show
-    @activities = @trail.activities.group_by(&:date).sort_by{|k, _extras| k }.to_h
+    @activities = @trail.activities.group_by(&:date)
+    range_dates = (@trail.start_date...@trail.end_date).to_a
+    range_dates.each do |date|
+      if @activities[date].nil?
+        @activities[date] = []
+      end
+    end
+    @activities = @activities.sort_by{|k, _extras| k }.to_h
   end
 
   def new
@@ -47,6 +54,9 @@ class TrailsController < ApplicationController
   def list_activity
     date = Date.parse(params[:date])
     @activities = @trail.activities.where(date: date)
+  end
+
+  def add_activity
   end
 
   private

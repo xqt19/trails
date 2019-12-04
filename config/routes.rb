@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :trails do
     member do
       get :list_activity
+      get :add_activity
     end
     resources :activities, except: [:index]
     resources :lists, except: [:index]
