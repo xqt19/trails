@@ -1,0 +1,5 @@
+var modalBody = document.querySelector('#activity-modal-content')
+var modalTitle = document.querySelector('#activity-modal-title')
+
+modalBody.innerHTML = '<%= j render "activities/activities_list", activities: @activities %>'
+modalTitle.innerText = '<%= @activities.first.date.strftime("%A, %b %d")%>'
