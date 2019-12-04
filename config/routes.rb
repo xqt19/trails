@@ -6,7 +6,12 @@ Rails.application.routes.draw do
 
   resources :trails, except: [:index] do
     resources :activities, only: %i[new create edit update destroy]
-    resources :lists, only: %i[new create edit update]
+    resources :lists, only: %i[new create edit update destroy]
+  end
+
+  # Creating api to fetch items from categories
+  resources :categories, only: [:show] do
+    resources :items, only: [:index]
   end
 
   resources :activities, only: [:show]

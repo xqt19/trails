@@ -21,8 +21,8 @@ Trail.destroy_all
 puts "destroying users..."
 User.destroy_all
 
-puts "Creating 7 Categories..."
-categories_array = ["Travelling", "Day at the Beach", "Mountain Climbing", "Hiking", "Chalet", "Outdoor Camping", "BBQ"]
+puts "Creating 8 Categories..."
+categories_array = ["Custom", "Travelling", "Day at the Beach", "Mountain Climbing", "Hiking", "Chalet", "Outdoor Camping", "BBQ"]
 categories_array.each { |string| Category.create!(name: string) }
 
 puts "Creating 20 Items and their ItemCategories... "
