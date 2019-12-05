@@ -4,8 +4,8 @@ function refreshForm(innerHTML) {
 }
 
 function addActivity(activityHTML) {
-  const activities = document.getElementById('activity-modal-content');
-  activities.insertAdjacentHTML('beforeend', activityHTML);
+  const activities = document.querySelector('.modal-footer');
+  activities.insertAdjacentHTML('beforebegin', activityHTML);
 }
 
 <% if @activity.errors.any? %>

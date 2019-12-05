@@ -7,8 +7,13 @@ class ActivitiesController < ApplicationController
   end
 
   def new
+    @date = params[:date]
     @activity = Activity.new
     @activity.trail = @trail
+    respond_to do |format|
+      format.html { redirect_to trail_path(@trail) }
+      format.js
+    end
   end
 
   def create
@@ -32,14 +37,12 @@ class ActivitiesController < ApplicationController
   end
 
   def update
-    raise
     @activity = Activity.find(params[:id])
-    @activity.trail = @trail
     if @activity.update(activity_params)
-      flash[:notice] = "Activity Updated!"
-      redirect_to trail_path(@trail)
-    else
-      render :edit
+      respond_to do |format|
+        format.html { redirect_to trail_path(@trail) }
+        format.js
+      end
     end
   end
 

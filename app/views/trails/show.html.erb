@@ -37,7 +37,6 @@
           <% end %>
           <%= form_tag list_activity_trail_path(@trail), method: :get, remote:true do %>
             <%= hidden_field_tag 'date', date %>
-
             <!-- zache's -->
             <% if (@trail.start_date - Date.today).to_i > 0 %>
               <p>Countdown: <%= (@trail.start_date - Date.today).to_i %> more days to this trail!</p>
@@ -62,7 +61,7 @@
 
 <div class="modal fade" id="exampleModalLong"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog m-0 modal-dialog-centered" role="document">
-    <div class="modal-content d-flex align-items-center" style= "position: relative">
+    <div class="activity-modal-content modal-content d-flex align-items-center" style= "position: relative">
       <button type="button" class="close-modal-btn close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -71,12 +70,6 @@
       </div>
       <div id='activity-modal-content' class="modal-body">
        </div>
-       <div class="modal-footer">
-        <button type="button" class="add-activity-btn"><span aria-hidden="true">&plus;</span></button>
-      </div>
-      <div id= "modal-form-box" class="">
-        <%= render "activities/form", trail:@trail, activity:Activity.new, date: nil %>
-      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>

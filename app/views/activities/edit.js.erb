@@ -1,9 +1,7 @@
-function refreshForm(innerHTML) {
-  const newActivityForm = document.getElementById('activity-form');
-  newActivityForm.innerHTML = innerHTML;
-}
 
+var formContainer = document.querySelector("#modal-form-box")
+formContainer.innerHTML = ''
 
-refreshForm('<%= j render "activities/form", trail: @trail , activity: @activity, date: @activity.date  %>');
-document.querySelector("#modal-form-box").classList.add("open")
-document.getElementById('activity-form').action = "/trails/<%= @trail.id%>/activities/<%= @activity.id%>"
+if (document.querySelector("#activity-form")) document.querySelector("#activity-form").remove()
+var currentCard = document.querySelector("[data-id='<%= @activity.id %>']")
+currentCard.insertAdjacentHTML("afterend", '<%= j render "activities/form", trail: @trail , activity: @activity, date: @activity.date  %>')
