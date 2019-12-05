@@ -48,8 +48,12 @@ class ActivitiesController < ApplicationController
 
 
   def destroy
-    @activity.destroy
-    redirect_to trail_path(@trail)
+    if @activity.destroy
+      respond_to do |format|
+        format.html { redirect_to trail_path(@trail) }
+        format.js
+      end
+    end
   end
 
   private

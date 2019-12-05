@@ -19,7 +19,17 @@
 
 <h2><%= @trail.start_date %> to <%= @trail.end_date %></h2>
 
-<!-- end -->
+   <!-- zache's -->
+    <% if (@trail.start_date - Date.today).to_i > 0 %>
+      <p>Countdown: <%= (@trail.start_date - Date.today).to_i %> more days to this trail!</p>
+    <% elsif (@trail.start_date - Date.today).to_i == 0 %>
+      <p>This is the first day of your trail! Have fun!</p>
+    <% elsif (@trail.end_date - @trail.start_date).to_i > 0 %>
+      <p>You have <%= (@trail.end_date - @trail.start_date).to_i %> more days left in this trail! Enjoy!</p>
+    <% else %>
+      <p>This trail is completed!</p>
+    <% end %>
+            <!-- end -->
 <div class="d-flex align-items-center" id="activity-horizontal-container" style="flex-wrap: nowrap; overflow: auto ">
   <% @activities.each do |date, activities|%>
     <div class ="datecard" style = "flex: 0 0 auto">
@@ -37,17 +47,6 @@
           <% end %>
           <%= form_tag list_activity_trail_path(@trail), method: :get, remote:true do %>
             <%= hidden_field_tag 'date', date %>
-            <!-- zache's -->
-            <% if (@trail.start_date - Date.today).to_i > 0 %>
-              <p>Countdown: <%= (@trail.start_date - Date.today).to_i %> more days to this trail!</p>
-            <% elsif (@trail.start_date - Date.today).to_i == 0 %>
-              <p>This is the first day of your trail! Have fun!</p>
-            <% elsif (@trail.end_date - @trail.start_date).to_i > 0 %>
-              <p>You have <%= (@trail.end_date - @trail.start_date).to_i %> more days left in this trail! Enjoy!</p>
-            <% else %>
-              <p>This trail is completed!</p>
-            <% end %>
-            <!-- end -->
 
             <button class="btn btn-primary" type="submit" data-toggle="modal" data-target="#exampleModalLong">See more</button>
           <% end %>
