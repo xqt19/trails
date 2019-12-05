@@ -25,9 +25,9 @@ $theme-colors: ( "bootstrap": #563d7c, "simpleform": #00617f );
 @import "application/header";
 @import "application/jumbotron";
 
-// Components
-@import "components/alert";
-@import "components/icon";
-
 // Syntax highlight
 @import "application/dracula";
+
+p {
+  margin: 0;
+}

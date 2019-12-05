@@ -46,7 +46,6 @@ class ActivitiesController < ApplicationController
     end
   end
 
-
   def destroy
     @activity.destroy
     redirect_to trail_path(@trail)

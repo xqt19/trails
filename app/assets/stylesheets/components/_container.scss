@@ -1,0 +1,44 @@
+.custom-container {
+  display: flex;
+
+  .custom-field {
+    flex-basis: 100%;
+  }
+
+  .custom-btn {
+    flex-basis: 35%;
+    margin-left: 7px;
+  }
+}
+
+.custom-item-container {
+  position: relative;
+
+  .deletable {
+    border-radius: 50%;
+    font-size: 23px;
+    height: 20px;
+    width: 20px;
+    opacity: 0.8;
+    font-weight: lighter;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 5px;
+    left: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      color: white;
+      text-decoration: none;
+      opacity: 1;
+    }
+  }
+
+  &.active {
+    background: #3d7ef1;
+    color: white;
+    opacity: 1;
+  }
+}

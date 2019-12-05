@@ -1,0 +1,57 @@
+.form-template {
+  background: white;
+  margin-top: 50px;
+  padding: 20px;
+  border-radius: 5px;
+
+  h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    color: #666666;
+    margin-bottom: 30px;
+    margin-top: 0px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+  }
+}
+
+.form-rounded {
+  border-radius: 40px;
+}
+
+.select2-container--default .select2-selection--multiple {
+  border-radius: 40px;
+  padding: 5px;
+
+  .select2-selection__choice {
+    background-color: #e4e4e4;
+    border: 1px solid #aaa;
+    border-radius: 40px;
+    cursor: default;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding: 0px 0px;
+    text-align: center;
+    float: none;
+  }
+
+  .select2-selection__choice__remove {
+    float: left;
+    position: relative;
+    left: 8px;
+  }
+}
+
+.select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple {
+  border-radius: 40px;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+  padding: 5px;
+}
+
