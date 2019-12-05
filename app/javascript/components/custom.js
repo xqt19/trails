@@ -14,11 +14,14 @@ const toggleButtons = () => {
 }
 
 const appendButton = (custom) => {
-  customItems.insertAdjacentHTML('beforeend', ` <div class="custom-item">
-                                                  <small>${custom}</small>
+  customItems.insertAdjacentHTML('beforeend', ` <div class="custom-item-container">
+                                                  <label class="custom-item" for="${custom}">${custom}</label>
+                                                  <input value="${custom}" id="${custom}" name="items[]" type="checkbox" style="display:none"/>
                                                   <div class="deletable">+</div>
                                                 </div>`);
 }
+
+
 
 const deleteCustom = (item) => {
   item.addEventListener('click', (e) => {

@@ -12,9 +12,11 @@ const toggleButtons = () => {
 }
 
 const appendButton = (category) => {
-  categoryItems.insertAdjacentHTML('afterbegin', `<div class="category-item"><small>${category.name}</small></div>`);
+  categoryItems.insertAdjacentHTML('beforeend', `<label class="category-item" for="${category.name}">${category.name}</label>
+                                                    <input value="${category.id}" id="${category.name}" name="items[]" type="checkbox" style="display:none"/>`);
 }
 
+// `<div class="category-item"><small>${category.name}</small></div>`
 const appendElements = async (data) => {
   for (const category of data) {
     await appendButton(category);

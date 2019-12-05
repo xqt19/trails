@@ -12,9 +12,16 @@ class ListsController < ApplicationController
   end
 
   def create
-    raise
     @list = List.new(list_params)
+    @list.trail = @trail
     if @list.save
+      params[:items].each do |id|
+        # check if id is a number, then create listitem
+        if id.to_i.positive?
+          # TODO
+        end
+        # ListItem.create(item_id: id, list_id: @list.id)
+      end
       redirect_to trail_path(@trail)
     else
       render :new
