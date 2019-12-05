@@ -7,35 +7,42 @@ class ActivitiesController < ApplicationController
   end
 
   def new
+    @date = params[:date]
     @activity = Activity.new
     @activity.trail = @trail
+    respond_to do |format|
+      format.html { redirect_to trail_path(@trail) }
+      format.js
+    end
   end
 
   def create
+    @trail = Trail.find(params[:trail_id])
     @activity = Activity.new(activity_params)
+    @activity.date = params[:activity][:date]
     @activity.trail = @trail
     if @activity.save
-      flash[:notice] = "Activity created!"
-      redirect_to trail_path(@trail)
-    else
-      flash[:alert] = "Something went wrong!"
-      render :new
+      respond_to do |format|
+        format.html { redirect_to trail_path(@trail) }
+        format.js
+      end
     end
   end
 
   def edit
-    @activity.trail = @trail
+    respond_to do |format|
+      format.html { redirect_to trail_path(@trail) }
+      format.js
+    end
   end
 
   def update
     @activity = Activity.find(params[:id])
-    @activity.trail = @trail
     if @activity.update(activity_params)
-      flash[:notice] = "Activity updated!"
-      redirect_to trail_path(@trail)
-    else
-      flash[:alert] = "Something went wrong!"
-      render :edit
+      respond_to do |format|
+        format.html { redirect_to trail_path(@trail) }
+        format.js
+      end
     end
   end
 

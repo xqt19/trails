@@ -1,0 +1,12 @@
+
+function refreshForm(innerHTML) {
+  const newActivityForm = document.getElementById('activity-form');
+  newActivityForm.innerHTML = innerHTML;
+}
+
+
+var modalBody = document.querySelector('#activity-modal-content')
+var modalTitle = document.querySelector('#activity-modal-title')
+
+modalBody.innerHTML = '<%= j render "activities/activities_list", activities: @activities, date: @date %>'
+modalTitle.innerText = '<%= @date.strftime("%A, %b %d")%>'

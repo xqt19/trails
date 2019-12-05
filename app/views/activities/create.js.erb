@@ -1,0 +1,17 @@
+function refreshForm(innerHTML) {
+  const newActivityForm = document.getElementById('activity-form');
+  newActivityForm.innerHTML = innerHTML;
+}
+
+function addActivity(activityHTML) {
+  const activities = document.querySelector('.modal-footer');
+  activities.insertAdjacentHTML('beforebegin', activityHTML);
+}
+
+<% if @activity.errors.any? %>
+refreshForm('<%= j render "activities/form", trail: @trail , activity: @activity, date: @activity.date  %>');
+<% else %>
+refreshForm('<%= j render "activities/form", trail: @trail , activity: Activity.new, date: @activity.date  %>');
+addActivity('<%= j render "activities/card", activity: @activity %>');
+<% end %>
+
