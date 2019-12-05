@@ -1,6 +1,15 @@
+
+function refreshForm(innerHTML) {
+  const newActivityForm = document.getElementById('activity-form');
+  newActivityForm.innerHTML = innerHTML;
+}
+
+refreshForm('<%= j render "activities/form", trail: @trail , activity: Activity.new, date: @date  %>');
+
 var modalBody = document.querySelector('#activity-modal-content')
 var modalTitle = document.querySelector('#activity-modal-title')
 
 modalBody.innerHTML = '<%= j render "activities/activities_list", activities: @activities %>'
-modalTitle.innerText = '<%= @activities.first.date.strftime("%A, %b %d")%>'
-document.querySelector("#activity_date").value = '<%= @activities.first.date %>'
+modalTitle.innerText = '<%= @date.strftime("%A, %b %d")%>'
+document.querySelector("#activity_date").value = '<%= @date %>'
+document.getElementById('activity-form').action = "/trails/<%= @trail.id%>/activities"

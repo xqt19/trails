@@ -1,0 +1,16 @@
+function refreshForm(innerHTML) {
+  const newActivityForm = document.getElementById('new_activity');
+  newActivityForm.innerHTML = innerHTML;
+}
+
+function addActivity(activityHTML) {
+  const activity = document.getElementById('activity-modal-content');
+  activity.insertAdjacentHTML('beforeend', activityHTML);
+}
+
+<% if @review.errors.any? %>
+  refreshForm('<%= j render "reviews/form", restaurant: @restaurant, review: @review %>');
+<% else %>
+  addReview('<%= j render "reviews/show", review: @review %>');
+  refreshForm('<%= j render "reviews/form", restaurant: @restaurant, review: Review.new %>');
+<% end %>

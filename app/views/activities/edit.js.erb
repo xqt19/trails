@@ -1,0 +1,9 @@
+function refreshForm(innerHTML) {
+  const newActivityForm = document.getElementById('activity-form');
+  newActivityForm.innerHTML = innerHTML;
+}
+
+
+refreshForm('<%= j render "activities/form", trail: @trail , activity: @activity, date: @activity.date  %>');
+document.querySelector("#modal-form-box").classList.add("open")
+document.getElementById('activity-form').action = "/trails/<%= @trail.id%>/activities/<%= @activity.id%>"

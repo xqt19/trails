@@ -54,8 +54,8 @@ class TrailsController < ApplicationController
   end
 
   def list_activity
-    date = Date.parse(params[:date])
-    @activities = @trail.activities.where(date: date)
+    @date = Date.parse(params[:date])
+    @activities = @trail.activities.where(date: @date)
   end
 
 
