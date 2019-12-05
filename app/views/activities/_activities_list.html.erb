@@ -1,0 +1,12 @@
+  <% activities.each do |activity|  %>
+      <%= render 'activities/card', activity: activity %>
+  <% end %>
+  <div class="modal-footer">
+    <%= form_tag new_trail_activity_path(@trail), method: :get, remote:true do %>
+       <%= hidden_field_tag 'date', date %>
+        <button type="submit" class="add-activity-btn"><span aria-hidden="true">&plus;</span></button>
+    <% end %>
+  </div>
+  <div id= "modal-form-box" class="">
+      <%#= render "activities/form", trail:@trail, activity:Activity.new, date: nil %>
+  </div>

@@ -1,8 +1,15 @@
 class TrailsController < ApplicationController
-  before_action :set_trail, only: %i[show edit update destroy]
+  before_action :set_trail, only: %i[show edit update destroy list_activity]
 
   def show
-    @activities = Activity.where(trail_id: @trail.id)
+    @activities = @trail.activities.group_by(&:date)
+    range_dates = (@trail.start_date...@trail.end_date).to_a
+    range_dates.each do |date|
+      if @activities[date].nil?
+        @activities[date] = []
+      end
+    end
+    @activities = @activities.sort_by{|k, _extras| k }.to_h
   end
 
   def new
@@ -45,6 +52,12 @@ class TrailsController < ApplicationController
     @trail.destroy
     redirect_to root_path
   end
+
+  def list_activity
+    @date = Date.parse(params[:date])
+    @activities = @trail.activities.where(date: @date)
+  end
+
 
   private
 

@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   resources :users, only: %i[show new create destroy]
 
   resources :trails, except: [:index] do
+    member do
+      get :list_activity
+    end
     resources :activities, only: %i[new create edit update destroy]
-    resources :lists, only: %i[new create edit update]
+    resources :lists,  only: %i[new create edit update]
   end
 
   resources :activities, only: [:show]

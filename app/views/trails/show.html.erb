@@ -1,17 +1,10 @@
+
+<!-- Zache's -->
 <h1><%= @trail.name %></h1>
 <%= link_to "edit", edit_trail_path(@trail) %>
 <%= link_to "delete", trail_path(@trail), method: :delete, data: { confirm: "Are you sure?" } %>
 <p><%= @trail.start_date %> to <%= @trail.end_date %></p>
 
-<% if (@trail.start_date - Date.today).to_i > 0 %>
-  <p>Countdown: <%= (@trail.start_date - Date.today).to_i %> more days to this trail!</p>
-<% elsif (@trail.start_date - Date.today).to_i == 0 %>
-  <p>This is the first day of your trail! Have fun!</p>
-<% elsif (@trail.end_date - @trail.start_date).to_i > 0 %>
-  <p>You have <%= (@trail.end_date - @trail.start_date).to_i %> more days left in this trail! Enjoy!</p>
-<% else %>
-  <p>This trail is completed!</p>
-<% end %>
 
 <h2>Trail group (<%= @trail.users.count %>)</h2>
 
@@ -26,13 +19,75 @@
 
 <h2><%= @trail.start_date %> to <%= @trail.end_date %></h2>
 
-<!-- add day cards here -->
-<%= link_to "Add an activity", new_trail_activity_path(@trail) %>
+<!-- end -->
+<div class="d-flex align-items-center" id="activity-horizontal-container" style="flex-wrap: nowrap; overflow: auto ">
+  <% @activities.each do |date, activities|%>
+    <div class ="datecard" style = "flex: 0 0 auto">
+      <div class="card" style="width: 18rem; height:300px" >
+        <div class="card-body d-flex flex-column text-center justify-content-between">
+          <h5 class="card-title"><%= date.strftime('%d %b %Y')%></h5>
+          <% if activities.empty? %>
+            <h3>No Activities</h3>
+          <% end %>
+          <% activities.take(2).each do |activity| %>
+          <div style= "border: 1px solid black">
+          <p class="card-text"><%= activity.name %></p>
+          <p class="card-text"><% activity.start_time %></p>
+          </div>
+          <% end %>
+          <%= form_tag list_activity_trail_path(@trail), method: :get, remote:true do %>
+            <%= hidden_field_tag 'date', date %>
+            <!-- zache's -->
+            <% if (@trail.start_date - Date.today).to_i > 0 %>
+              <p>Countdown: <%= (@trail.start_date - Date.today).to_i %> more days to this trail!</p>
+            <% elsif (@trail.start_date - Date.today).to_i == 0 %>
+              <p>This is the first day of your trail! Have fun!</p>
+            <% elsif (@trail.end_date - @trail.start_date).to_i > 0 %>
+              <p>You have <%= (@trail.end_date - @trail.start_date).to_i %> more days left in this trail! Enjoy!</p>
+            <% else %>
+              <p>This trail is completed!</p>
+            <% end %>
+            <!-- end -->
 
-<% @activities.each do |activity| %>
-  <h2><%= activity.name %></h2>
-  <p><%= activity.description %></p>
-  <%= link_to "Show", activity_path(activity) %>
-  <%= link_to "Edit", edit_trail_activity_path(@trail, activity) %>
-  <%= link_to "Delete", trail_activity_path(@trail, activity), method: :delete, data: { confirm: "Are you sure?" } %>
-<% end %>
+            <button class="btn btn-primary" type="submit" data-toggle="modal" data-target="#exampleModalLong">See more</button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
+<div class="modal fade" id="exampleModalLong"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog m-0 modal-dialog-centered" role="document">
+    <div class="activity-modal-content modal-content d-flex align-items-center" style= "position: relative">
+      <button type="button" class="close-modal-btn close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      <div class="modal-header">
+        <h2 class="modal-title" id="activity-modal-title"></h2>
+      </div>
+      <div id='activity-modal-content' class="modal-body">
+       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- add day cards here -->
+<%#= link_to "Add an activity", new_trail_activity_path(@trail) %>
+
+<%# @activities.each do |activity| %>
+  <!-- <h2><%#= activity.name %></h2>
+  <p><%#= activity.description %></p> -->
+  <%#= link_to "Show", activity_path(activity) %>
+  <%#= link_to "Edit", edit_trail_activity_path(@trail, activity) %>
+  <%#= link_to "Delete", trail_activity_path(@trail, activity), method: :delete, data: { confirm: "Are you sure?" } %>
+<%# end %>
+
