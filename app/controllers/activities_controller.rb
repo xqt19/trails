@@ -15,8 +15,10 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
     @activity.trail = @trail
     if @activity.save
+      flash[:notice] = "Activity created!"
       redirect_to trail_path(@trail)
     else
+      flash[:alert] = "Something went wrong!"
       render :new
     end
   end
@@ -29,9 +31,10 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
     @activity.trail = @trail
     if @activity.update(activity_params)
-      flash[:notice] = "Activity Updated!"
+      flash[:notice] = "Activity updated!"
       redirect_to trail_path(@trail)
     else
+      flash[:alert] = "Something went wrong!"
       render :edit
     end
   end

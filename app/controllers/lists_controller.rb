@@ -4,6 +4,7 @@ class ListsController < ApplicationController
   before_action :set_list, only: %i[show edit update destroy]
 
   def show
+    @list_items = ListItem.where(list_id: @list.id)
   end
 
   def new
@@ -15,15 +16,23 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
     @list.trail = @trail
     if @list.save
-      params[:items].each do |id|
+      params[:items].each do |item|
         # check if id is a number, then create listitem
-        if id.to_i.positive?
-          # TODO
+        if item.to_i.positive?
+          ListItem.create(item_id: item, list_id: @list.id)
+        else
+          list_item = ListItem.new(list_id: @list.id)
+          category = Category.find(params[:list][:others][:category].to_i)
+          item = Item.create(name: item)
+          ItemCategory.create(item_id: item.id, category_id: category.id)
+          list_item.item = item
+          list_item.save
         end
-        # ListItem.create(item_id: id, list_id: @list.id)
       end
-      redirect_to trail_path(@trail)
+      flash[:notice] = "List created!"
+      redirect_to list_path(@list)
     else
+      flash[:alert] = "Something went wrong!"
       render :new
     end
   end
@@ -35,6 +44,8 @@ class ListsController < ApplicationController
   end
 
   def destroy
+    @list.destroy
+    redirect_to trail_path(@trail)
   end
 
   private

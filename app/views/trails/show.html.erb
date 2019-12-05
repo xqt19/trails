@@ -23,6 +23,11 @@
 
 <!-- add template codes here -->
 <%= link_to "Add a template", new_trail_list_path(@trail) %>
+<% @lists.each do |list| %>
+  <h2><%= list.name %></h2>
+  <%= link_to "Show", list_path(list) %>
+  <%= link_to "Delete", trail_list_path(@trail, list), method: :delete, data: { confirm: "Are you sure?" } %>
+<% end %>
 
 <h2><%= @trail.start_date %> to <%= @trail.end_date %></h2>
 

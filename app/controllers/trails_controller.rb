@@ -3,6 +3,7 @@ class TrailsController < ApplicationController
 
   def show
     @activities = Activity.where(trail_id: @trail.id)
+    @lists = List.where(trail_id: @trail.id)
   end
 
   def new

@@ -16,7 +16,6 @@ const appendButton = (category) => {
                                                     <input value="${category.id}" id="${category.name}" name="items[]" type="checkbox" style="display:none"/>`);
 }
 
-// `<div class="category-item"><small>${category.name}</small></div>`
 const appendElements = async (data) => {
   for (const category of data) {
     await appendButton(category);

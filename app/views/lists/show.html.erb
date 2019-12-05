@@ -1,5 +1,6 @@
-<h1>Select Category</h1>
+<h1><%= @list.trail.name %></h1>
+<h2><%= @list.name %></h2>
 
-<%= @categories.each do |category| %>
-  <%= category.name %>
+<% @list_items.each do |list_item| %>
+  <p><%= list_item.item.name %></p>
 <% end %>
