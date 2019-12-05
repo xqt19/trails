@@ -113,7 +113,7 @@ ItemCategory.create!(item: thirteen, category: Category.find_by(name: "Chalet"))
 forteen = Item.new(name: "Beach Toys")
 forteen.save
 ItemCategory.create!(item: forteen, category: Category.find_by(name: "Day at the Beach"))
-fifteen = Item.new(name: "Suncreen")
+fifteen = Item.new(name: "Sunscreen")
 fifteen.save
 ItemCategory.create!(item: fifteen, category: Category.find_by(name: "Day at the Beach"))
 ItemCategory.create!(item: fifteen, category: Category.find_by(name: "Travelling"))

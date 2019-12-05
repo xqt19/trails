@@ -1,3 +1,5 @@
+import { categoryItemsArr } from './button.js';
+
 const bindItemToClick = (e) => {
   e.currentTarget.classList.toggle('active');
 };
@@ -7,12 +9,12 @@ const toggleActiveClass = (item) => {
 };
 
 const toggleButtons = () => {
-  const btns = document.querySelectorAll('.category-item');
+  const btns = document.querySelectorAll('.custom-item');
   btns.forEach(toggleActiveClass);
 }
 
 const appendButton = (custom) => {
-  customItems.insertAdjacentHTML('beforeend', ` <div class="category-item">
+  customItems.insertAdjacentHTML('beforeend', ` <div class="custom-item">
                                                   <small>${custom}</small>
                                                   <div class="deletable">+</div>
                                                 </div>`);
@@ -21,9 +23,9 @@ const appendButton = (custom) => {
 const deleteCustom = (item) => {
   item.addEventListener('click', (e) => {
     const item = e.currentTarget.previousElementSibling.innerText;
-    const index = insertedItems.indexOf(item);
+    const index = categoryItemsArr.indexOf(item);
     if (index > -1) {
-      insertedItems.splice(index, 1);
+      categoryItemsArr.splice(index, 1);
     }
     e.currentTarget.parentNode.remove();
   });
@@ -44,15 +46,14 @@ const createCustom = () => {
   const customField = document.querySelector('.custom-field');
 
   customBtn.addEventListener('click', (e) => {
-    if (!insertedItems.includes(customField.value) && customField.value !== '') {
+    if (!categoryItemsArr.includes(customField.value) && customField.value !== '') {
       appendElements(customField.value);
-      insertedItems.push(customField.value);
+      categoryItemsArr.push(customField.value);
     }
   });
 };
 
 const customItems = document.querySelector('.category-items');
 const customBtn = document.querySelector('.custom-btn');
-let insertedItems = [];
 
-export { createCustom, insertedItems };
+export { createCustom };

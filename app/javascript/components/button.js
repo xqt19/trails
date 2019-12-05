@@ -1,5 +1,3 @@
-import { insertedItems } from './custom.js';
-
 const bindItemToClick = (e) => {
   e.currentTarget.classList.toggle('active');
 };
@@ -32,12 +30,15 @@ const changeCategory = () => {
       .then(response => response.json())
       .then((data) => {
         categoryItems.innerHTML = '';
+        categoryItemsArr.splice(0, categoryItemsArr.length);
+
+        data.forEach(item => categoryItemsArr.push(item.name));
         appendElements(data);
       });
-      insertedItems.splice(0, insertedItems.length);
   });
 };
 
 const categoryItems = document.querySelector('.category-items');
+let categoryItemsArr = [];
 
-export { changeCategory, categoryItems };
+export { changeCategory, categoryItems, categoryItemsArr };

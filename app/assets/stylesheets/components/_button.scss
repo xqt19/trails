@@ -5,7 +5,7 @@
   margin: 20px 0;
 }
 
-.category-item {
+.category-item, .custom-item {
   background: #b7b7b7;
   text-align: center;
   border-radius: 40px;
@@ -20,7 +20,7 @@
   }
 
   &.active {
-    background: #ea5d68;
+    // background: #ea5d68;
     color: white;
     opacity: 1;
   }
@@ -46,6 +46,14 @@
       opacity: 1;
     }
   }
+}
+
+.category-item.active {
+  background: #ea5d68;
+}
+
+.custom-item.active {
+  background: #3d7ef1;
 }
 
 .btn-info {
