@@ -10,6 +10,8 @@ puts "Destroying ItemCategories..."
 ItemCategory.destroy_all
 puts "Destroying Categories..."
 Category.destroy_all
+puts "Destroying ListItem"
+ListItem.destroy_all
 puts "Destroying Items..."
 Item.destroy_all
 puts "destroying activities..."

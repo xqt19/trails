@@ -21,11 +21,9 @@ const appendButton = (custom) => {
                                                 </div>`);
 }
 
-
-
 const deleteCustom = (item) => {
   item.addEventListener('click', (e) => {
-    const item = e.currentTarget.previousElementSibling.innerText;
+    const item = e.currentTarget.parentNode.firstElementChild.innerText;
     const index = categoryItemsArr.indexOf(item);
     if (index > -1) {
       categoryItemsArr.splice(index, 1);

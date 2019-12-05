@@ -16,14 +16,18 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
     @list.trail = @trail
     if @list.save
-      params[:items].each do |item|
+      params[:deletes]&.each do |item_name|
+        item = Item.find_by(name: item_name)
+        item.destroy
+      end
+      params[:items]&.each do |item|
         # check if id is a number, then create listitem
         if item.to_i.positive?
           ListItem.create(item_id: item, list_id: @list.id)
         else
           list_item = ListItem.new(list_id: @list.id)
           category = Category.find(params[:list][:others][:category].to_i)
-          item = Item.create(name: item)
+          item = Item.create(name: item, custom: true)
           ItemCategory.create(item_id: item.id, category_id: category.id)
           list_item.item = item
           list_item.save
