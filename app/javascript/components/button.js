@@ -1,3 +1,5 @@
+import { insertedItems } from './custom.js';
+
 const bindItemToClick = (e) => {
   e.currentTarget.classList.toggle('active');
 };
@@ -32,6 +34,7 @@ const changeCategory = () => {
         categoryItems.innerHTML = '';
         appendElements(data);
       });
+      insertedItems.splice(0, insertedItems.length);
   });
 };
 

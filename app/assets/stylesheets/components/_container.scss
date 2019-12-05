@@ -1,0 +1,12 @@
+.custom-container {
+  display: flex;
+
+  .custom-field {
+    flex-basis: 100%;
+  }
+
+  .custom-btn {
+    flex-basis: 35%;
+    margin-left: 7px;
+  }
+}
