@@ -4,4 +4,5 @@ class ListItem < ApplicationRecord
 
   has_many :delegations
   has_many :users, through: :delegations
+  validates :list, uniqueness: { scope: :item }
 end
