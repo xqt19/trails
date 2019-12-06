@@ -7,6 +7,7 @@ class TrailsController < ApplicationController
     @lists = List.where(trail_id: @trail.id)
     @activities = @trail.activities.group_by(&:date)
     range_dates = (@trail.start_date...@trail.end_date).to_a
+    range_dates << @trail.end_date
 
     range_dates.each do |date|
       @activities[date] = [] if @activities[date].nil?
