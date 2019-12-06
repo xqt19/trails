@@ -1,7 +1,18 @@
 <!-- Zache's -->
 <h1><%= @trail.name %></h1>
-<p><%= @trail.start_date %> to <%= @trail.end_date %></p>
+<p><%= @trail.start_date.strftime("%a, %b %d %Y")  %> - <%= @trail.end_date.strftime("%a, %b %d %Y")  %><%= link_to " Edit", edit_trail_path(@trail) %></p>
+<% if (@trail.start_date - Date.today).to_i > 0 %>
+      <p>Countdown: Trail begins in <%= (@trail.start_date - Date.today).to_i %> more days!</p>
+    <% elsif (@trail.start_date - Date.today).to_i == 0 %>
+      <p>This is the first day of your trail! Have fun!</p>
+    <% elsif (@trail.end_date - @trail.start_date).to_i > 0 %>
+      <p>You have <%= (@trail.end_date - Date.today).to_i %> more days left in this trail! Enjoy!</p>
+    <% else %>
+      <p>This trail is completed!</p>
+<% end %>
 
+
+<br>
 <h2>Trail group (<%= @trail.users.count + 1 %>)</h2>
 <p>Owner: <%= @trail.user.name %></p>
 <% @trail.users.each do |collab_user| %>
@@ -21,19 +32,8 @@
   <%= link_to "Delete", trail_list_path(@trail, list), method: :delete, data: { confirm: "Are you sure?" } %>
 <% end %>
 
-<h2><%= @trail.start_date %> to <%= @trail.end_date %></h2>
+<br><br>
 
-   <!-- zache's -->
-    <% if (@trail.start_date - Date.today).to_i > 0 %>
-      <p>Countdown: <%= (@trail.start_date - Date.today).to_i %> more days to this trail!</p>
-    <% elsif (@trail.start_date - Date.today).to_i == 0 %>
-      <p>This is the first day of your trail! Have fun!</p>
-    <% elsif (@trail.end_date - @trail.start_date).to_i > 0 %>
-      <p>You have <%= (@trail.end_date - @trail.start_date).to_i %> more days left in this trail! Enjoy!</p>
-    <% else %>
-      <p>This trail is completed!</p>
-    <% end %>
-            <!-- end -->
 <div class="d-flex align-items-center" id="activity-horizontal-container" style="flex-wrap: nowrap; overflow: auto ">
   <% @activities.each do |date, activities|%>
     <div class ="datecard" style = "flex: 0 0 auto">
