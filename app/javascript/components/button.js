@@ -1,4 +1,4 @@
-import { categoryItems } from '../packs/application'
+import { categoryItems } from '../packs/application';
 
 const bindItemToClick = (e) => {
   e.currentTarget.classList.toggle('active');
