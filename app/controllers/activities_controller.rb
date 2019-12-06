@@ -46,7 +46,6 @@ class ActivitiesController < ApplicationController
     end
   end
 
-
   def destroy
     if @activity.destroy
       respond_to do |format|

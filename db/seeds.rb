@@ -10,6 +10,8 @@ puts "Destroying ItemCategories..."
 ItemCategory.destroy_all
 puts "Destroying Categories..."
 Category.destroy_all
+puts "Destroying ListItem"
+ListItem.destroy_all
 puts "Destroying Items..."
 Item.destroy_all
 puts "destroying activities..."
@@ -21,8 +23,8 @@ Trail.destroy_all
 puts "destroying users..."
 User.destroy_all
 
-puts "Creating 7 Categories..."
-categories_array = ["Travelling", "Day at the Beach", "Mountain Climbing", "Hiking", "Chalet", "Outdoor Camping", "BBQ"]
+puts "Creating 8 Categories..."
+categories_array = ["Custom", "Travelling", "Day at the Beach", "Mountain Climbing", "Hiking", "Chalet", "Outdoor Camping", "BBQ"]
 categories_array.each { |string| Category.create!(name: string) }
 
 puts "Creating 20 Items and their ItemCategories... "
@@ -113,7 +115,7 @@ ItemCategory.create!(item: thirteen, category: Category.find_by(name: "Chalet"))
 forteen = Item.new(name: "Beach Toys")
 forteen.save
 ItemCategory.create!(item: forteen, category: Category.find_by(name: "Day at the Beach"))
-fifteen = Item.new(name: "Suncreen")
+fifteen = Item.new(name: "Sunscreen")
 fifteen.save
 ItemCategory.create!(item: fifteen, category: Category.find_by(name: "Day at the Beach"))
 ItemCategory.create!(item: fifteen, category: Category.find_by(name: "Travelling"))
