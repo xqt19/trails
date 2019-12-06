@@ -6,15 +6,17 @@ import { toggleModalForm } from '../components/toggle-modal-form'
 import { submitButtonForm } from '../components/submit-button-form';
 import { changeCategory } from '../components/button';
 import { createCustom } from '../components/custom';
+import { initSweetalert } from '../plugins/init_sweetalert';
 import { changeQuantity } from '../components/quantity';
 
 // toggleModalForm();
-initSelect2();
-
 const categoryItems = document.querySelector('.category-items');
 const customItems = document.querySelector('.category-items');
 const customBtn = document.querySelector('.custom-btn');
 const quantities = document.querySelectorAll('.quantity');
+
+initSelect2();
+submitButtonForm();
 
 if (quantities) {
   changeQuantity();
@@ -26,8 +28,6 @@ if (categoryItems) {
 if (customItems) {
   createCustom();
 }
-
-// submitButtonForm();
 
 // console.log(customItems);
 // console.log(customBtn);
