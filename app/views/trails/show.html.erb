@@ -41,9 +41,11 @@
   <!-- add template codes here -->
   <%= link_to "Add a template", new_trail_list_path(@trail), class: "btn btn-primary my-2" %>
   <% @lists.each do |list| %>
-    <h2><%= list.name %></h2>
-    <%= link_to "Show", list_path(list) %>
-    <%= link_to "Delete", trail_list_path(@trail, list), method: :delete, data: { confirm: "Are you sure?" } %>
+    <div class="card-body d-flex flex-column text-center justify-content-between m-3" style="border: 1px solid black; width: 60%">
+      <h2><%= list.name %></h2>
+      <%= link_to "Show", list_path(list) %>
+      <%= link_to "Delete", trail_list_path(@trail, list), method: :delete, data: { confirm: "Are you sure?" } %>
+    </div>
   <% end %>
   </div>
 </div>
@@ -56,7 +58,7 @@
     <div class ="datecard" style = "flex: 0 0 auto">
       <div class="card" style="width: 18rem; height:300px" >
         <div class="card-body d-flex flex-column text-center justify-content-between">
-          <h5 class="card-title"><%= date.strftime('%d %b %Y')%></h5>
+          <h5 class="card-title"><%= date.strftime('%a, %b %d %Y')%></h5>
           <% if activities.empty? %>
             <h3>No Activities</h3>
           <% end %>
