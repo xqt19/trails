@@ -15,5 +15,32 @@ refreshForm('<%= j render "activities/form", trail: @trail , activity: Activity.
 addActivity('<%= j render "activities/card", activity: @activity %>');
 
 if (document.querySelector("#activity-form")) document.querySelector("#activity-form").remove()
+  function addSweetAlert(){
+  var swalButtons = document.querySelectorAll('.trigger-alert-button');
+  console.log(swalButtons)
+  swalButtons.forEach((btn)=>{
+    btn.addEventListener('click', (e)=>{
+    var id = e.currentTarget.dataset.buttonId
+      swal({
+          title: "Are you sure?",
+          text: "Once deleted, you will not be able to recover this imaginary file!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        }).then((value) => {
+          if (value){
+            document.querySelector(`[data-link-id='${id}']`).click()
+          }
+        })
+
+    })
+  })
+
+}
+
+
+addSweetAlert()
+
 <% end %>
+
 

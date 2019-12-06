@@ -5,8 +5,44 @@ function refreshForm(innerHTML) {
 }
 
 
-var modalBody = document.querySelector('#activity-modal-content')
 var modalTitle = document.querySelector('#activity-modal-title')
 
-modalBody.innerHTML = '<%= j render "activities/activities_list", activities: @activities, date: @date %>'
+
 modalTitle.innerText = '<%= @date.strftime("%A, %b %d")%>'
+
+
+function displayCards(htmlCode){
+  var modalBody = document.querySelector('#activity-modal-content')
+    modalBody.innerHTML = htmlCode
+}
+
+ displayCards('<%= j render "activities/activities_list", activities: @activities, date: @date %>')
+
+
+
+function addSweetAlert(){
+  var swalButtons = document.querySelectorAll('.trigger-alert-button');
+  console.log(swalButtons)
+  swalButtons.forEach((btn)=>{
+    btn.addEventListener('click', (e)=>{
+
+      swal({
+          title: "Are you sure?",
+          text: "Once deleted, you will not be able to recover this imaginary file!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        }).then((value) => {
+          if (value){
+            var id = e.target.dataset.buttonId
+            document.querySelector(`[data-link-id='${id}']`).click()
+          }
+        })
+
+    })
+  })
+
+}
+
+
+setTimeout(addSweetAlert, 1000)
