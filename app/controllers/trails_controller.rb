@@ -45,7 +45,10 @@ class TrailsController < ApplicationController
         create_collab(collab_users_arr, @trail)
       end
       flash[:notice] = "Trail info updated!"
-      redirect_to root_path
+      @trail.activities.all.each do |activity|
+        activity.destroy if activity.date > @trail.end_date || activity.date < @trail.start_date
+      end
+      redirect_to trail_path(@trail)
     else
       flash[:alert] = "Something went wrong!"
       render :edit
@@ -53,6 +56,7 @@ class TrailsController < ApplicationController
   end
 
   def destroy
+    @trail.activities.destroy_all
     @trail.destroy
     redirect_to root_path
   end
