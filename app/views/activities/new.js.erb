@@ -1,4 +1,18 @@
-
-if (document.querySelector("#activity-form")) document.querySelector("#activity-form").remove()
-var formContainer = document.querySelector("#modal-form-box")
-formContainer.innerHTML = '<%= j render "activities/form", trail: @trail , activity: @activity, date: @date  %>';
+var activityForm = document.querySelector("[data-activity-id-form]")
+if (activityForm){
+  console.log (1);
+  if (document.querySelector("#activity-form")) document.querySelector("#activity-form").remove()
+  var formContainer = document.querySelector("#modal-form-box")
+  formContainer.innerHTML = '<%= j render "activities/form", trail: @trail , activity: @activity, date: @date  %>';
+}
+  else {
+    var addForm = document.querySelector("#activity-form")
+    if (addForm){
+      document.querySelector("#activity-form").remove()
+      console.log (2);
+    } else {
+      var formContainer = document.querySelector("#modal-form-box")
+      formContainer.innerHTML = '<%= j render "activities/form", trail: @trail , activity: @activity, date: @date  %>';
+      console.log (3);
+  }
+}

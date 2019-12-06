@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="form-template">
+        <h1>Create Template List</h1>
+        <%= simple_form_for [trail, list] do |f| %>
+          <%= f.input :name, input_html: { class: "form-rounded" }, label: "Template Name", placeholder: "Travel List" %>
+
+          <%= f.simple_fields_for :others do |o| %>
+            <%= o.input :category, as: :select, input_html: { class: "form-control select-category form-rounded" }, required: false,
+              collection: Category.all.map { |category| [category.name, category.id] }, selected: Category.find_by(name: "Custom") %>
+            <div class="custom-container">
+              <%= o.input :custom_item, as: :string, label: false, input_html: { class: "custom-field form-rounded" }, required: false %>
+              <button type ="button" class="btn btn-info custom-btn mb-3">Add item</button>
+            </div>
+          <% end %>
+
+          <h1 class="mb-0">What to bring?</h1>
+          <div class="category-items">
+          </div>
+
+          <%= f.button :submit, "Add template list", class: "btn btn-info mt-2", id: "list-submit" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,5 @@
+import { categoryItems } from '../packs/application'
+
 const bindItemToClick = (e) => {
   e.currentTarget.classList.toggle('active');
 };
@@ -67,7 +69,7 @@ const changeCategory = () => {
   });
 };
 
-const categoryItems = document.querySelector('.category-items');
+// const categoryItems = document.querySelector('.category-items');
 let categoryItemsArr = [];
 
 export { changeCategory, categoryItems, categoryItemsArr };

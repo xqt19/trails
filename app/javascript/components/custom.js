@@ -1,3 +1,4 @@
+import { customItems, customBtn } from '../packs/application'
 import { categoryItemsArr } from './button.js';
 
 const bindItemToClick = (e) => {
@@ -54,7 +55,7 @@ const createCustom = () => {
   });
 };
 
-const customItems = document.querySelector('.category-items');
-const customBtn = document.querySelector('.custom-btn');
+// const customItems = document.querySelector('.category-items');
+// const customBtn = document.querySelector('.custom-btn');
 
 export { createCustom };

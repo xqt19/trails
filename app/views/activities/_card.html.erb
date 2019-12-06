@@ -1,9 +1,9 @@
 
 
 <div data-id=<%= activity.id %>>
-  <!-- <div class="accordion" id="accordionExample"> -->
     <div class="card my-3">
            <div data-toggle="collapse" data-target="#collapse<%= activity.id %>" aria-expanded="true" aria-controls="collapse<%= activity.id %>" class="card-header shadow-sm p-0 mb-0 bg-white rounded" id="heading<%= activity.id %>" card d-flex flex-column text-center justify-content-center align-items-center" style="width: 18rem; height:100px" >
+
               <div class="card-body card-product d-flex justify-content-center align-items-center">
                   <div class="card-product-infos d-flex flex-column justify-content-center align-items-center ">
                     <h4><%= activity.name %></h4>
@@ -17,20 +17,14 @@
                   </div>
               </div>
             </div>
-      <!-- </div> -->
 
       <div id="collapse<%= activity.id %>" class="collapse hide" aria-labelledby="heading<%= activity.id %>" >
-        <div class="card-body m-2">
-          <% if activity.start_time != nil || activity.end_time != nil %>
-          <p><strong><%= activity.start_time.to_datetime.strftime("%l:%M:%p") %></strong></p>
-          <p><strong><%= activity.end_time.to_datetime.strftime("%l:%M:%p") %></strong></p>
-          <% end %>
-          <% if activity.location != nil %>
-          <p><%= activity.location %></p>
-          <% end %>
-          <% if activity.description != nil %>
-          <p><%= activity.description %></p>
-          <% end %>
+
+        <div class="card-body">
+          <p><strong>Starting at: </strong><%= activity.start_time.to_datetime.strftime("%l:%M:%p") if activity.start_time != nil %></p>
+          <p><strong>Ends by: </strong><%= activity.end_time.to_datetime.strftime("%l:%M:%p") if activity.end_time != nil %></p>
+          <p>Location: <%= activity.location %></p>
+          <p>Description: <%= activity.description %></p>
         </div>
       </div>
     </div>
