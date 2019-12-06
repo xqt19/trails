@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
     resources :activities, only: %i[new create edit update destroy]
     resources :lists, only: %i[new create edit update destroy]
+    resources :collabs, only: [:destroy]
   end
 
   # Creating api to fetch items from categories
