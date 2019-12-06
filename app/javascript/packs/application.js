@@ -16,7 +16,7 @@ const customBtn = document.querySelector('.custom-btn');
 const quantities = document.querySelectorAll('.quantity');
 
 initSelect2();
-submitButtonForm();
+
 
 if (quantities) {
   changeQuantity();
@@ -28,6 +28,8 @@ if (categoryItems) {
 if (customItems) {
   createCustom();
 }
+
+submitButtonForm();
 
 // console.log(customItems);
 // console.log(customBtn);
