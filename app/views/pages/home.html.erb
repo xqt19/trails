@@ -1,14 +1,27 @@
-
 <% if user_signed_in? %>
   <h1>Hello <%= current_user.name %>!</h1>
 
-  <h1>My <%= "trail".pluralize(@trails_count) %> (<%= @trails_count %>)</h1>
-  <%= link_to "+",  new_trail_path, class: "btn btn-primary" %>
+  <h2>My <%= "trail".pluralize(@trails_count) %> (<%= @trails_count %>)</h2>
+  <%= link_to "+", new_trail_path, class: "btn btn-primary" %>
 
-  <% @trails.each do |trail| %>
-    <p><%= trail.name %></p>
-    <%= link_to "info", trail_path(trail) %>
+  <% @trails&.each do |trail| %>
+    <h2><%= trail.name %></h2>
+    <p>Started by <%= trail.user.name %></p>
+    <%= link_to "show", trail_path(trail) %>
+    <%= link_to "info", edit_trail_path(trail) %>
   <% end %>
+
+  <% if @collabs %>
+    <h2>My <%= "collab".pluralize(@collabs_count) %> (<%= @collabs_count %>)</h2>
+
+    <% @collabs.each do |collab| %>
+      <h2><%= collab.trail.name %></h2>
+      <p>Started by <%= collab.trail.user.name %></p>
+      <%= link_to "show", trail_path(collab.trail) %>
+      <%= link_to "info", edit_trail_path(collab.trail) %>
+    <% end %>
+  <% end %>
+
 <% else %>
   <h1>Please login!</h1>
 <% end %>
