@@ -4,7 +4,8 @@ class ListsController < ApplicationController
   before_action :set_list, only: %i[show edit update destroy]
 
   def show
-    @list_items = ListItem.where(list_id: @list.id)
+    @list_items = ListItem.where(list_id: @list.id).order(:id)
+    @collabs = Collab.where(trail_id: @list.trail)
   end
 
   def new
@@ -16,10 +17,12 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
     @list.trail = @trail
     if @list.save
+      # removes custom items from list
       params[:deletes]&.each do |item_name|
         item = Item.find_by(name: item_name)
         item.destroy
       end
+      # creates list_items with templated and custom items
       params[:items]&.each do |item|
         # check if id is a number, then create listitem
         if item.to_i.positive?
@@ -45,6 +48,37 @@ class ListsController < ApplicationController
   end
 
   def update
+    if @list.update(list_params)
+      # Zache's code to filter selected items
+      # edit_selecteds = params[:items].map { |item_id| item_id.to_i }
+      # list_items = @list.list_items.map { |list_item| list_item.item_id }
+      # edit_selecteds.reject { |edit_selected| list_items.include?(edit_selected) }
+
+      # removes custom items from list
+      params[:deletes]&.each do |item_name|
+        item = Item.find_by(name: item_name)
+        item.destroy
+      end
+      # creates list_items with templated and custom items
+      params[:items]&.each do |item|
+        # check if id is a number, then create listitem
+        if item.to_i.positive?
+          ListItem.create(item_id: item, list_id: @list.id)
+        else
+          list_item = ListItem.new(list_id: @list.id)
+          category = Category.find(params[:list][:others][:category].to_i)
+          item = Item.create(name: item, custom: true)
+          ItemCategory.create(item_id: item.id, category_id: category.id)
+          list_item.item = item
+          list_item.save
+        end
+      end
+      flash[:notice] = "List updated!"
+      redirect_to list_path(@list)
+    else
+      flash[:alert] = "Something went wrong!"
+      render :edit
+    end
   end
 
   def destroy
