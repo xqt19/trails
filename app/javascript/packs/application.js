@@ -10,7 +10,6 @@ import { createCustom } from '../components/custom';
 //toggleModalForm();
 
 initSelect2();
-
 changeCategory();
 createCustom();
 
