@@ -46,10 +46,16 @@
 
 
     <% @collabs.each do |collab| %>
-      <h2><%= collab.trail.name %></h2>
-      <p>Started by <%= collab.trail.user.name %></p>
-      <%= link_to "See More", trail_path(collab.trail) %>
-      <%#= link_to "info", edit_trail_path(collab.trail) %>
+      <div class="d-flex justify-content-center m-3">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h2><%= collab.trail.name %></h2>
+            <p>Started by <%= collab.trail.user.name %></p>
+            <%= link_to "See More", trail_path(collab.trail), class: "btn btn-primary" %>
+            <%#= link_to "info", edit_trail_path(collab.trail) %>
+          </div>
+        </div>
+      </div>
     <% end %>
   <% end %>
 <% end %>
