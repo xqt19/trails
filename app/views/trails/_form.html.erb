@@ -2,8 +2,15 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <div class="form-template">
-        <h1>Create Trail</h1>
         <%= simple_form_for trail do |f| %>
+          <%= link_to "Back", :back, class: "btn-sm btn-primary text-decoration-none" %>
+
+          <% if trail.id %>
+            <h1>Trail info</h1>
+          <% else %>
+            <h1>Create Trail</h1>
+          <% end %>
+
           <%= f.error_notification %>
           <%= f.input :name, input_html: { class: "form-rounded" }, label: "Trail name", placeholder: "Trail #{ Trail.count + 1 }" %>
           <%= f.input :start_date, input_html: { class: "form-rounded" } %>
@@ -14,7 +21,13 @@
               collection: User.where.not(id: current_user).map { |user| user.email }, label: "Invite friends (email)", include_hidden: false %>
           <% end %>
 
-          <%= f.button :submit, "Create Trail", class: "btn btn-info" %>
+          <% if trail.id %>
+            <%= f.button :submit, "Update Trail", class: "btn btn-info" %>
+            <%= link_to "Delete", trail_path(trail), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-info mt-3" %>
+          <% else %>
+            <%= f.button :submit, "Create Trail", class: "btn btn-info" %>
+          <% end %>
+
         <% end %>
       </div>
     </div>
