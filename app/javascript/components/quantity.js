@@ -1,4 +1,4 @@
-import { quantities } from '../packs/application'
+import { quantities } from '../packs/application';
 
 const submitQuantity = (quantity) => {
   quantity.addEventListener('submit', (e) => {

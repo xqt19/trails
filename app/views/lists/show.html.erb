@@ -1,27 +1,40 @@
 <div class="container">
-  <h1><%= @list.trail.name %></h1>
-  <h2><%= @list.name %></h2>
+  <h3><%= @list.trail.name %></h3>
+  <h5><%= @list.name %></h5>
+  <%= link_to "Back to trails", trail_path(@list.trail), class: "btn-sm btn-primary text-decoration-none" %>
+  <%= link_to "edit list", edit_trail_list_path(@list.trail), class: "btn-sm btn-warning text-decoration-none" %>
+</div>
 
-  <%= link_to "Back to trails", trail_path(@list.trail), class: "btn-sm btn-primary" %>
-  <%= link_to "edit list", edit_trail_list_path(@list.trail), class: "btn-sm btn-warning" %>
-
-  <% @list_items.each do |list_item| %>
-    <div class="d-flex justify-content-between align-items-center border rounded mt-4">
-      <div class="d-flex justify-content-between border rounded m-2" style="width: 400px;" >
-        <p><%= list_item.item.name %></p>
-        <form class="quantity">
-          <input type="submit" name="quantity[]" value="<%= list_item.quantity %>">
-        </form>
-      </div>
-
-      <%= link_to "Delegate!", "#", class: "mx-5" %>
-
-      <div class="checkbox">
-        <label><input type="checkbox" value="" class="mr-2"></label>
-      </div>
-
-      <%= link_to "delete", list_list_item_path(@list, list_item), method: :delete, data: { confirm: "Are you sure?" } %>
+<div class="card-headers">
+  <div class="card-item">
+    <h2>Item</h2>
+    <div class="list-item-info">
+      <h2>Qty</h2>
+      <i class="fas fa-user-check"></i>
     </div>
+  </div>
+</div>
+
+<% @list_items.each do |list_item| %>
+  <div class="card-items">
+    <div class="card-item">
+      <h2><%= list_item.item.name %></h2>
+      <div class="list-item-info">
+        <div class="quantity" name="quantity[]" value="<%= list_item.quantity %>"><%= list_item.quantity %></div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="checkbox[]">
+          <label class="form-check-label" for="checkbox[]"></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-item">
+      <%= link_to list_list_item_path(@list, list_item), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <i class="fas fa-trash-alt" style="color: brown; float: right;"></i>
+      <% end %>
+    </div>
+  </div>
+<% end %>
 
 <!--     <% @collabs.each do |collab_user| %>
       <%= link_to "#" do %>
@@ -31,5 +44,3 @@
         <%= collab_user.user.name %>
       <% end %>
     <% end %> -->
-  <% end %>
-</div>

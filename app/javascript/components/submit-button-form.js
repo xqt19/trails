@@ -1,12 +1,13 @@
+import { form } from '../packs/application';
 
 const submitButtonForm = () =>{
-  const form = document.querySelector("#new_activity");
   form.addEventListener("submit", (e) =>{
-    const amc = document.querySelector('#activity-modal-content');
+    const amc = document.getElementById('activity-modal-content');
     console.log(e);
     amc.insertAdjacentHTML('beforeend', e.target[3].value);
   });
-}
+};
 
+// const form = document.getElementById("new_activity");
 
-export { submitButtonForm }
+export { submitButtonForm };

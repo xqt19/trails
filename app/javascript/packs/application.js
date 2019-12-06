@@ -14,6 +14,7 @@ const categoryItems = document.querySelector('.category-items');
 const customItems = document.querySelector('.category-items');
 const customBtn = document.querySelector('.custom-btn');
 const quantities = document.querySelectorAll('.quantity');
+const form = document.getElementById("new_activity");
 
 initSelect2();
 
@@ -24,15 +25,18 @@ if (quantities) {
 if (categoryItems) {
   changeCategory();
 }
+
 if (customItems) {
   createCustom();
 }
 
-submitButtonForm();
+if (form) {
+  submitButtonForm();
+}
 
 // console.log(customItems);
 // console.log(customBtn);
 // console.log(quantities);
 // console.log(categoryItems);
 
-export { categoryItems, customItems, customBtn, quantities };
+export { categoryItems, customItems, customBtn, quantities, form };

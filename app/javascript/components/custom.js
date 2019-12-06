@@ -1,4 +1,4 @@
-import { customItems, customBtn } from '../packs/application'
+import { customItems, customBtn } from '../packs/application';
 import { categoryItemsArr } from './button.js';
 
 const bindItemToClick = (e) => {
