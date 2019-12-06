@@ -1,0 +1,4 @@
+
+if (document.querySelector("#activity-form")) document.querySelector("#activity-form").remove()
+var formContainer = document.querySelector("#modal-form-box")
+formContainer.innerHTML = '<%= j render "activities/form", trail: @trail , activity: @activity, date: @date  %>';
