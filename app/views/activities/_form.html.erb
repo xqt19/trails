@@ -1,9 +1,9 @@
-<%= simple_form_for [trail, activity], html: {id:"activity-form"} , remote: true do |f| %>
+<%= simple_form_for [trail, activity], html: {id:"activity-form", data:{'activity-id-form': activity.id}} , remote: true do |f| %>
   <%= f.input :name, label: 'Activity' %>
   <%= f.hidden_field :date, as: :string, value: date %>
   <% if activity.id %>
-    <%= f.input :start_time, as: :string, input_html: {class: "timepicker"}  %>
-    <%= f.input :end_time, as: :string, input_html: {class: "timepicker"}  %>
+    <%= f.input :start_time, input_html: {class: "timepicker"} %>
+    <%= f.input :end_time, input_html: {class: "timepicker"} %>
     <%= f.input :location %>
     <%= f.input :description %>
   <% end %>

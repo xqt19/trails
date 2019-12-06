@@ -1,3 +1,5 @@
 var currentCard = document.querySelector("[data-id='<%= @activity.id %>']")
 currentCard.remove()
 
+
+if (document.querySelector("#activity-form")) document.querySelector("#activity-form").remove()

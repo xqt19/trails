@@ -3,7 +3,6 @@ import "flatpickr/dist/themes/dark.css"
 import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
 
 flatpickr(".timepicker", {
-  altInput: true,
   noCalendar: true,
   enableTime: true,
 })
