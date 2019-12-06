@@ -13,5 +13,7 @@ refreshForm('<%= j render "activities/form", trail: @trail , activity: @activity
 <% else %>
 refreshForm('<%= j render "activities/form", trail: @trail , activity: Activity.new, date: @activity.date  %>');
 addActivity('<%= j render "activities/card", activity: @activity %>');
+
+if (document.querySelector("#activity-form")) document.querySelector("#activity-form").remove()
 <% end %>
 
