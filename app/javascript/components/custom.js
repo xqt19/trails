@@ -51,7 +51,10 @@ const createCustom = () => {
     if (!categoryItemsArr.includes(customField.value) && customField.value !== '') {
       appendElements(customField.value);
       categoryItemsArr.push(customField.value);
+    } else {
+      alert("This item already exists in this category!")
     }
+    document.getElementById('list_others_custom_item').value = '';
   });
 };
 
