@@ -10,7 +10,7 @@
             <%= o.input :category, as: :select, input_html: { class: "form-control select-category form-rounded" }, required: false,
               collection: Category.all.map { |category| [category.name, category.id] }, selected: Category.find_by(name: "Custom") %>
             <div class="custom-container">
-              <%= o.input :custom_item, as: :string, label: false, input_html: { class: "custom-field form-rounded" }, required: false %>
+              <%= o.input :custom_item, as: :string, label: false, input_html: { class: "custom-field form-rounded" }, required: false, placeholder: "Phone Charger" %>
               <button type ="button" class="btn btn-info custom-btn mb-3">Add item</button>
             </div>
           <% end %>

@@ -17,7 +17,6 @@ const quantities = document.querySelectorAll('.quantity');
 
 initSelect2();
 
-
 if (quantities) {
   changeQuantity();
 }
