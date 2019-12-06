@@ -1,6 +1,13 @@
 var formContainer = document.querySelector("#modal-form-box")
 formContainer.innerHTML = ''
 
-if (document.querySelector("#activity-form")) document.querySelector("#activity-form").remove()
+var activityForm = document.querySelector("[data-activity-id-form='<%= @activity.id %>']")
+if (activityForm){
+  activityForm.remove()
+} else {
+  if (document.querySelector("#activity-form")) document.querySelector("#activity-form").remove()
 var currentCard = document.querySelector("[data-id='<%= @activity.id %>']")
 currentCard.insertAdjacentHTML("afterend", '<%= j render "activities/form", trail: @trail , activity: @activity, date: @activity.date  %>')
+
+}
+
