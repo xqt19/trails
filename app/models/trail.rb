@@ -3,8 +3,8 @@ class Trail < ApplicationRecord
 
   has_many :lists, dependent: :destroy
   has_many :collabs, dependent: :destroy
+  has_many :activities, dependent: :destroy
   has_many :users, through: :collabs
-  has_many :activities
 
   validates :name, presence: true
   validates :start_date, presence: true

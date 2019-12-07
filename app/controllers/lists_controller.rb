@@ -6,6 +6,8 @@ class ListsController < ApplicationController
   def show
     @list_items = ListItem.where(list_id: @list.id).order(:id)
     @collabs = Collab.where(trail_id: @list.trail)
+    @collabs = @collabs.map(&:user)
+    @collabs = [@list.trail.user] + @collabs
   end
 
   def new

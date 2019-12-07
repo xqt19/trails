@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/update'
   devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -26,6 +25,6 @@ Rails.application.routes.draw do
   end
 
   resources :list_items, only: [:show] do
-    resources :delegations, only: %i[create]
+    resources :delegations, only: %i[create destroy]
   end
 end

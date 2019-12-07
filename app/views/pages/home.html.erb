@@ -4,9 +4,9 @@
     <% if current_user.photo.blank? %>
       <%= image_tag "placeholder.png", class: "avatar-large", crop: :fill %>
     <% else %>
-      <%= cl_image_tag current_user.photo, class: "avatar-large", crop: :fill %>
+      <%= cl_image_tag current_user.photo, radius: :max, width: 150, height: 150, crop: :fill, gravity: :face %>
     <% end %>
-    <%= link_to 'edit profile', edit_user_path(current_user), class: "btn-sm btn-info" %>
+    <%= link_to 'edit profile', edit_user_path(current_user), class: "btn btn-info" %>
   </div>
 
   <br>
