@@ -1,7 +1,7 @@
   <% activities.each do |activity|  %>
       <%= render 'activities/card', activity: activity %>
   <% end %>
-  <div class="modal-footer d-flex justify-content-center" >
+  <div class="modal-footer d-flex justify-content-center align-items-center border-0" >
     <%= form_tag new_trail_activity_path(@trail), method: :get, remote:true do %>
        <%= hidden_field_tag 'date', date %>
         <button type="submit" class="btn btn-outline-dark" id="plus"> Add an activity </button>

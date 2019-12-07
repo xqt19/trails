@@ -1,4 +1,3 @@
-<!-- Zache's -->
 <div class="d-flex justify-content-center">
   <div class="d-flex flex-column align-items-center justify-content-center" style="border: 1px solid black; width: 90%">
     <h1><%= @trail.name %></h1>
@@ -50,7 +49,6 @@
   </div>
 </div>
 
-<br><br>
 
 
 <div class="d-flex align-items-center" id="activity-horizontal-container" style="flex-wrap: nowrap; overflow: auto; margin-right:30px">
@@ -76,22 +74,23 @@
         </div>
       </div>
     </div>
-  <% end %>
+  <% end %>m
 </div>
 
-<div class="modal fade" id="exampleModalLong"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal" id="exampleModalLong"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog m-0 modal-dialog-centered" role="document">
     <div class="activity-modal-content modal-content d-flex align-items-center" style= "position: relative">
-      <button type="button" class="close-modal-btn close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      <div class="modal-header">
-        <h2 class="modal-title" id="activity-modal-title"></h2>
+      <i class="far fa-times-circle" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </i>
+      <div class="modal-header border-0 d-flex justify-content-center align-items-center t-5 mx-3">
+        <i class="fas fa-calendar-day"></i>
+        <h2 class="modal-title my-1 mx-2 py-3 " id="activity-modal-title"></h2>
       </div>
-      <div id='activity-modal-content' class="modal-body">
+      <div id='activity-modal-content' class="d-flex flex-column modal-body">
        </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

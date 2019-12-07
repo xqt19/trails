@@ -1,69 +1,34 @@
 
 
 <div data-id=<%= activity.id %>>
-    <div class="card my-3">
-           <div data-toggle="collapse" data-target="#collapse<%= activity.id %>" aria-expanded="true" aria-controls="collapse<%= activity.id %>" class="card-header shadow-sm p-0 mb-0 bg-white rounded" id="heading<%= activity.id %>" card d-flex flex-column text-center justify-content-center align-items-center" style="width: 18rem; height:100px" >
+    <div class="card">
+           <div data-toggle="collapse" data-target="#collapse<%= activity.id %>" aria-expanded="true" aria-controls="collapse<%= activity.id %>" class="card-header shadow-sm p-0 mb-0 bg-white rounded" id="heading<%= activity.id %>" style="width: 21rem;" >
 
               <div class="card-body card-product d-flex justify-content-center align-items-center">
                   <div class="card-product-infos d-flex flex-column justify-content-center align-items-center ">
                     <h4><%= activity.name %></h4>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <h3><%= link_to "", edit_trail_activity_path(activity.trail, activity), class: "fas fa-pencil-alt",  remote: true %></h3>
-                      <button type='button' data-button-id="<%= activity.id %>" class="trigger-alert-button btn btn-danger">Delete</button>
-
-                      <%= link_to trail_activity_path(activity.trail, activity),data:{'link-id': activity.id}, method: :delete, id:"sweet-alert-demo", class: "hidd", remote: true do %>
-                      <% end %>
-                    </div>
+                    
                   </div>
               </div>
             </div>
 
       <div id="collapse<%= activity.id %>" class="collapse hide" aria-labelledby="heading<%= activity.id %>" >
-
-        <div class="card-body">
-          <p><strong>Starting at: </strong><%= activity.start_time.to_datetime.strftime("%l:%M:%p") if activity.start_time != nil %></p>
-          <p><strong>Ends by: </strong><%= activity.end_time.to_datetime.strftime("%l:%M:%p") if activity.end_time != nil %></p>
-          <p>Location: <%= activity.location %></p>
-          <p>Description: <%= activity.description %></p>
+        <div class="card-body-1 p-3 d-flex justify-content-between">
+          <div class="d-flex flex-column">
+            <p><strong>Starting at: </strong><%= activity.start_time.to_datetime.strftime("%l:%M:%p") if activity.start_time != nil %></p>
+            <p><strong>Ends by: </strong><%= activity.end_time.to_datetime.strftime("%l:%M:%p") if activity.end_time != nil %></p>
+            <p>Location: <%= activity.location %></p>
+            <p>Description: <%= activity.description %></p>
+          </div>
+          <div id="editdelete" class="d-flex justify-content-around align-items-start">
+            <h1 class="badge badge-info mx-1"><%= link_to "", edit_trail_activity_path(activity.trail, activity), class: "fas fa-pencil-alt",  remote: true %></h1>
+      
+            <button data-button-id="<%= activity.id %>" class="trigger-alert-button btn btn-danger fa fa-trash"></button>
+            <%= link_to trail_activity_path(activity.trail, activity), data:{'link-id': activity.id}, method: :delete, id:"sweet-alert-demo", class: " hidden", remote: true do %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<style>
-  .card-product {
-  overflow: hidden;
-  height: 120px;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  display: flex;
-  align-items: center;
-}
-
-.card-product img {
-  height: 100%;
-  width: 120px;
-  object-fit: cover;
-}
-
-.card-product h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.card-product p {
-  font-size: 12px;
-  line-height: 1.4;
-  opacity: .7;
-  margin-bottom: 0;
-  margin-top: 8px;
-}
-
-.card-product .card-product-infos {
-  padding: 16px;
-}
-
-
-</style>
