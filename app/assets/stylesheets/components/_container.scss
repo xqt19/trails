@@ -1,3 +1,17 @@
+.trail-container {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 16px;
+  padding: 16px;
+
+  img {
+    margin-bottom: 8px;
+  }
+}
+
 .custom-container {
   display: flex;
 

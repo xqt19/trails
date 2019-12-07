@@ -8,4 +8,6 @@ class User < ApplicationRecord
   has_many :collabs
 
   validates :name, presence: true
+
+  mount_uploader :photo, PhotoUploader
 end

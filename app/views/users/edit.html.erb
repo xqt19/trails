@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="form-template">
+        <%= link_to :back do %>
+          <i class="fas fa-arrow-circle-left fa-2x btn-back"></i>
+        <% end %>
+        <h1>Update Profile</h1>
+        <%= simple_form_for(current_user) do |f| %>
+          <%= f.input :name %>
+          <%= f.input :photo, label: "Upload a photo" %>
+          <%= f.input :photo_cache, as: :hidden %>
+          <%= f.button :submit, "Update Profile", class: "btn btn-info" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

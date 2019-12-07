@@ -2,9 +2,10 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <div class="form-template">
+        <%= link_to :back do %>
+          <i class="fas fa-arrow-circle-left fa-2x btn-back"></i>
+        <% end %>
         <%= simple_form_for trail do |f| %>
-          <%= link_to "Back", :back, class: "btn-sm btn-primary text-decoration-none" %>
-
           <% if trail.id %>
             <h1>Trail info</h1>
           <% else %>
