@@ -15,32 +15,43 @@
   </div>
 </div>
 
-<% @list_items.each do |list_item| %>
+<% @list_items&.each_with_index do |list_item, index| %>
   <div class="card-items">
-    <div class="card-item">
+    <div class="card-item border-bottom">
       <h2><%= list_item.item.name %></h2>
       <div class="list-item-info">
-<!--         <form class="form-inline" id="temp"> -->
-          <input type="text" class="quantity" name="quantities[]" value="<%= list_item.quantity %>">
+<!--         <form class="form-inline"> -->
+          <input type="number" class="quantity" name="quantities[]" min="0" max="999" step="1" value="<%= list_item.quantity %>">
           <input type="checkbox" class="" name="checkboxes[]" value="">
 <!--         </form> -->
       </div>
     </div>
 
     <div class="card-item">
-      <i class="fas fa-user-plus"></i>
-      <%= link_to list_list_item_path(@list, list_item), method: :delete, data: { confirm: "Are you sure?" } do %>
+      <div class="delegate">
+        <% list_item.delegations&.each do |delegation| %>
+          <%= link_to list_item_delegation_path(list_item, user_id: delegation.user.id), method: :delete do %>
+            <%= cl_image_tag delegation.user.photo, class: "avatar", crop: :fill, gravity: :face %>
+          <% end %>
+        <% end %>
+        <a href="#collabCollapse<%= index %>" data-toggle="collapse" aria-expanded="false" aria-controls="collabCollapse<%= index %>" >
+          <i class="fas fa-user-plus fa-lg"></i>
+        </a>
+      </div>
+
+      <%= link_to list_list_item_path(@list, list_item), method: :delete, data: { confirm: "Remove item from list?" } do %>
         <i class="fas fa-trash-alt" style="color: brown;"></i>
+      <% end %>
+    </div>
+
+    <div class="collabs collapse" id="collabCollapse<%= index %>">
+      <h2 class="mb-1">Trail group (<%= @collabs.size %>)</h2>
+      <% @collabs&.each do |collab_user| %>
+        <%= link_to list_item_delegations_path(list_item, user_id: collab_user.id), method: :post do %>
+          <%= cl_image_tag collab_user.photo, class: "avatar", crop: :fill, gravity: :face %>
+        <% end %>
       <% end %>
     </div>
   </div>
 <% end %>
 
-<!--     <% @collabs.each do |collab_user| %>
-      <%= link_to "#" do %>
-        <%= collab_user.trail.user.name %>
-      <% end %>
-      <%= link_to "#" do %>
-        <%= collab_user.user.name %>
-      <% end %>
-    <% end %> -->

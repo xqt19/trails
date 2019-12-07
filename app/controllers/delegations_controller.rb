@@ -1,30 +1,18 @@
 class DelegationsController < ApplicationController
-  before_action :set_list_item, only: %i[new]
-  # before_action :set_delegation, only: %i[]
-
-  def new
-    @delegation = Delegation.new
-  end
-
   def create
-  end
+    @list_item = ListItem.find(params[:list_item_id])
+    @user = User.find(params[:user_id])
 
-  def edit
-  end
+    @delegation = Delegation.new(user_id: params[:user_id], list_item_id: params[:list_item_id])
 
-  def update
+    flash[:alert] = "You have already delegated to #{@user.name}!" unless @delegation.save
+    redirect_to list_path(@list_item.list)
   end
 
   def destroy
-  end
-
-  private
-
-  def set_delegation
-    @delegation = Delegation.find(params[:id])
-  end
-
-  def set_list_item
     @list_item = ListItem.find(params[:list_item_id])
+    @delegation = Delegation.find_by(user_id: params[:user_id])
+    @delegation.destroy
+    redirect_to list_path(@list_item.list)
   end
 end
