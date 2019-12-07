@@ -28,8 +28,9 @@
     </div>
 
     <div class="card-item">
+      <i class="fas fa-user-plus"></i>
       <%= link_to list_list_item_path(@list, list_item), method: :delete, data: { confirm: "Are you sure?" } do %>
-        <i class="fas fa-trash-alt" style="color: brown; float: right;"></i>
+        <i class="fas fa-trash-alt" style="color: brown;"></i>
       <% end %>
     </div>
   </div>
