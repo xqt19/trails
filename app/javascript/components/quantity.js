@@ -1,11 +1,11 @@
 import { quantities } from '../packs/application';
 
 const submitData = (data) => {
-  fetch('/lists/:list_id/list_items/:id', {
-    // how to get :list_id and :id?
-    method: 'POST',
-    body: JSON.stringify(data);
-  });
+  // fetch('/lists/:list_id/list_items/:id', {
+  //   // how to get :list_id and :id?
+  //   method: 'POST',
+  //   body: JSON.stringify(data);
+  // });
 };
 
 const submitQuantity = (quantity) => {
