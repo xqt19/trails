@@ -6,6 +6,32 @@
 }
 
 
+#activity-modal-content {
+	background-color: #F5F5F5;
+	border-radius: 8px;
+	margin: 5px;
+	padding: 8px;
+	box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+.fa-times-circle {
+	color: red;
+	font-size: 30px;
+	position: absolute;
+	top: 3px;
+	right: 3px;
+	opacity: 0.7;
+}
+
+.activity-modal-title {
+	font-size: 1.5rem;
+}
+
+.fa-calendar-day {
+	color: #FD7E14;
+	font-size: 40px
+}
+
 
 // .datecard{
 //   margin: 0 10vw;
