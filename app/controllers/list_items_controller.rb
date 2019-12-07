@@ -1,5 +1,6 @@
 class ListItemsController < ApplicationController
   def update
+    # raise
   end
 
   def destroy

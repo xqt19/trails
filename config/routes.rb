@@ -19,9 +19,8 @@ Rails.application.routes.draw do
   end
 
   resources :activities, only: [:show]
+
   resources :lists, only: [:show] do
     resources :list_items, only: %i[update destroy]
   end
-
-  resources :list_items, only: [:show]
 end
