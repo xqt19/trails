@@ -25,10 +25,16 @@
 }
 
 .quantity {
-  width: 33px;
+  width: 36px;
   border: 1px solid #666666;
   border-radius: 4px;
-  padding: 2px;
+}
+
+.was-validated .form-control:valid, .form-control.is-valid {
+  border-color: #c4c4c4;
+  background-image: none;
+  padding-left: 4px;
+  padding-right: 0;
 }
 
 .select2-container--default .select2-selection--multiple {
