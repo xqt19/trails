@@ -25,6 +25,7 @@
 
 .card-headers {
   align-items: center;
+  background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
 }
 
 .card-items {
@@ -41,6 +42,11 @@
   h2 {
     padding: 4px;
   }
+
+  .remove-item {
+    display: flex;
+    align-items: flex-end;
+  }
 }
 
 .list-item-info {
@@ -55,4 +61,17 @@
 .delegation-box {
   display: flex;
   align-items: center;
+}
+
+.delegate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 4px;
+  margin-right: 4px;
+  padding: 4px;
+}
+
+.checked {
+  background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
 }

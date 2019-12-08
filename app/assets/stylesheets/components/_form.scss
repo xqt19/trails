@@ -43,8 +43,10 @@
   background-color: #eee;
 }
 
-input[type=checkbox]:checked {
-  background-color: blue;
+.delegate-checkbox {
+  width: 20px;
+  height: 20px;
+  position: relative;
 }
 
 .was-validated .form-control:valid, .form-control.is-valid {
