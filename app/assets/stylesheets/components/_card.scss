@@ -60,7 +60,26 @@
 
 .delegation-box {
   display: flex;
-  align-items: center;
+  padding: 2px;
+
+  >a {
+    width: 40px;
+    height: 40px;
+    //border: 1px dashed black;
+    border-radius: 50%;
+    box-shadow:
+      0 0 0 3px hsl(0, 0%, 80%) inset,
+      0 0 0 3px hsl(0, 0%, 90%);
+    position: relative;
+    background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
+
+    i {
+      position: absolute;
+      top: 11px;
+      left: 7px;
+      color: black;
+    }
+  }
 }
 
 .delegate {
@@ -69,7 +88,7 @@
   align-items: center;
   border-radius: 4px;
   margin-right: 4px;
-  padding: 2px;
+  padding: 2px 2px 0 2px;
 }
 
 .checked {
