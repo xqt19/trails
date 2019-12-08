@@ -1,15 +1,19 @@
 <div class="container d-flex flex-column">
-  <%= simple_form_for [trail, activity], html: {id:"activity-form", data:{'activity-id-form': activity.id}} , remote: true do |f| %>
-    <%= f.input :name, label: 'Activity' %>
-    <%= f.hidden_field :date, as: :string, value: date %>
-    <% if activity.id %>
-      <%= f.input :start_time, input_html: {class: "timepicker"} %>
-      <%= f.input :end_time, input_html: {class: "timepicker"} %>
-      <%= f.input :location %>
-      <%= f.input :description %>
-    <% end %>
-    <div class="d-flex justify-content-center py-2 border-0">
-    <%= f.button :submit, "Update Activity", class: "submit-btn-form btn btn-outline-dark" %>
-    </div>
-  <% end -%>
+  <div class="form animated slideInUp">
+    <%= simple_form_for [trail, activity], html: {id:"activity-form", data:{'activity-id-form': activity.id}} , remote: true do |f| %>
+      <%= f.input :name, label: 'Activity' %>
+      <%= f.hidden_field :date, as: :string, value: date %>
+      <% if activity.id %>
+        <div class="d-flex flex-column">
+        <%= f.input :start_time, label: 'Start time', input_html: {class: "timepicker"} %>
+        <%= f.input :end_time, label: 'End time', input_html: {class: "timepicker"} %>  
+        </div>
+        <%= f.input :location %>
+        <%= f.input :description %>
+      <% end %>
+      <div class="d-flex justify-content-center py-2 border-0">
+      <%= f.button :submit, "Update Activity", class: "submit-btn-form btn btn-outline-dark" %>
+      </div>
+    <% end -%>
+  </div>
 </div>
