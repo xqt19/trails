@@ -4,5 +4,10 @@ class ListItem < ApplicationRecord
 
   has_many :delegations, dependent: :destroy
   has_many :users, through: :delegations
+
   validates :list, uniqueness: { scope: :item }
+
+  def checked?
+    checked
+  end
 end

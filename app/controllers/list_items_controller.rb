@@ -13,6 +13,6 @@ class ListItemsController < ApplicationController
   private
 
   def list_item_params
-    params.require(:list_item).permit(:quantity)
+    params.require(:list_item).permit(:quantity, :checked)
   end
 end
