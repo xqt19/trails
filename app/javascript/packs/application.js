@@ -5,7 +5,6 @@ import { initSweetalert } from '../plugins/init_sweetalert';
 
 import { changeCategory } from '../components/button';
 import { createCustom } from '../components/custom';
-import { changeQuantity } from '../components/quantity';
 import { submitButtonForm } from '../components/submit-button-form';
 
 const categoryItems = document.querySelector('.category-items');
