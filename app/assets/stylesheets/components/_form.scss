@@ -20,14 +20,37 @@
   }
 }
 
+.form-group{
+  margin-bottom: 0;
+}
+
 .form-rounded {
   border-radius: 40px;
 }
 
 .quantity {
-  width: 33px;
+  width: 36px;
   border: 1px solid #666666;
   border-radius: 4px;
+}
+
+.checkbox {
+  position: absolute;
+  top: -17px;
+  right: -2px;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+input[type=checkbox]:checked {
+  background-color: blue;
+}
+
+.was-validated .form-control:valid, .form-control.is-valid {
+  height: fit-content;
+  border-color: #c4c4c4;
+  background-image: none;
   padding: 2px;
 }
 
