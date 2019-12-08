@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2019_12_08_060545) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "date"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["trail_id"], name: "index_activities_on_trail_id"
   end
 

@@ -77,7 +77,7 @@
   <% end %>m
 </div>
 
-<div class="modal" id="exampleModalLong"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal animated zoomIn" id="exampleModalLong"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog m-0 modal-dialog-centered" role="document">
     <div class="activity-modal-content modal-content d-flex align-items-center" style= "position: relative">
       <i class="far fa-times-circle" data-dismiss="modal" aria-label="Close">
@@ -107,3 +107,14 @@
   <%#= link_to "Delete", trail_activity_path(@trail, activity), method: :delete, data: { confirm: "Are you sure?" } %>
 <%# end %>
 
+<nav class="navbar fixed-bottom navbar-light bg-light d-flex justify-content-around align-items-center animated bounceIn">
+    <button type="button" id="locations" class="btn btn-outline-dark">
+      <%= link_to "", trail_activities_path(@trail), class: "fas fa-map-marked-alt"  %>
+    </button>
+    <button type="button" id="home" class="btn btn-outline-dark">
+      <%= link_to "", root_path, class: "fas fa-home" %>
+    </button>
+    <button type="button" id="friends" class="btn btn-outline-dark">
+      <i class="fas fa-users"></i>
+    </button>
+</nav>
