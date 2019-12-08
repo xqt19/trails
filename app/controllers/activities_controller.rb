@@ -2,6 +2,19 @@ class ActivitiesController < ApplicationController
   before_action :set_trail, only: %i[new create edit update destroy]
   before_action :set_activity, only: %i[show edit update destroy]
 
+  def index
+    @activities = Activity.geocoded #returns activities with coordinates
+
+    @markers = @activities.map do |activity|
+      {
+        lat: activity.latitude,
+        lng: activity.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { activity: activity }),
+        image_url: helpers.asset_url('marker.png')
+      }
+    end
+  end
+
   def show
     @activity = Activity.find(params[:id])
   end

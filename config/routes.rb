@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     member do
       get :list_activity
     end
-    resources :activities, only: %i[new create edit update destroy]
+    resources :activities, only: %i[index new create edit update destroy]
     resources :lists, only: %i[new create edit update destroy]
     resources :collabs, only: [:destroy]
   end
