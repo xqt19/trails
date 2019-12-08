@@ -9,10 +9,21 @@ class DelegationsController < ApplicationController
     redirect_to list_path(@list_item.list)
   end
 
+  def update
+    @delegation = Delegation.find(params[:id])
+    @delegation.update(delegation_params)
+  end
+
   def destroy
     @list_item = ListItem.find(params[:list_item_id])
-    @delegation = Delegation.find_by(user_id: params[:user_id])
+    @delegation = @list_item.delegations.find_by(user_id: params[:user_id])
     @delegation.destroy
     redirect_to list_path(@list_item.list)
+  end
+
+  private
+
+  def delegation_params
+    params.require(:delegation).permit(:checked)
   end
 end

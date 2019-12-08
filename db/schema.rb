@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_08_060545) do
+ActiveRecord::Schema.define(version: 2019_12_08_103649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_12_08_060545) do
     t.bigint "list_item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "checked", default: false
     t.index ["list_item_id"], name: "index_delegations_on_list_item_id"
     t.index ["user_id"], name: "index_delegations_on_user_id"
   end

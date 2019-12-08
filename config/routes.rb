@@ -25,6 +25,6 @@ Rails.application.routes.draw do
   end
 
   resources :list_items, only: [:show] do
-    resources :delegations, only: %i[create destroy]
+    resources :delegations, only: %i[create update destroy]
   end
 end
