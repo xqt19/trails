@@ -109,10 +109,10 @@
 
 <nav class="navbar fixed-bottom navbar-light bg-light d-flex justify-content-around align-items-center animated bounceIn">
     <button type="button" id="locations" class="btn btn-outline-dark">
-      <%= link_to "", locations_trail_path(@trail), class: "fas fa-map-marked-alt"  %>
+      <%= link_to "", trail_activities_path(@trail), class: "fas fa-map-marked-alt"  %>
     </button>
     <button type="button" id="home" class="btn btn-outline-dark">
-      <i class="fas fa-home"></i>
+      <%= link_to "", root_path, class: "fas fa-home" %>
     </button>
     <button type="button" id="friends" class="btn btn-outline-dark">
       <i class="fas fa-users"></i>
