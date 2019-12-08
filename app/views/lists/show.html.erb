@@ -22,18 +22,25 @@
       <%= simple_form_for(list_item, url: list_list_item_path(@list, list_item)) do |f| %>
         <div class="list-item-info">
           <%= f.input :quantity, label: false, input_html: { class: "quantity", min: "0", max: "999", step: "1", onchange: "this.form.submit();" } %>
-          <input type="checkbox" class="" name="checkboxes[]" value="">
+          <%= f.input :checked, label: false, input_html: { class: "checkbox" , onchange: "this.form.submit();" } %>
         </div>
       <% end %>
     </div>
 
     <div class="card-item">
-      <div class="delegations">
-        <% list_item.delegations&.each do |delegation| %>
-          <%= link_to list_item_delegation_path(list_item, user_id: delegation.user.id), method: :delete do %>
-            <%= cl_image_tag delegation.user.photo, class: "avatar", crop: :fill, gravity: :face %>
+      <div class="delegation-box">
+          <% list_item.delegations&.each do |delegation| %>
+            <div class="d-flex flex-column align-items-center mr-1">
+              <%= link_to list_item_delegation_path(list_item, user_id: delegation.user.id), method: :delete do %>
+                <%= cl_image_tag delegation.user.photo, class: "avatar mb-1", crop: :fill, gravity: :face %>
+              <% end %>
+              <% if delegation.user == current_user %>
+                <input type="checkbox" class="checked">
+              <% else %>
+                <input type="checkbox" class="checked" disabled>
+              <% end %>
+            </div>
           <% end %>
-        <% end %>
         <a href="#collabCollapse<%= index %>" data-toggle="collapse" aria-expanded="false" aria-controls="collabCollapse<%= index %>" >
           <i class="fas fa-user-plus fa-lg"></i>
         </a>
