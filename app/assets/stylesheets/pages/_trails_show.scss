@@ -2,7 +2,8 @@
   display: none;
 }
 #activity-horizontal-container{
-  padding: 0 10vw;
+  padding: 0 auto;
+  margin-right: 0 auto;
 }
 
 
@@ -36,12 +37,41 @@
   min-width: 90vw;
 }
 
-// .datecard{
-//   margin: 0 10vw;
-//   &:first-child{
-//   margin-left: 0px !important
-// }
-// &:last-child{
-//   margin-right: 0px !important
-// }
 
+.datecard {
+  height: 320px;
+  width: 320px;
+  background-color: #F5F5F5;
+  border-radius: 8px;
+  margin: 5px;
+  padding: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+#seemorebtn {
+  background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
+  color:black;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  // position: absolute;
+  // bottom: 20px;
+  // right: 45px;
+  // height: 40px;
+  // width: 240px;
+
+}
+
+#addactbtn {
+  background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
+  color:black;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  // position: absolute;
+  // bottom: 20px;
+  // right: 45px;
+  // width: 240px;
+
+}
+
+.card {
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
