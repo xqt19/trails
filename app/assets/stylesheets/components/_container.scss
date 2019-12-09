@@ -1,31 +1,3 @@
-.trail-container {
-  background: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  margin: 16px;
-  padding: 16px;
-
-  img {
-    margin-bottom: 8px;
-  }
-}
-
-.custom-container {
-  display: flex;
-
-  .custom-field {
-    flex-basis: 100%;
-  }
-
-  .custom-btn {
-    flex-basis: 35%;
-    margin-left: 7px;
-  }
-}
-
 .custom-item-container {
   position: relative;
 
@@ -55,5 +27,18 @@
     background: #3d7ef1;
     color: white;
     opacity: 1;
+  }
+}
+
+.custom-container {
+  display: flex;
+
+  .custom-field {
+    flex-basis: 100%;
+  }
+
+  .custom-btn {
+    flex-basis: 35%;
+    margin-left: 7px;
   }
 }

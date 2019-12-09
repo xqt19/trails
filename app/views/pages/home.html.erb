@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <div class="trail-container">
+  <div class="profile-container">
     <h1><%= current_user.name %></h1>
     <% if current_user.photo.blank? %>
       <%= image_tag "placeholder.png", class: "avatar-large", crop: :fill %>
@@ -9,42 +9,59 @@
     <%= link_to 'edit profile', edit_user_path(current_user), class: "btn btn-info" %>
   </div>
 
-  <br>
+  <div class="trail-container">
 
-  <div class="d-flex justify-content-center">
-    --------------------------------------------------------
-  </div>
+    <div id="trail-heading">
+      <div id="trail-count">
+        <h2>My <%= "trail".pluralize(@trails_count) %> (<%= @trails_count %>)</h2>
+      </div>
+      <div class="trail-options">
+        <i class="fas fa-sliders-h fa-lg" style="text-shadow: 1px 1px 0 #dfdfdf; color: rgba(91, 192, 222, 0.75);"></i>
+      </div>
+      <%= link_to new_trail_path do %>
+        <div class="trail-options">
+          <i class="fas fa-plus fa-lg" style="text-shadow: 1px 1px 0 #dfdfdf; color: rgba(91, 192, 222, 0.75);"></i>
+        </div>
+      <% end %>
+    </div>
 
-  <br>
+    <% @trails&.each do |trail| %>
+      <div class="trail-card">
 
-  <div class="d-flex flex-column justify-content-center align-items-center">
-    <h2>My <%= "trail".pluralize(@trails_count) %> (<%= @trails_count %>)</h2>
-    <%= link_to "Create a new trail", new_trail_path, class: "btn btn-primary" %>
-  </div>
+        <%= link_to trail_path(trail) do %>
+          <div class="trail-name">
+            <h5><%= trail.name %></h5>
+          </div>
+          <div class="trail-info">
+            <div class="d-flex align-items-center">
+              <div class="date-card"><h6><%= trail.start_date.strftime("%d %b %Y") %></h6></div>
+              <h6 class="mx-2 mb-0">to</h6>
+              <div class="date-card"><h6><%= trail.end_date.strftime("%d %b %Y") %></h6></div>
+            </div>
+            <h6>Friends in this trial group: <%= trail.users.count + 1 %></h6>
+          </div>
+        <% end %>
 
-  <% @trails&.each do |trail| %>
-    <div class="d-flex justify-content-center m-3">
-      <div class="card" style="width: 18rem;">
-        <h2><%= trail.name %></h2>
-        <div class="card-body">
-          <p>Started by <%= trail.user.name %></p>
-          <%= link_to "See More", trail_path(trail), class: "btn btn-primary" %>
-          <%= link_to "Edit", edit_trail_path(trail), class: "btn btn-success" %>
+        <div>
+          <%= link_to edit_trail_path(trail) do %>
+            <div class="info-link">
+              <i class="fas fa-info-circle fa-2x mr-2" style="text-shadow: 1px 1px 0 #dfdfdf; color: rgba(91, 192, 222, 0.75);"></i>
+              <h5 style="font-size: 25px;">></h5>
+            </div>
+          <% end %>
+
+          <div class="trail-starter">
+            <h6>Started by</h6>
+            <%= cl_image_tag trail.user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
 
-  <% if @collabs.empty? == false %>
-  <div class="d-flex justify-content-center">
-    --------------------------------------------------------
-  </div>
-   <div class="d-flex justify-content-center">
-    <h2>My <%= "collab".pluralize(@collabs_count) %> (<%= @collabs_count %>)</h2>
-    </div>
 
-    <% @collabs.each do |collab| %>
-      <div class="d-flex justify-content-center m-3">
+<!--     <% if !@collabs.empty? %>
+      <h2>My <%= "collab".pluralize(@collabs_count) %> (<%= @collabs_count %>)</h2>
+      <% @collabs.each do |collab| %>
         <div class="card" style="width: 18rem;">
           <div class="card-body">
             <h2><%= collab.trail.name %></h2>
@@ -53,10 +70,17 @@
             <%#= link_to "info", edit_trail_path(collab.trail) %>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div> -->
 
 <% else %>
-  <h1>Please login!</h1>
+  <div class="container d-flex flex-column justify-content-center align-items-center" >
+    <div id="login" class="animated bounceIn"><%= image_tag "trailexport.png", height: 220, width: 280, crop: :fill%></div>
+    <div class="d-flex justify-content-center align-items-center m-3 animated fadeIn delay-1s">
+      <div class="btn btn-outline-primary btn-lg mx-1"><%= link_to "Login", new_user_session_path, style: "color: black; text-decoration: none;" %></div>
+      <div class="btn btn-outline-primary btn-lg mx-1"><%= link_to "Sign Up", new_user_registration_path, style: "color: black; text-decoration: none;"  %></div>
+    </div>
+  </div>
+
 <% end %>
