@@ -5,7 +5,6 @@
               <div class="card-body card-product d-flex justify-content-center align-items-center">
                   <div class="card-product-infos d-flex flex-column justify-content-center align-items-center ">
                     <h4><%= activity.name %></h4>
-                    
                   </div>
               </div>
             </div>
@@ -20,7 +19,7 @@
           </div>
           <div id="editdelete" class="d-flex justify-content-around align-items-start">
             <h1 class="badge badge-info mx-1"><%= link_to "", edit_trail_activity_path(activity.trail, activity), class: "fas fa-pencil-alt",  remote: true %></h1>
-      
+
             <button data-button-id="<%= activity.id %>" class="trigger-alert-button btn btn-danger fa fa-trash"></button>
             <%= link_to trail_activity_path(activity.trail, activity), data:{'link-id': activity.id}, method: :delete, id:"sweet-alert-demo", class: " hidden", remote: true do %>
             <% end %>

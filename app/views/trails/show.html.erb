@@ -51,30 +51,40 @@
 
 
 
-<div class="d-flex align-items-center" id="activity-horizontal-container" style="flex-wrap: nowrap; overflow: auto; margin-right:30px">
+<div class="container d-flex flex-row align-items-center" id="activity-horizontal-container" style="flex-wrap: nowrap; overflow: auto;">
   <% @activities.each do |date, activities|%>
-    <div class ="datecard" style = "flex: 0 0 auto">
-      <div class="card" style="width: 18rem; height:300px" >
-        <div class="card-body d-flex flex-column text-center justify-content-between">
-          <h5 class="card-title"><%= date.strftime('%a, %b %d %Y')%></h5>
-          <% if activities.empty? %>
-            <h3>No Activities</h3>
-          <% end %>
-          <% activities.take(2).each do |activity| %>
-          <div style= "border: 1px solid black">
-          <p class="card-text"><%= activity.name %></p>
-          <p class="card-text"><% activity.start_time %></p>
-          </div>
-          <% end %>
-          <%= form_tag list_activity_trail_path(@trail), method: :get, remote:true do %>
-            <%= hidden_field_tag 'date', date %>
+    <div class ="datecard d-flex justify-content-center align-items-center" style = "flex: 0 0 auto">
+      <div class="d-flex justify-content-center" style="width: 18rem; height:300px" >
 
-            <button class="btn btn-primary" type="submit" data-toggle="modal" data-target="#exampleModalLong">See more</button>
+        <div class="card-body d-flex flex-column p-1 <%= activities.empty? ? 'justify-content-center': 'justify-content-between' %> text-center">
+          <div>
+            <h5 class="card-title"><%= date.strftime('%a, %b %d %Y')%></h5>
+            <% if activities.empty? %>
+              <h3>No Activities</h3>
+                <%= form_tag list_activity_trail_path(@trail), method: :get, remote:true do %>
+                  <%= hidden_field_tag 'date', date %>
+                  <button id="addactbtn" class="btn btn-sm btn-block" type="submit" data-toggle="modal" data-target="#exampleModalLong">Add an activity</button>
+               <% end %>
+             <% else %>
+                  <% activities.take(3).each do |activity| %>
+                    <div class="card m-1" style="border-radius: 5px; background-color: white;">
+                      <p class="card-text m-3"><%= activity.name %></p>
+                    </div>
+                  <% end %>
+          </div>
+          <div>
+            <%= form_tag list_activity_trail_path(@trail), method: :get, remote:true do %>
+              <%= hidden_field_tag 'date', date %>
+
+              <button id="seemorebtn" class="btn btn-sm btn-block" type="submit" data-toggle="modal" data-target="#exampleModalLong">See more</button>
+           <% end %>
+
           <% end %>
+          </div>
         </div>
       </div>
     </div>
-  <% end %>m
+  <% end %>
 </div>
 
 <div class="modal animated zoomIn" id="exampleModalLong"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -95,17 +105,6 @@
     </div>
   </div>
 </div>
-
-<!-- add day cards here -->
-<%#= link_to "Add an activity", new_trail_activity_path(@trail) %>
-
-<%# @activities.each do |activity| %>
-  <!-- <h2><%#= activity.name %></h2>
-  <p><%#= activity.description %></p> -->
-  <%#= link_to "Show", activity_path(activity) %>
-  <%#= link_to "Edit", edit_trail_activity_path(@trail, activity) %>
-  <%#= link_to "Delete", trail_activity_path(@trail, activity), method: :delete, data: { confirm: "Are you sure?" } %>
-<%# end %>
 
 <nav class="navbar fixed-bottom navbar-light bg-light d-flex justify-content-around align-items-center animated bounceIn">
     <button type="button" id="locations" class="btn btn-outline-dark">
