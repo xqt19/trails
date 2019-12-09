@@ -12,7 +12,7 @@ const checkListItems = () => {
 
 const toggleCheckedDelegates = (delegate) => {
   delegate.addEventListener('click', (e) => {
-    e.currentTarget.parentNode.parentNode.parentNode.parentNode.classList.toggle('checked');
+    e.currentTarget.parentNode.parentNode.parentNode.parentNode.classList.toggle('delegate-checked');
   });
 };
 
