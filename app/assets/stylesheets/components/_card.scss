@@ -1,6 +1,6 @@
 .card-headers, .card-items {
   overflow: hidden;
-  width: 90%;
+  width: 95%;
   height: fit-content;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -25,7 +25,6 @@
 
 .card-headers {
   align-items: center;
-  background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
 }
 
 .card-items {
@@ -63,14 +62,15 @@
   padding: 2px;
 
   >a {
+    background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
     width: 40px;
     height: 40px;
     border-radius: 50%;
     box-shadow:
       0 0 0 3px hsl(0, 0%, 80%) inset,
       0 0 0 3px hsl(0, 0%, 90%);
+    margin-top: 2px;
     position: relative;
-    background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
 
     i {
       position: absolute;
@@ -91,5 +91,9 @@
 }
 
 .checked {
+  opacity: 0.9;
+}
+
+.delegate-checked {
   background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
 }

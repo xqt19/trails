@@ -5,19 +5,23 @@
   justify-content: center;
   align-items: center;
   height: 270px;
+  width: 300px;
+  margin: 20px auto 0px;
+  border-radius: 8px;
   box-shadow: 1px 1px 0 #dfdfdf;
 
   h1 {
-    font-family: 'Carter One', cursive;
+    font-family: 'Concert One', cursive;
+    color: #666666;
   }
 
   .btn-info {
     margin-top: 8px;
+    box-shadow: 1px 1px 0 #dfdfdf;
   }
 }
 
 .trail-container {
-  //background: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -54,8 +58,8 @@
   .trail-info {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 55px;
+    justify-content: space-around;
+    height: 70px;
     padding: 0 4px 4px;
 
     h6 {
@@ -65,7 +69,7 @@
 
   .trail-name {
     width: auto;
-    padding: 8px;
+    padding: 4px 10px;
     background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
 
     h5 {
@@ -120,7 +124,8 @@
     flex-basis: 60%;
 
     h2 {
-      font-weight: bold;
+      font-family: 'Concert One', cursive;
+      color: #666666;
       margin: 8px 0px;
     }
   }

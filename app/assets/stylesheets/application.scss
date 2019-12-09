@@ -29,3 +29,6 @@ $theme-colors: ( "bootstrap": #563d7c, "simpleform": #00617f );
 @import "application/dracula";
 
 // Plugins
+body {
+  background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
+}

@@ -1,8 +1,15 @@
-<div class="container">
-  <h3><%= @list.trail.name %></h3>
-  <h5><%= @list.name %></h5>
-  <%= link_to "Back to trails", trail_path(@list.trail), class: "btn-sm btn-primary text-decoration-none" %>
-  <%= link_to "edit list", edit_trail_list_path(@list.trail), class: "btn-sm btn-warning text-decoration-none" %>
+<div class="header">
+  <div class="header-detail">
+    <div class="header-title"><h3>Trail: </h3></div>
+    <div class="header-name"><h3><%= @list.trail.name %></h3></div>
+  </div>
+  <div class="header-detail border-top">
+    <div class="header-title"><h3>List: </h3></div>
+    <div class="header-name"><h3><%= @list.name %></h3></div>
+  </div>
+  <div class="header-link">
+    <%= link_to "edit list", edit_trail_list_path(@list.trail), class: "btn-sm btn-info text-decoration-none" %>
+  </div>
 </div>
 
 <div class="card-headers">
@@ -18,7 +25,7 @@
 <% @list_items&.each_with_index do |list_item, index| %>
   <div class="card-items <%= 'checked' if list_item.checked? %>">
     <div class="card-item border-bottom">
-      <h2><%= list_item.item.name %></h2>
+      <h2><%= index + 1 %>. <%= list_item.item.name %></h2>
       <%= simple_form_for(list_item, url: list_list_item_path(@list, list_item)) do |f| %>
         <div class="list-item-info">
           <%= f.input :quantity, label: false, input_html: { class: "quantity", min: "0", max: "999", step: "1", onchange: "this.form.submit();" } %>
