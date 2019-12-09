@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   def edit
-    authorize current_user
+    authorize User.find(params[:id])
   end
 
   def update
-    authorize current_user
+    authorize User.find(params[:id])
     if current_user.update(user_params)
       flash[:notice] = "Profile updated!"
       redirect_to root_path
