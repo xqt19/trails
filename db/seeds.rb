@@ -145,10 +145,19 @@ ItemCategory.create!(item: twenty, category: Category.find_by(name: "Travelling"
 ItemCategory.create!(item: twenty, category: Category.find_by(name: "Chalet"))
 ItemCategory.create!(item: twenty, category: Category.find_by(name: "Outdoor Camping"))
 
-puts "creating 3 users Zache, Nesh and Xiu Qi"
+puts "creating all lewagon peeps"
 zache = User.create(name: "Zache", email: "zache@lewagon.com", password: "password", remote_photo_url: 'https://res.cloudinary.com/be6sky/image/upload/v1575712557/zache_ne0rfi.jpg')
 nesh = User.create(name: "Nesh", email: "nesh@lewagon.com", password: "password", remote_photo_url: 'https://res.cloudinary.com/be6sky/image/upload/v1575017254/ry3obyvvadzq6ho3vzjx.jpg')
 xq = User.create(name: "Xiu Qi", email: "xq@lewagon.com", password: "password", remote_photo_url: 'https://res.cloudinary.com/be6sky/image/upload/v1575017227/ukfmuiph7mjxbkhucmqg.jpg')
+yifan = User.create(name: "Yi Fan", email: "yifan@lewagon.com", password: "password", remote_photo_url: 'https://res.cloudinary.com/be6sky/image/upload/v1575017228/u9gkbniqnieh2jqxp9nk.jpg')
+michael = User.create(name: "Michael", email: "mike@lewagon.com", password: "password", remote_photo_url: 'https://res.cloudinary.com/be6sky/image/upload/v1575017267/erjc7psxbkpo8b6m3hxu.jpg')
+charmaine = User.create(name: "Charmaine", email: "charms@lewagon.com", password: "password", remote_photo_url: 'https://res.cloudinary.com/be6sky/image/upload/v1575017275/zopcvs0bam6kymwthtia.jpg')
+vibhuti = User.create(name: "Vibhuti", email: "vib@lewagon.com", password: "password", remote_photo_url: 'https://res.cloudinary.com/be6sky/image/upload/v1574957215/sa8ulwd6at5s8iwclnrn.jpg')
+najihah = User.create(name: "Najihah", email: "naj@lewagon.com", password: "password", remote_photo_url: 'https://res.cloudinary.com/be6sky/image/upload/v1574957227/maqq5nioajx59rpnj0e7.jpg')
+dirk = User.create(name: "Dirk", email: "dirk@lewagon.com", password: "password", remote_photo_url: 'https://res.cloudinary.com/be6sky/image/upload/v1575017238/rus7yjkpb7eaqy9vuuca.jpg')
+prima = User.create(name: "Prima", email: "prima@lewagon.com", password: "password", remote_photo_url: 'https://res.cloudinary.com/be6sky/image/upload/v1575017217/j1ojkjhh7evahh6rvg5f.jpg')
+guido = User.create(name: "Guido", email: "guido@lewagon.com", password: "password", remote_photo_url: 'https://res.cloudinary.com/be6sky/image/upload/v1575017253/ojwyd1jkye7x7nuipwv8.jpg')
+rachael = User.create(name: "Rachael", email: "rachael@lewagon.com", password: "password", remote_photo_url: 'https://res.cloudinary.com/be6sky/image/upload/v1575017242/uadschvxy8avbuvlwp2b.jpg')
 
 puts "creating 2 trails under Zache"
 Trail.create(user_id: zache.id, name: "Test Barbeque Plan", start_date: Date.new(2019, 12, 8), end_date: Date.new(2019, 12, 8))
@@ -157,7 +166,17 @@ Trail.create(user_id: zache.id, name: "Japan Trip", start_date: Date.new(2020, 3
 puts "adding collaborators to trail 1 and 2"
 Collab.create(user_id: nesh.id, trail_id: zache.trails.first.id)
 Collab.create(user_id: xq.id, trail_id: zache.trails.first.id)
+Collab.create(user_id: nesh.id, trail_id: zache.trails.last.id)
 Collab.create(user_id: xq.id, trail_id: zache.trails.last.id)
+Collab.create(user_id: yifan.id, trail_id: zache.trails.last.id)
+Collab.create(user_id: michael.id, trail_id: zache.trails.last.id)
+Collab.create(user_id: charmaine.id, trail_id: zache.trails.last.id)
+Collab.create(user_id: vibhuti.id, trail_id: zache.trails.last.id)
+Collab.create(user_id: najihah.id, trail_id: zache.trails.last.id)
+Collab.create(user_id: dirk.id, trail_id: zache.trails.last.id)
+Collab.create(user_id: prima.id, trail_id: zache.trails.last.id)
+Collab.create(user_id: guido.id, trail_id: zache.trails.last.id)
+Collab.create(user_id: rachael.id, trail_id: zache.trails.last.id)
 
 puts "adding activities to test bbq plan"
 Activity.create(trail_id: zache.trails.first.id, name: "Preparing to start fire", description: "Get the thongs and coal", date:Date.today, start_time: Time.now, end_time: Time.now + 3600)
