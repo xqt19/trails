@@ -3,7 +3,8 @@ class ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[show edit update destroy]
 
   def index
-    @activities = Activity.geocoded #returns activities with coordinates
+    @activities = policy_scope(Activity).geocoded #returns activities with coordinates
+    authorize @activities
 
     @markers = @activities.map do |activity|
       {
@@ -17,12 +18,14 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find(params[:id])
+    authorize @activity
   end
 
   def new
     @date = params[:date]
     @activity = Activity.new
     @activity.trail = @trail
+    authorize @activity
     respond_to do |format|
       format.html { redirect_to trail_path(@trail) }
       format.js
@@ -34,6 +37,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
     @activity.date = params[:activity][:date]
     @activity.trail = @trail
+    authorize @activity
     if @activity.save
       respond_to do |format|
         format.html { redirect_to trail_path(@trail) }
@@ -43,6 +47,7 @@ class ActivitiesController < ApplicationController
   end
 
   def edit
+    authorize @activity
     respond_to do |format|
       format.html { redirect_to trail_path(@trail) }
       format.js
@@ -51,6 +56,7 @@ class ActivitiesController < ApplicationController
 
   def update
     @activity = Activity.find(params[:id])
+    authorize @activity
     if @activity.update(activity_params)
       respond_to do |format|
         format.html { redirect_to trail_path(@trail) }
@@ -60,6 +66,7 @@ class ActivitiesController < ApplicationController
   end
 
   def destroy
+    authorize @activity
     if @activity.destroy
       respond_to do |format|
         format.html { redirect_to trail_path(@trail) }

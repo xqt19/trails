@@ -2,8 +2,7 @@ class TrailsController < ApplicationController
   before_action :set_trail, only: %i[show edit update destroy list_activity]
 
   def show
-    # Zache's commit
-    # @activities = Activity.where(trail_id: @trail.id)
+    authorize @trail
     @lists = List.where(trail_id: @trail.id)
     @activities = @trail.activities.group_by(&:date)
     range_dates = (@trail.start_date...@trail.end_date).to_a
@@ -18,11 +17,13 @@ class TrailsController < ApplicationController
 
   def new
     @trail = Trail.new
+    authorize @trail
   end
 
   def create
     @trail = Trail.new(trail_params)
     @trail.user = current_user
+    authorize @trail
     if @trail.save
       if params[:trail][:others]
         collab_users_arr = params[:trail][:others][:email]
@@ -36,9 +37,11 @@ class TrailsController < ApplicationController
   end
 
   def edit
+    authorize @trail
   end
 
   def update
+    authorize @trail
     if @trail.update(trail_params)
       if params[:trail][:others]
         collab_users_arr = params[:trail][:others][:email]
@@ -56,16 +59,18 @@ class TrailsController < ApplicationController
   end
 
   def destroy
+    authorize @trail
     @trail.activities.destroy_all
     @trail.destroy
     redirect_to root_path
   end
 
   def list_activity
+    authorize @trail
     @date = Date.parse(params[:date])
     @activities = @trail.activities.where(date: @date)
   end
-  
+
   private
 
   def set_trail
