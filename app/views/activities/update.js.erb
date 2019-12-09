@@ -2,5 +2,13 @@ if (document.querySelector("#activity-form")) document.querySelector("#activity-
 var currentCard = document.querySelector("[data-id='<%= @activity.id %>']")
 var container = document.querySelector('#activity-modal-content')
 currentCard.insertAdjacentHTML('afterend', '<%= j render "activities/card", activity: @activity %>')
+var date = "card-container-<%= @activity.date.strftime('%Y-%m-%e')%>"
+console.log(date)
+var card = document.querySelector(`[data-id='${date}']`)
+console.log(card)
+function updateSmallCard(card, partial){
+  card.innerHTML = partial
+}
+updateSmallCard(card,  "<%= j render 'activities/small_card_content', activities: @activities, date: @activity.date, trail: @trail %>" )
 
 currentCard.remove()

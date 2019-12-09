@@ -39,6 +39,7 @@ class ActivitiesController < ApplicationController
     @activity.trail = @trail
     authorize @activity
     if @activity.save
+      @activities = find_activities(@trail, @activity)
       respond_to do |format|
         format.html { redirect_to trail_path(@trail) }
         format.js
@@ -58,6 +59,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
     authorize @activity
     if @activity.update(activity_params)
+      @activities = find_activities(@trail, @activity)
       respond_to do |format|
         format.html { redirect_to trail_path(@trail) }
         format.js
@@ -68,6 +70,7 @@ class ActivitiesController < ApplicationController
   def destroy
     authorize @activity
     if @activity.destroy
+      @activities = find_activities(@trail, @activity)
       respond_to do |format|
         format.html { redirect_to trail_path(@trail) }
         format.js
@@ -76,6 +79,11 @@ class ActivitiesController < ApplicationController
   end
 
   private
+
+  def find_activities(trail, activity= nil)
+      @activities = trail.activities.group_by(&:date)
+      @activities = @activities[@activity.date]  || []
+  end
 
   def set_trail
     @trail = Trail.find(params[:trail_id])

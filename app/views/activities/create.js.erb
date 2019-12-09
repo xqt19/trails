@@ -8,12 +8,23 @@ function addActivity(activityHTML) {
   activities.insertAdjacentHTML('beforebegin', activityHTML);
 }
 
+
+
+var date = "card-container-<%= @activity.date.strftime('%Y-%m-%e')%>"
+console.log(date)
+var card = document.querySelector(`[data-id='${date}']`)
+console.log(card)
+function updateSmallCard(card, partial){
+  card.innerHTML = partial
+}
+
+
 <% if @activity.errors.any? %>
 refreshForm('<%= j render "activities/form", trail: @trail , activity: @activity, date: @activity.date  %>');
 <% else %>
 refreshForm('<%= j render "activities/form", trail: @trail , activity: Activity.new, date: @activity.date  %>');
 addActivity('<%= j render "activities/card", activity: @activity %>');
-
+updateSmallCard(card,  "<%= j render 'activities/small_card_content', activities: @activities, date: @activity.date, trail: @trail %>" )
 if (document.querySelector("#activity-form")) document.querySelector("#activity-form").remove()
   function addSweetAlert(){
   var swalButtons = document.querySelectorAll('.trigger-alert-button');
