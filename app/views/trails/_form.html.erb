@@ -24,7 +24,7 @@
 
           <% if trail.id %>
             <%= f.button :submit, "Update Trail", class: "btn btn-info" %>
-            <%= link_to "Delete", trail_path(trail), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-info mt-3" %>
+            <%= link_to "Delete", trail_path(trail), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-info mt-3" if trail.user == current_user %>
           <% else %>
             <%= f.button :submit, "Create Trail", class: "btn btn-info" %>
           <% end %>

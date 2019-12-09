@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   def index
+    @items = policy_scope(Item)
     @category = Category.find(params[:category_id])
 
     respond_to do |format|

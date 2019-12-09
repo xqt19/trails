@@ -2,10 +2,12 @@ class ListItemsController < ApplicationController
   def update
     @list_item = ListItem.find(params[:id])
     @list_item.update(list_item_params)
+    authorize @list_item
   end
 
   def destroy
     @list_item = ListItem.find(params[:id])
+    authorize @list_item
     @list_item.destroy
     redirect_to list_path(@list_item.list)
   end

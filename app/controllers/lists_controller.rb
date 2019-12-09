@@ -4,6 +4,7 @@ class ListsController < ApplicationController
   before_action :set_list, only: %i[show edit update destroy]
 
   def show
+    authorize @list
     @list_items = ListItem.where(list_id: @list.id).order(:id)
     @collabs = Collab.where(trail_id: @list.trail)
     @collabs = @collabs.map(&:user)
@@ -12,12 +13,15 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
+    @list.trail = @trail
+    authorize @list
     @categories = Category.all
   end
 
   def create
     @list = List.new(list_params)
     @list.trail = @trail
+    authorize @list
     if @list.save
       # removes custom items from list
       params[:deletes]&.each do |item_name|
@@ -47,9 +51,11 @@ class ListsController < ApplicationController
   end
 
   def edit
+    authorize @list
   end
 
   def update
+    authorize @list
     if @list.update(list_params)
       # Zache's code to filter selected items
       # edit_selecteds = params[:items].map { |item_id| item_id.to_i }
@@ -84,6 +90,7 @@ class ListsController < ApplicationController
   end
 
   def destroy
+    authorize @list
     @list.destroy
     redirect_to trail_path(@trail)
   end
