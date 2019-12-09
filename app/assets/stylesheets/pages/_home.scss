@@ -9,6 +9,7 @@
   margin: 20px auto 0px;
   border-radius: 8px;
   box-shadow: 1px 1px 0 #dfdfdf;
+  position: relative;
 
   h1 {
     font-family: 'Concert One', cursive;
@@ -19,6 +20,12 @@
     margin-top: 8px;
     box-shadow: 1px 1px 0 #dfdfdf;
   }
+
+  .logout {
+    position: absolute;
+    top: 0;
+    right: 8px;
+  }
 }
 
 .trail-container {
@@ -27,7 +34,6 @@
   justify-content: center;
   align-items: center;
   margin-top: 8px;
-  border-top: 1px solid #dfdfdf;
 }
 
 .trail-card {
@@ -45,7 +51,7 @@
     width: 250px;
   }
 
-  .info-link, .trail-name {
+  .trail-name, .info-link {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -53,6 +59,27 @@
     border-radius: 30px;
     box-shadow: 1px 1px 0 #dfdfdf;
     margin: 8px 0;
+  }
+
+  .trail-name {
+    width: auto;
+    padding: 4px 10px;
+    background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
+
+    h5 {
+      font-weight: bold;
+      margin-bottom: 0;
+    }
+  }
+
+  .info-link {
+    width: 75px;
+    padding: 2px 8px;
+
+    h5 {
+      color: #dfdfdf;
+      margin-bottom: 2px;
+    }
   }
 
   .trail-info {
@@ -67,33 +94,12 @@
     }
   }
 
-  .trail-name {
-    width: auto;
-    padding: 4px 10px;
-    background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
-
-    h5 {
-      font-weight: bold;
-      margin-bottom: 0;
-    }
-  }
-
   .date-card {
     border: 1px solid #dfdfdf;
     border-radius: 4px;
     box-shadow: 1px 1px 0 #dfdfdf;
     width: fit-content;
     padding: 2px 4px;
-  }
-
-  .info-link {
-    width: 75px;
-    padding: 2px 8px;
-
-    h5 {
-      color: #dfdfdf;
-      margin-bottom: 0;
-    }
   }
 
   .trail-starter {
@@ -106,6 +112,30 @@
     img {
       margin-bottom: 8px;
     }
+  }
+}
+
+.login-elements {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+#login-buttons {
+  width: 280px;
+  margin-top: 16px;
+
+  .btn-info {
+    background: white;
+    font-family: 'Concert One', cursive;
+    font-weight: bold;
+    font-size: 30px;
+    text-shadow: 1px 1px 0 #dfdfdf;
+    box-shadow: 1px 1px 0 #dfdfdf;
+    padding: 16px 0;
   }
 }
 
@@ -138,4 +168,3 @@
     flex-basis: 20%;
   }
 }
-
