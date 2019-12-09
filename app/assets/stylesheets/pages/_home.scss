@@ -36,6 +36,45 @@
   margin-top: 8px;
 }
 
+.trail-heading, .collab-heading {
+  background: white;
+  display:flex;
+  align-items: center;
+  width: -webkit-fill-available;
+  border-bottom: 2px inset #dfdfdf;
+  margin: 4px 0;
+  padding-left: 10px;
+
+  .collab-count {
+    flex-basis: 80%;
+  }
+
+  .trail-count {
+    flex-basis: 60%;
+  }
+
+  .trail-count, .collab-count {
+    text-align: center;
+
+    border-right: 2px inset #dfdfdf;
+
+    h2 {
+      font-family: 'Concert One', cursive;
+      text-align: left;
+      color: #666666;
+      margin: 8px 0px;
+    }
+  }
+
+  .trail-options, .collab-options {
+    text-align: center;
+    border-right: 2px inset #dfdfdf;
+    width: 80px;
+    padding: 15px 0;
+    flex-basis: 20%;
+  }
+}
+
 .trail-card {
   background: white;
   display: flex;
@@ -139,32 +178,3 @@
   }
 }
 
-#trail-heading {
-  background: white;
-  display:flex;
-  align-items: center;
-  width: -webkit-fill-available;
-  border-bottom: 2px inset #dfdfdf;
-  margin: 4px 0;
-
-  #trail-count {
-    text-align: center;
-
-    border-right: 2px inset #dfdfdf;
-    flex-basis: 60%;
-
-    h2 {
-      font-family: 'Concert One', cursive;
-      color: #666666;
-      margin: 8px 0px;
-    }
-  }
-
-  .trail-options {
-    text-align: center;
-    border-right: 2px inset #dfdfdf;
-    width: 80px;
-    padding: 15px 0;
-    flex-basis: 20%;
-  }
-}

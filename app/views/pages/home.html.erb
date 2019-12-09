@@ -11,10 +11,9 @@
   </div>
 
   <div class="trail-container">
-
-    <div id="trail-heading">
-      <div id="trail-count">
-        <h2>My <%= "trail".pluralize(@trails_count) %> (<%= @trails_count %>)</h2>
+    <div class="trail-heading">
+      <div class="trail-count">
+        <h2>My <%= "Trail".pluralize(@trails_count) %> (<%= @trails_count %>)</h2>
       </div>
       <div class="trail-options">
         <i class="fas fa-sliders-h fa-lg" style="text-shadow: 1px 1px 0 #dfdfdf; color: rgba(91, 192, 222, 0.75);"></i>
@@ -28,7 +27,6 @@
 
     <% @trails&.each do |trail| %>
       <div class="trail-card">
-
         <%= link_to trail_path(trail) do %>
           <div class="trail-name">
             <h5><%= trail.name %></h5>
@@ -39,7 +37,7 @@
               <h6 class="mx-2 mb-0">to</h6>
               <div class="date-card"><h6><%= trail.end_date.strftime("%d %b %Y") %></h6></div>
             </div>
-            <h6>Friends in this trial: <%= trail.users.count + 1 %></h6>
+            <h6>Trail group count: <%= trail.users.count + 1 %></h6>
           </div>
         <% end %>
 
@@ -59,21 +57,49 @@
       </div>
     <% end %>
 
+    <% if !@collabs.empty? %>
+      <div class="collab-heading">
+        <div class="collab-count">
+          <h2>My <%= "Collab".pluralize(@collabs_count) %> (<%= @collabs_count %>)</h2>
+        </div>
+        <div class="collab-options">
+          <i class="fas fa-sliders-h fa-lg" style="text-shadow: 1px 1px 0 #dfdfdf; color: rgba(91, 192, 222, 0.75);"></i>
+        </div>
+      </div>
 
-<!--     <% if !@collabs.empty? %>
-      <h2>My <%= "collab".pluralize(@collabs_count) %> (<%= @collabs_count %>)</h2>
       <% @collabs.each do |collab| %>
-        <div class="card" style="width: 18rem;">
-          <div class="card-body">
-            <h2><%= collab.trail.name %></h2>
-            <p>Started by <%= collab.trail.user.name %></p>
-            <%= link_to "See More", trail_path(collab.trail), class: "btn btn-primary" %>
-            <%#= link_to "info", edit_trail_path(collab.trail) %>
+        <div class="trail-card">
+          <%= link_to trail_path(collab.trail) do %>
+            <div class="trail-name">
+              <h5><%= collab.trail.name %></h5>
+            </div>
+            <div class="trail-info">
+              <div class="d-flex align-items-center">
+                <div class="date-card"><h6><%= collab.trail.start_date.strftime("%d %b %Y") %></h6></div>
+                <h6 class="mx-2 mb-0">to</h6>
+                <div class="date-card"><h6><%= collab.trail.end_date.strftime("%d %b %Y") %></h6></div>
+              </div>
+              <h6>Trail group count: <%= collab.trail.users.count + 1 %></h6>
+            </div>
+          <% end %>
+
+          <div>
+            <%= link_to edit_trail_path(collab.trail) do %>
+              <div class="info-link">
+                <i class="fas fa-info-circle fa-2x mr-2" style="text-shadow: 1px 1px 0 #dfdfdf; color: rgba(91, 192, 222, 0.75);"></i>
+                <h5 style="font-size: 25px;">></h5>
+              </div>
+            <% end %>
+
+            <div class="trail-starter">
+              <h6>Started by</h6>
+              <%= cl_image_tag collab.trail.user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
+            </div>
           </div>
         </div>
       <% end %>
     <% end %>
-  </div> -->
+  </div>
 
 <% else %>
   <div class="login-elements">

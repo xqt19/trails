@@ -2,6 +2,7 @@
   background: white;
   width: 100%;
   padding: 8px 16px;
+  // position: relative;
 
   h3 {
     font-family: 'Concert One', cursive;
@@ -11,13 +12,12 @@
   .header-link {
     display: flex;
     justify-content: flex-end;
-    margin: 8px;
-    position: absolute;
-    bottom: 0;
-    right: 16px;
+    // margin: 8px;
+    // position: absolute;
+    // bottom: 0;
+    // right: 16px;
   }
 }
-
 
 .header-detail {
   display: flex;
