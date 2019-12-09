@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_08_103649) do
+ActiveRecord::Schema.define(version: 2019_12_09_033852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,16 @@ ActiveRecord::Schema.define(version: 2019_12_08_103649) do
     t.boolean "checked", default: false
     t.index ["list_item_id"], name: "index_delegations_on_list_item_id"
     t.index ["user_id"], name: "index_delegations_on_user_id"
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.bigint "sender_id"
+    t.bigint "receiver_id"
+    t.boolean "confirmed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receiver_id"], name: "index_friendships_on_receiver_id"
+    t.index ["sender_id"], name: "index_friendships_on_sender_id"
   end
 
   create_table "item_categories", force: :cascade do |t|
@@ -119,6 +129,8 @@ ActiveRecord::Schema.define(version: 2019_12_08_103649) do
   add_foreign_key "collabs", "users"
   add_foreign_key "delegations", "list_items"
   add_foreign_key "delegations", "users"
+  add_foreign_key "friendships", "users", column: "receiver_id"
+  add_foreign_key "friendships", "users", column: "sender_id"
   add_foreign_key "item_categories", "categories"
   add_foreign_key "item_categories", "items"
   add_foreign_key "list_items", "items"
