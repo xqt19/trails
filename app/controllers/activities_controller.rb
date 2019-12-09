@@ -11,7 +11,7 @@ class ActivitiesController < ApplicationController
         lat: activity.latitude,
         lng: activity.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { activity: activity }),
-        image_url: helpers.asset_url('marker.png')
+        image_url: helpers.asset_url('bluemarker.png')
       }
     end
   end
