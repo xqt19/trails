@@ -10,6 +10,13 @@ class User < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
+  include PgSearch::Model
+  pg_search_scope :search_by_name_and_email,
+    against: [ :name, :email ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
   def friends
     ids_list = Friendship.where(confirmed: true).where("sender_id = :self_id OR receiver_id = :self_id", self_id: id).pluck(:sender_id, :receiver_id).flatten
     return User.where(id: ids_list).where.not(id: id)
