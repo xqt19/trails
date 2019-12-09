@@ -1,0 +1,136 @@
+.profile-container {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 270px;
+  box-shadow: 1px 1px 0 #dfdfdf;
+
+  h1 {
+    font-family: 'Carter One', cursive;
+  }
+
+  .btn-info {
+    margin-top: 8px;
+  }
+}
+
+.trail-container {
+  //background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+  border-top: 1px solid #dfdfdf;
+}
+
+.trail-card {
+  background: white;
+  display: flex;
+  justify-content: space-around;
+  width: -webkit-fill-available;
+  border-bottom: 2px inset #dfdfdf;
+  box-shadow: 1px 1px 0 #dfdfdf;
+  margin: 4px 0;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    width: 250px;
+  }
+
+  .info-link, .trail-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dfdfdf;
+    border-radius: 30px;
+    box-shadow: 1px 1px 0 #dfdfdf;
+    margin: 8px 0;
+  }
+
+  .trail-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 55px;
+    padding: 0 4px 4px;
+
+    h6 {
+      margin: 0;
+    }
+  }
+
+  .trail-name {
+    width: auto;
+    padding: 8px;
+    background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
+
+    h5 {
+      font-weight: bold;
+      margin-bottom: 0;
+    }
+  }
+
+  .date-card {
+    border: 1px solid #dfdfdf;
+    border-radius: 4px;
+    box-shadow: 1px 1px 0 #dfdfdf;
+    width: fit-content;
+    padding: 2px 4px;
+  }
+
+  .info-link {
+    width: 75px;
+    padding: 2px 8px;
+
+    h5 {
+      color: #dfdfdf;
+      margin-bottom: 0;
+    }
+  }
+
+  .trail-starter {
+    text-align: center;
+
+    h6 {
+      margin-bottom: 0;
+    }
+
+    img {
+      margin-bottom: 8px;
+    }
+  }
+}
+
+#trail-heading {
+  background: white;
+  display:flex;
+  align-items: center;
+  width: -webkit-fill-available;
+  border-bottom: 2px inset #dfdfdf;
+  margin: 4px 0;
+
+  #trail-count {
+    text-align: center;
+
+    border-right: 2px inset #dfdfdf;
+    flex-basis: 60%;
+
+    h2 {
+      font-weight: bold;
+      margin: 8px 0px;
+    }
+  }
+
+  .trail-options {
+    text-align: center;
+    border-right: 2px inset #dfdfdf;
+    width: 80px;
+    padding: 15px 0;
+    flex-basis: 20%;
+  }
+}
+
