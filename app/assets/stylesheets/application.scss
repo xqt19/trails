@@ -30,5 +30,7 @@ $theme-colors: ( "bootstrap": #563d7c, "simpleform": #00617f );
 
 // Plugins
 body {
+  width: 100vw;
+  height: 100vh;
   background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
 }
