@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <%= render 'shared/ios_pwa_links' %>
     <title>TODO</title>
     <%= csrf_meta_tags %>
