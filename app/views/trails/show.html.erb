@@ -64,7 +64,7 @@
 
   <div class="card-headers d-flex justify-content-center pt-1">
 
-    <h3>Activity <%= "Day".pluralize((@trail.end_date - @trail.start_date).to_i) %> (<%= (@trail.end_date - @trail.start_date).to_i + 1 %>)</h3>
+    <h3>Activity <%= "Day".pluralize((@trail.end_date - @trail.start_date).to_i + 1) %> (<%= (@trail.end_date - @trail.start_date).to_i + 1 %>)</h3>
   </div>
 
   <div class="activity-horizontal-container d-flex align-items-center pb-5" style="flex-wrap: nowrap; overflow: auto;">
