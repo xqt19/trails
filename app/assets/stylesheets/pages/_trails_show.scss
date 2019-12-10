@@ -5,14 +5,14 @@
 .activity-horizontal-container::-webkit-scrollbar {
   display: none;
 }
+
 .activity-horizontal-container{
     flex-wrap: nowrap;
     overflow: auto;
     width: 90%;
     margin: 0 auto;
-
-
 }
+
 .fadeIn {
   padding-bottom: 50px;
 }
@@ -44,15 +44,15 @@
 }
 
 .datecard, .list-card {
-    background: white;
-    width: 91%;
-    margin: 0 auto;
-    margin-right: 12px;
-    border-radius: 8px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-    /* margin: 5px; */
-    padding: 8px;
-    position: relative;
+  background: white;
+  width: 91%;
+  margin: 0 auto;
+  margin-right: 12px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  /* margin: 5px; */
+  padding: 8px;
+  position: relative;
 }
 
 .datecard {
@@ -72,13 +72,21 @@
   }
 
   .list-delete {
-    text-align: center;
+    text-align: right;
     margin-bottom: 4px;
   }
 }
 
-.list-card.greyed {
+.list-card-add {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  width: 200px;
+  height: 125px;
   opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #activity-modal-content {

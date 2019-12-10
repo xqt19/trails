@@ -24,10 +24,13 @@ Rails.application.routes.draw do
   resources :activities, only: [:show]
 
   resources :lists, only: [:show] do
-    resources :list_items, only: %i[update destroy]
+    resources :list_items, only: [:update]
   end
 
+  resources :list_items, only: [:destroy]
+  resources :delegations, only: %i[destroy update]
+
   resources :list_items, only: [:show] do
-    resources :delegations, only: %i[create update destroy]
+    resources :delegations, only: [:create]
   end
 end

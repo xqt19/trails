@@ -1,0 +1,2 @@
+var friendsContainer = document.querySelector("[data-delegation='<%= @list_item.id %>']")
+friendsContainer.innerHTML = "<%= j render 'lists/delegation_list', list_item: @list_item, list: @list %>"
