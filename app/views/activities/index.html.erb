@@ -7,36 +7,43 @@
   <div class="card animated zoomInDown" id="map" style="width: 99%;  height: 695px;"  data-markers="<%= @markers.to_json %>"s data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
 </div>
-
-<nav class="navbar fixed-bottom navbar-light bg-light d-flex justify-content-around align-items-center animated bounceIn">
-    <button type="button" id="locations" class="btn btn-outline-dark">
-      <%= link_to "", trail_path(params[:trail_id]), class: "fas fa-arrow-circle-left" %>
-    </button>
-    <button type="button" id="home" class="btn btn-outline-dark">
-      <%= link_to "", root_path, class: "fas fa-home" %>
-    </button>
-    <button type="button" id="friends" class="btn btn-outline-dark">
-      <i class="fas fa-users"></i>
-    </button>
+<nav class="navbar fixed-bottom navbar-light bg-dark d-flex justify-content-between align-items-center animated bounceIn px-5 ">
+    <div id="navimap">
+        <%= link_to "", trail_path(params[:trail_id]), class: "fas fa-arrow-circle-left" %>
+    </div>
+    <div id="navifriends">
+        <i class="fas fa-users"></i>
+    </div>
 </nav>
 
+  <div id="navihome" class="card fixed-bottom d-flex justify-content-center align-items-center animated slideInUp delay-1s">
+        <%= link_to "", root_path, class: "fas fa-home" %>
+  </div>
 
 
 <style>
   .card {
-    border-radius: 8px;
-    box-shadow: 10px 10px 10px #F5F5F5;
+    width: 150px;
+    height: 80px;
+    border-radius: 5px 5px 0px 0px;
   }
-
-  .loca {
-    background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
-    min-width: 100vw;
-    height: 60px;
-    color: black;
-    border-radius: 5px;
-  }
-
   .navbar {
-    display: none;
+    height: 60px;
   }
+  #navihome {
+    margin: auto;
+  }
+  .fa-home {
+    font-size: 30px;
+    color: black;
+  }
+  .fa-arrow-circle-left {
+    font-size: 25px;
+    color: cyan;
+  }
+  .fa-users {
+    font-size: 25px;
+    color: cyan;
+  }
+
 </style>
