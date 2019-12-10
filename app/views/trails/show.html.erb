@@ -1,21 +1,21 @@
-  <div class="header">
-    <div class="header-detail">
-      <div class="header-title"><h3>Trail: </h3></div>
-      <div class="header-name"><h3><%= @trail.name %></h3></div>
-    </div>
-    <div class="border-top">
-      <div class="header-date"><h5 class="text-muted"><%= @trail.start_date.strftime("%a, %b %d %Y") %> - <%= @trail.end_date.strftime("%a, %b %d %Y") %></h5></div>
-      <% if (@trail.start_date - Date.today).to_i > 0 %>
-        <h5>Countdown:</h5><h5 class="text-muted">Trail begins in <%= (@trail.start_date - Date.today).to_i %> more days!</h5>
-      <% elsif (@trail.start_date - Date.today).to_i == 0 %>
-        <h5 class="text-muted">First day of your trail! Have fun!</h5>
-      <% elsif (@trail.end_date - @trail.start_date).to_i > 0 %>
-        <h5 class="text-muted"><%= (@trail.end_date - Date.today).to_i %> more days left in this trail!</h5>
-      <% else %>
-        <h5 class="text-muted">This trail is completed!</h5>
-      <% end %>
-    </div>
+<div class="header">
+  <div class="header-detail">
+    <div class="header-title"><h3>Trail: </h3></div>
+    <div class="header-name"><h3><%= @trail.name %></h3></div>
   </div>
+  <div class="border-top">
+    <div class="header-date"><h5 class="text-muted"><%= @trail.start_date.strftime("%a, %b %d %Y") %> - <%= @trail.end_date.strftime("%a, %b %d %Y") %></h5></div>
+    <% if (@trail.start_date - Date.today).to_i > 0 %>
+      <h5>Countdown:</h5><h5 class="text-muted">Trail begins in <%= (@trail.start_date - Date.today).to_i %> more days!</h5>
+    <% elsif (@trail.start_date - Date.today).to_i == 0 %>
+      <h5 class="text-muted">First day of your trail! Have fun!</h5>
+    <% elsif (@trail.end_date - @trail.start_date).to_i > 0 %>
+      <h5 class="text-muted"><%= (@trail.end_date - Date.today).to_i %> more days left in this trail!</h5>
+    <% else %>
+      <h5 class="text-muted">This trail is completed!</h5>
+    <% end %>
+  </div>
+</div>
 
 <div class="trail-group">
   <h3 class="border-bottom pb-2">Trail group (<%= @trail.users.count + 1 %>)</h3>
@@ -37,7 +37,7 @@
   <% end %>
 </div>
 
-<div class="container">
+<div class="trail-navbar-offset">
   <div class="card-headers d-flex justify-content-center pt-1">
     <h3>Planning <%= "List".pluralize(@trail.lists.count) %> (<%= @trail.lists.count %>)</h3>
   </div>
@@ -97,16 +97,5 @@
     </div>
   </div>
 
-  <nav class="navbar fixed-bottom navbar-light bg-dark d-flex justify-content-between align-items-center animated bounceIn px-5">
-    <div id="navimap">
-        <%= link_to "", trail_activities_path(@trail), class: "fas fa-map-marked-alt text-decoration-none" %>
-    </div>
-    <div id="navifriends">
-      <i class="fas fa-users"></i>
-    </div>
-  </nav>
-
-  <div id="navihome" class="cardone fixed-bottom d-flex justify-content-center align-items-center animated slideInUp delay-1s">
-    <%= link_to "", root_path, class: "fas fa-home text-decoration-none" %>
-  </div>
+  <%= render 'shared/bottomnav', trail: @trail %>
 </div>

@@ -9,14 +9,14 @@
         <%= simple_form_for(current_user) do |f| %>
           <%= f.input :name %>
           <div class="d-flex flex-column justify-content-center align-items-center">
-          <% if current_user.photo.blank? %>
-            <%= image_tag "placeholder.png", id: "photo-preview", class: "avatar-large", crop: :fill %>
-          <% else %>
-            <%= cl_image_tag current_user.photo, class: "hidden", id: "photo-preview", radius: :max, width: 300, height: 300, crop: :fill, gravity: :face  %>
-          <% end %>
-          <%= f.input :photo, input_html: { class: 'd-none', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
+            <% if current_user.photo.blank? %>
+              <%= image_tag "placeholder.png", id: "photo-preview", class: "avatar-large mt-3", crop: :fill %>
+            <% else %>
+              <%= cl_image_tag current_user.photo, class: "hidden mt-2", id: "photo-preview", radius: :max, width: 300, height: 300, crop: :fill, gravity: :face  %>
+            <% end %>
+            <%= f.input :photo, input_html: { class: 'd-none', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
           </div>
-          <%= f.button :submit, "Update Profile", class: "btn btn-info" %>
+          <%= f.button :submit, "Update Profile", class: "btn btn-info mt-2" %>
         <% end %>
       </div>
     </div>

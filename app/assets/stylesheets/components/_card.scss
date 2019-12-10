@@ -1,10 +1,8 @@
 .card-headers, .card-items {
   overflow: hidden;
-  width: 95%;
   height: fit-content;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  border-radius: 6px;
   display: flex;
   margin: 8px auto;
 
@@ -25,10 +23,13 @@
 
 .card-headers {
   align-items: center;
+  width: 100%;
 }
 
 .card-items {
   flex-direction: column;
+  width: 95%;
+  border-radius: 6px;
 }
 
 .card-item {

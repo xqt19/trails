@@ -1,7 +1,9 @@
-.container {
+.trail-navbar-offset {
   padding-bottom: 50px;
-  padding-left: 0;
-  padding-right: 0;
+}
+
+.list-navbar-offset {
+  padding-bottom: 90px;
 }
 
 .custom-item-container {
@@ -38,6 +40,8 @@
 
 .custom-container {
   display: flex;
+  align-items: center;
+  margin: 10px 0;
 
   .custom-field {
     flex-basis: 100%;
@@ -45,6 +49,6 @@
 
   .custom-btn {
     flex-basis: 35%;
-    margin-left: 7px;
+    margin-left: 8px;
   }
 }

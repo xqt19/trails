@@ -1,0 +1,18 @@
+<nav class="navbar fixed-bottom navbar-light bg-dark d-flex justify-content-between align-items-center animated bounceIn px-5 ">
+  <div id="navimap">
+    <% if controller_name == 'activities' %>
+      <%= link_to "", :back, class: "fas fa-arrow-circle-left text-decoration-none" %>
+    <% elsif controller_name == 'lists' %>
+      <%= link_to "", trail_activities_path(list.trail), class: "fas fa-map-marked-alt text-decoration-none" %>
+    <% else %>
+      <%= link_to "", trail_activities_path(trail), class: "fas fa-map-marked-alt text-decoration-none" %>
+    <% end %>
+  </div>
+  <div id="navifriends">
+    <i class="fas fa-users"></i>
+  </div>
+</nav>
+
+<div id="navihome" class="card fixed-bottom d-flex justify-content-center align-items-center animated slideInUp">
+  <%= link_to "", root_path, class: "fas fa-home text-decoration-none" %>
+</div>

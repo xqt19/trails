@@ -14,46 +14,50 @@
 
 <div class="card-headers">
   <div class="card-item">
-    <h2>Item</h2>
-    <div class="list-item-info">
-      <h2 class="pl-1">Qty</h2>
+    <h2 class="ml-3">Item</h2>
+    <div class="list-item-info mr-2">
+      <h2>Qty</h2>
       <i class="fas fa-user-check"></i>
     </div>
   </div>
 </div>
 
-<div style="height: 640px; overflow-y: scroll;">
-  <% @list_items&.each_with_index do |list_item, index| %>
-    <div class="card-items <%= 'checked' if list_item.checked? %>">
-      <div class="card-item border-bottom">
-        <h2><%= index + 1 %>. <%= list_item.item.name %></h2>
-        <%= simple_form_for(list_item, url: list_list_item_path(@list, list_item)) do |f| %>
-          <div class="list-item-info">
-            <%= f.input :quantity, label: false, input_html: { class: "quantity", min: "0", max: "999", step: "1", onchange: "this.form.submit();" } %>
-            <%= f.input :checked, label: false, input_html: { class: "checkbox", onchange: "this.form.submit();" } %>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="card-item no-flex">
-        <div data-delegation="<%= list_item.id %>" class="delegation-box">
-          <%= render 'delegation_list', list_item: list_item, list: @list %>
-        </div>
-        <div>
-          <%= link_to "Remove", list_list_item_path(@list, list_item), method: :delete, class: "btn-sm btn-info" ,data: { confirm: "Remove item from list?" } %>
-        </div>
-      </div>
-
-      <div class="collabs collapse" id="collabCollapse<%= list_item.id %>">
-        <h2 class="mb-1">Trail group (<%= @collabs.size %>)</h2>
-        <% @collabs&.each do |collab_user| %>
-          <%= link_to list_item_delegations_path(list_item, user_id: collab_user.id), method: :post, remote: :true do %>
-            <%= cl_image_tag collab_user.photo, class: "avatar", crop: :fill, gravity: :face %>
+<div class="list-navbar-offset">
+  <div style="height: 640px; overflow-y: scroll;">
+    <% @list_items&.each_with_index do |list_item, index| %>
+      <div class="card-items <%= 'checked' if list_item.checked? %>">
+        <div class="card-item border-bottom">
+          <h2><%= index + 1 %>. <%= list_item.item.name %></h2>
+          <%= simple_form_for(list_item, url: list_list_item_path(@list, list_item)) do |f| %>
+            <div class="list-item-info">
+              <%= f.input :quantity, label: false, input_html: { class: "quantity", min: "0", max: "999", step: "1", onchange: "this.form.submit();" } %>
+              <%= f.input :checked, label: false, input_html: { class: "checkbox", onchange: "this.form.submit();" } %>
+            </div>
           <% end %>
-        <% end %>
+        </div>
+
+        <div class="card-item no-flex">
+          <div data-delegation="<%= list_item.id %>" class="delegation-box">
+            <%= render 'delegation_list', list_item: list_item, list: @list %>
+          </div>
+          <div>
+            <%= link_to "Remove", list_item_path(list_item), method: :delete, class: "btn-sm btn-info" ,data: { confirm: "Remove item from list?" } %>
+          </div>
+        </div>
+
+        <div class="collabs collapse" id="collabCollapse<%= list_item.id %>">
+          <h2 class="mb-1">Trail group (<%= @collabs.size %>)</h2>
+          <% @collabs&.each do |collab_user| %>
+            <%= link_to list_item_delegations_path(list_item, user_id: collab_user.id), method: :post, remote: :true do %>
+              <%= cl_image_tag collab_user.photo, class: "avatar", crop: :fill, gravity: :face %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
+
+<%= render 'shared/bottomnav', list: @list %>
 
 
