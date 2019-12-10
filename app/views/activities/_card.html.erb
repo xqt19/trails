@@ -1,6 +1,6 @@
 <div data-id=<%= activity.id %>>
     <div class="card">
-           <div data-toggle="collapse" data-target="#collapse<%= activity.id %>" aria-expanded="true" aria-controls="collapse<%= activity.id %>" class="card-header shadow-sm p-0 mb-0 bg-white rounded" id="heading<%= activity.id %>" style="width: 21rem;" >
+           <div data-toggle="collapse" data-target="#collapse<%= activity.id %>" aria-expanded="true" aria-controls="collapse<%= activity.id %>" class="card-header shadow-sm p-0 mb-0 bg-white rounded" id="heading<%= activity.id %>" style="width: 22rem;" >
 
               <div class="card-body card-product d-flex justify-content-center align-items-center">
                   <div class="card-product-infos d-flex flex-column justify-content-center align-items-center ">
@@ -18,9 +18,9 @@
             <p>Description: <%= activity.description %></p>
           </div>
           <div id="editdelete" class="d-flex justify-content-around align-items-start">
-            <h1 class="badge badge-info mx-1"><%= link_to "", edit_trail_activity_path(activity.trail, activity), class: "fas fa-pencil-alt",  remote: true %></h1>
+            <h1 class="btn btn-light d-flex justify-content-center align-items-center mx-1" style="height: 38px; width: 38px;"><%= link_to "", edit_trail_activity_path(activity.trail, activity), class: "fas fa-pencil-alt",  remote: true %></h1>
 
-            <button data-button-id="<%= activity.id %>" class="trigger-alert-button btn btn-danger fa fa-trash"></button>
+            <button data-button-id="<%= activity.id %>" class="trigger-alert-button btn btn-light fa fa-trash" style="height: 38px; width: 38px;  color: red"></button>
             <%= link_to trail_activity_path(activity.trail, activity), data:{'link-id': activity.id}, method: :delete, id:"sweet-alert-demo", class: " hidden", remote: true do %>
             <% end %>
           </div>
@@ -29,3 +29,13 @@
     </div>
   </div>
 </div>
+
+<style>
+  a {
+    color: orange;
+  }
+  .btn-light {
+    box-shadow: 0 0 10px #F5F5F5;
+  }
+
+</style>
