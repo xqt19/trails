@@ -67,9 +67,9 @@
   </div>
 
   <div class="activity-horizontal-container d-flex align-items-center pb-5" style="flex-wrap: nowrap; overflow: auto;">
-    <% @activities.each do |date, activities|%>
-      <div class ="datecard d-flex justify-content-center align-items-center" style = "flex: 0 0 auto">
-        <div data-id='card-container-<%= date.strftime('%Y-%m-%e') %>'class="d-flex justify-content-center" style="width: 18rem; height:220px" >
+    <% @activities&.each do |date, activities|%>
+      <div class ="datecard d-flex justify-content-center align-items-center" style = "flex: 0 0 auto;">
+        <div data-id='card-container-<%= date.strftime('%Y-%m-%e') %>'class="d-flex justify-content-center" style="width: 18rem; height: 220px" >
           <%= render 'activities/small_card_content', activities: activities, date: date, trail: @trail %>
         </div>
       </div>

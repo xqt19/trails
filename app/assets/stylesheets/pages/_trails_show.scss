@@ -7,10 +7,10 @@
 }
 
 .activity-horizontal-container{
-    flex-wrap: nowrap;
-    overflow: auto;
-    width: 90%;
-    margin: 0 auto;
+  flex-wrap: nowrap;
+  overflow: auto;
+  width: 92%;
+  margin: 0 auto;
 }
 
 .fa-times-circle {
@@ -29,7 +29,7 @@
 
 .datecard, .list-card {
   background: white;
-  width: 91%;
+  width: 93%;
   margin-right: 12px;
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
@@ -68,12 +68,21 @@
   background: white;
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-  width: 310px;
+  width: 335px;
   height: 125px;
   opacity: 0.8;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.modal-btn {
+  background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
+  height: 44px;
+  color: black;
+  font-size: 16px;
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
 
 #activity-modal-content {
@@ -91,19 +100,3 @@
 #activity-modal-content {
   min-width: 90vw;
 }
-
-#seemorebtn {
-  background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
-  height: 44px;
-  color: black;
-  font-size: 16px;
-  border-radius: 6px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
-}
-
-#addactbtn {
-  background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
-  color:black;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
-}
-
