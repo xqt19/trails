@@ -22,11 +22,17 @@
   <%= cl_image_tag @trail.user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
   <% @trail.users.each do |collab_user| %>
     <% if current_user == @trail.user %>
-      <%= link_to trail_collab_path(@trail, collab_user), method: :delete, data: { confirm: "Remove this friend from group?" } do %>
+      <%= link_to trail_collab_path(@trail, collab_user), method: :delete, data: { confirm: "Remove this friend from group?" }, class: "text-decoration-none" do %>
         <%= cl_image_tag collab_user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
       <% end %>
     <% else %>
-      <%= cl_image_tag collab_user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
+      <% if current_user == collab_user %>
+        <%= link_to trail_collab_path(@trail, collab_user), method: :delete, data: { confirm: "Remove myself from group?" }, class: "text-decoration-none" do %>
+          <%= cl_image_tag collab_user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
+        <% end %>
+      <% else %>
+        <%= cl_image_tag collab_user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
+      <% end %>
     <% end %>
   <% end %>
 </div>
@@ -87,9 +93,6 @@
     </div>
   </div>
 </div>
-
-
-
 
 <nav class="navbar fixed-bottom navbar-light bg-dark d-flex justify-content-between align-items-center animated bounceIn px-5">
     <div id="navimap">
