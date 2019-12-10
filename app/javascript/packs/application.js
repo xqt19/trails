@@ -14,6 +14,8 @@ import { submitButtonForm } from '../components/submit-button-form';
 import { checkListItems, checkDelegates } from '../components/checkbox';
 import { friendsearchbar } from '../components/friendsearchbar';
 import { backArrowFadeOut } from '../components/backArrowFadeOut';
+import { previewImageOnFileSelect } from '../components/photo_preview';
+
 
 // element initializers
 const categoryItems = document.querySelector('.category-items');
@@ -24,6 +26,7 @@ const checkboxes = document.querySelectorAll('.checkbox');
 const delegates = document.querySelectorAll('.delegate-checkbox');
 
 initMapbox();
+previewImageOnFileSelect();
 initSelect2();
 friendsearchbar();
 backArrowFadeOut();
