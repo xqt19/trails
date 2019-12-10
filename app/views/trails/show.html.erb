@@ -5,15 +5,15 @@
     <div class="header-name"><h3><%= @trail.name %></h3></div>
   </div>
   <div class="border-top">
-    <div class="header-date"><h5><%= @trail.start_date.strftime("%a, %b %d %Y") %> - <%= @trail.end_date.strftime("%a, %b %d %Y") %></h5></div>
+    <div class="header-date"><h5 class="text-muted"><%= @trail.start_date.strftime("%a, %b %d %Y") %> - <%= @trail.end_date.strftime("%a, %b %d %Y") %></h5></div>
     <% if (@trail.start_date - Date.today).to_i > 0 %>
-      <h5>Countdown:<br>Trail begins in <%= (@trail.start_date - Date.today).to_i %> more days!</h5>
+      <h5>Countdown:</h5><h5 class="text-muted">Trail begins in <%= (@trail.start_date - Date.today).to_i %> more days!</h5>
     <% elsif (@trail.start_date - Date.today).to_i == 0 %>
-      <h5>First day of your trail! Have fun!</h5>
+      <h5 class="text-muted">First day of your trail! Have fun!</h5>
     <% elsif (@trail.end_date - @trail.start_date).to_i > 0 %>
-      <h5><%= (@trail.end_date - Date.today).to_i %> more days left in this trail!</h5>
+      <h5 class="text-muted"><%= (@trail.end_date - Date.today).to_i %> more days left in this trail!</h5>
     <% else %>
-      <h5>This trail is completed!</h5>
+      <h5 class="text-muted">This trail is completed!</h5>
     <% end %>
   </div>
 </div>
@@ -51,12 +51,12 @@
         </div>
       <% end %>
       <div class="list-delete">
-        <%= link_to "Delete", trail_list_path(@trail, list), method: :delete, data: { confirm: "Remove this list?" }, class: "btn btn-info" %>
+        <%= link_to "Delete", trail_list_path(@trail, list), method: :delete, data: { confirm: "Remove this list?" }, class: "btn btn-sm btn-info" %>
       </div>
     </div>
   <% end %>
   <%= link_to new_trail_list_path(@trail), class: "text-decoration-none" do %>
-    <div class ="list-card greyed d-flex justify-content-center align-items-center" style="flex: 0 0 auto">
+    <div class="list-card-add" style="flex: 0 0 auto">
       <h3>Add a list</h3>
     </div>
   <% end %>
@@ -78,8 +78,6 @@
   </div>
 </div>
 
-
-
 <div class="modal animated zoomIn" id="exampleModalLong"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog m-0 modal-dialog-centered" role="document">
     <div class="activity-modal-content modal-content d-flex align-items-center" style= "position: relative">
@@ -100,18 +98,17 @@
 </div>
 
 <nav class="navbar fixed-bottom navbar-light bg-dark d-flex justify-content-between align-items-center animated bounceIn px-5">
-    <div id="navimap">
-        <%= link_to "", trail_activities_path(@trail), class: "fas fa-map-marked-alt"  %>
-    </div>
-    <div id="navifriends">
-        <i class="fas fa-users"></i>
-    </div>
+  <div id="navimap">
+      <%= link_to "", trail_activities_path(@trail), class: "fas fa-map-marked-alt"  %>
+  </div>
+  <div id="navifriends">
+      <i class="fas fa-users"></i>
+  </div>
 </nav>
 
-  <div id="navihome" class="cardone fixed-bottom d-flex justify-content-center align-items-center animated slideInUp delay-1s">
-        <%= link_to "", root_path, class: "fas fa-home" %>
-  </div>
-
+<div id="navihome" class="cardone fixed-bottom d-flex justify-content-center align-items-center animated slideInUp delay-1s">
+  <%= link_to "", root_path, class: "fas fa-home" %>
+</div>
 
 <style>
   .cardone {
@@ -144,8 +141,6 @@
     opacity: 0.5;
     display: none;
 }
-
-
 </style>
 
 

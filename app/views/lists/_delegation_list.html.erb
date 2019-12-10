@@ -1,0 +1,20 @@
+<% list_item.delegations&.each do |delegation| %>
+  <div class="delegate <%= 'delegate-checked' if delegation.checked? %>">
+
+    <%= link_to delegation_path(delegation.id), method: :delete, data: { confirm: "Remove delegation?" } do %>
+      <%= cl_image_tag delegation.user.photo, class: "avatar", crop: :fill, gravity: :face %>
+    <% end %>
+
+    <%= simple_form_for(delegation, url: delegation_path(delegation)) do |f| %>
+      <% if delegation.user == current_user %>
+        <%= f.input :checked, label: false, input_html: { class: "delegate-checkbox", onchange: "this.form.submit()" } %>
+      <% else %>
+        <%= f.input :checked, label: false, input_html: { class: "delegate-checkbox", disabled: true } %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<a href="#collabCollapse<%= list_item.id %>" data-toggle="collapse" aria-expanded="false" aria-controls="collabCollapse<%= list_item.id %>" >
+  <i class="fas fa-user-plus ml-1"></i>
+</a>

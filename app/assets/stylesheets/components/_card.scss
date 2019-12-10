@@ -41,10 +41,17 @@
   h2 {
     padding: 4px;
   }
+}
 
-  .remove-item {
-    display: flex;
-    align-items: flex-end;
+.card-item.no-flex {
+  display: block;
+  text-align: right;
+  margin: 4px 0;
+}
+
+.delegate {
+  .form-check {
+    margin-right: 8px;
   }
 }
 
@@ -59,6 +66,7 @@
 
 .delegation-box {
   display: flex;
+  flex-wrap: wrap;
   padding: 2px;
 
   >a {
