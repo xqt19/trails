@@ -6,12 +6,6 @@
   border-radius: 5px 5px 0px 0px;
 }
 
-.card {
-  width: 150px;
-  height: 80px;
-  border-radius: 5px 5px 0px 0px;
-}
-
 .navbar {
   height: 60px;
 }
@@ -42,5 +36,9 @@
 }
 
 #navihome {
-  margin: auto;
+  background: white;
+  margin: 0 auto;
+  width: 150px;
+  height: 80px;
+  border-radius: 5px 5px 0px 0px;
 }
