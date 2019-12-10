@@ -80,9 +80,9 @@ class ActivitiesController < ApplicationController
 
   private
 
-  def find_activities(trail, activity= nil)
-      @activities = trail.activities.group_by(&:date)
-      @activities = @activities[@activity.date]  || []
+  def find_activities(trail, activity = nil)
+    @activities = trail.activities.group_by(&:date)
+    @activities = @activities[@activity.date]  || []
   end
 
   def set_trail
