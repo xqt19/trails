@@ -18,7 +18,7 @@
             <p>Description: <%= activity.description %></p>
           </div>
           <div id="editdelete" class="d-flex justify-content-around align-items-start">
-            <h1 class="btn btn-light mx-1" style="height: 38px; width: 38px;"><%= link_to "", edit_trail_activity_path(activity.trail, activity), class: "fas fa-pencil-alt",  remote: true %></h1>
+            <h1 class="btn btn-light d-flex justify-content-center align-items-center mx-1" style="height: 38px; width: 38px;"><%= link_to "", edit_trail_activity_path(activity.trail, activity), class: "fas fa-pencil-alt",  remote: true %></h1>
 
             <button data-button-id="<%= activity.id %>" class="trigger-alert-button btn btn-light fa fa-trash" style="height: 38px; width: 38px;  color: red"></button>
             <%= link_to trail_activity_path(activity.trail, activity), data:{'link-id': activity.id}, method: :delete, id:"sweet-alert-demo", class: " hidden", remote: true do %>
