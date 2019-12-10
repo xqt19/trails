@@ -8,7 +8,8 @@
     <div class="header-name"><h3><%= @list.name %></h3></div>
   </div>
   <div class="header-link">
-    <%= link_to "edit list", edit_trail_list_path(@list.trail), class: "btn btn-info text-decoration-none" %>
+    <%= link_to "Back to Trail", trail_path(@list.trail), class: "btn btn-info text-decoration-none" %>
+    <%= link_to "Edit List", edit_trail_list_path(@list.trail), class: "btn btn-info text-decoration-none" %>
   </div>
 </div>
 

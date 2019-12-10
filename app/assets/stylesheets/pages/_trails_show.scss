@@ -22,18 +22,6 @@
 	opacity: 0.7;
 }
 
-#activity-modal-content {
-	background-color: #F5F5F5;
-	border-radius: 8px;
-	margin: 5px;
-	padding: 8px;
-	box-shadow: 0 0 8px rgba(0,0,0,0.2);
-}
-
-#activity-modal-title {
-	font-size: 1.5rem;
-}
-
 .fa-calendar-day {
 	color: #FD7E14;
 	font-size: 40px
@@ -42,17 +30,15 @@
 .datecard, .list-card {
   background: white;
   width: 91%;
-  margin: 0 auto;
   margin-right: 12px;
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-  /* margin: 5px; */
   padding: 8px;
   position: relative;
 }
 
 .datecard {
-  height: 320px;
+  height: 300px;
 }
 
 .list-card {
@@ -73,6 +59,7 @@
 
     .btn {
       background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
+      border-radius: 6px;
     }
   }
 }
@@ -81,7 +68,7 @@
   background: white;
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-  width: 200px;
+  width: 310px;
   height: 125px;
   opacity: 0.8;
   display: flex;
@@ -90,12 +77,27 @@
 }
 
 #activity-modal-content {
+  background-color: #F5F5F5;
+  border-radius: 8px;
+  margin: 5px;
+  padding: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+#activity-modal-title {
+  font-size: 1.5rem;
+}
+
+#activity-modal-content {
   min-width: 90vw;
 }
 
 #seemorebtn {
   background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
-  color:black;
+  height: 44px;
+  color: black;
+  font-size: 16px;
+  border-radius: 6px;
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
 

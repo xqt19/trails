@@ -44,7 +44,7 @@
 
   <div class="activity-horizontal-container d-flex flex-row align-items-center" style="flex-wrap: nowrap; overflow: auto;">
     <% @lists&.each do |list| %>
-      <div class ="list-card" style="flex: 0 0 auto">
+      <div class ="list-card" style="flex: 0 0 auto;">
         <%= link_to list_path(list), class: "text-decoration-none" do %>
           <div class="list-name">
             <h3><%= list.name %></h3>
@@ -56,7 +56,7 @@
       </div>
     <% end %>
     <%= link_to new_trail_list_path(@trail), class: "text-decoration-none" do %>
-      <div class="list-card-add" style="flex: 0 0 auto">
+      <div class="list-card-add" style="flex: 0 0 auto;">
         <h3>Add a list</h3>
       </div>
     <% end %>
