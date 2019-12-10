@@ -1,4 +1,4 @@
-<div class="card-body d-flex flex-column p-1 <%= activities.empty? ? 'justify-content-center': 'justify-content-between' %> text-center" style="height: 250px">
+<div class="card-body d-flex flex-column p-1 <%= activities.empty? ? 'justify-content-center': 'justify-content-between' %> text-center" style="height: 210px">
   <div>
     <h5 class="card-title"><%= date.strftime('%a, %b %d %Y')%></h5>
     <% if activities.empty? %>
@@ -6,7 +6,7 @@
       <h3>No Activities</h3>
       <%= form_tag list_activity_trail_path(@trail), method: :get, remote:true do %>
         <%= hidden_field_tag 'date', date %>
-        <button id="addactbtn" class="btn btn-sm btn-block" type="submit" data-toggle="modal" data-target="#exampleModalLong">Add an activity</button>
+        <button class="modal-btn btn btn-sm btn-block" type="submit" data-toggle="modal" data-target="#exampleModalLong">Add an activity</button>
       <% end %>
     <% else %>
       <% activities.take(2).each do |activity| %>
@@ -18,7 +18,7 @@
     <div>
       <%= form_tag list_activity_trail_path(trail), method: :get, remote:true do %>
         <%= hidden_field_tag 'date', date %>
-        <button id="seemorebtn" class="btn btn-sm btn-block" type="submit" data-toggle="modal" data-target="#exampleModalLong">See more</button>
+        <button class="modal-btn btn btn-sm btn-block" type="submit" data-toggle="modal" data-target="#exampleModalLong">See more</button>
       <% end %>
     <% end %>
   </div>
