@@ -11,14 +11,14 @@
           <h1>Create List</h1>
         <% end %>
         <%= simple_form_for [trail, list] do |f| %>
-          <%= f.input :name, input_html: { class: "form-rounded" }, label: "Template Name", placeholder: "Travel List" %>
+          <%= f.input :name, input_html: { class: "form-rounded mb-2" }, label: "Template Name", placeholder: "Travel List" %>
 
           <%= f.simple_fields_for :others do |o| %>
             <%= o.input :category, as: :select, input_html: { class: "form-control select-category form-rounded" }, required: false,
               collection: Category.all.map { |category| [category.name, category.id] }, selected: Category.find_by(name: "Custom") %>
             <div class="custom-container">
               <%= o.input :custom_item, as: :string, label: false, input_html: { class: "custom-field form-rounded" }, required: false, placeholder: "Phone Charger" %>
-              <button type ="button" class="btn btn-info custom-btn mb-3">Add item</button>
+              <button type ="button" class="btn btn-info custom-btn">Add item</button>
             </div>
           <% end %>
 
@@ -27,9 +27,9 @@
           </div>
 
           <% if list.id %>
-            <%= f.button :submit, "Edit list", class: "btn btn-info mt-2", id: "list-submit" %>
+            <%= f.button :submit, "Edit list", class: "btn btn-info", id: "list-submit" %>
           <% else %>
-            <%= f.button :submit, "Add list", class: "btn btn-info mt-2", id: "list-submit" %>
+            <%= f.button :submit, "Add list", class: "btn btn-info", id: "list-submit" %>
           <% end %>
         <% end %>
       </div>
