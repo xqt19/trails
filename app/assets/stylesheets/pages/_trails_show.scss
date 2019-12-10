@@ -6,8 +6,15 @@
   display: none;
 }
 .activity-horizontal-container{
-  padding: 0 auto;
-  margin-right: 0 auto;
+    flex-wrap: nowrap;
+    overflow: auto;
+    width: 90%;
+    margin: 0 auto;
+
+
+}
+.fadeIn {
+  padding-bottom: 50px;
 }
 
 .fa-times-circle {
@@ -37,13 +44,15 @@
 }
 
 .datecard, .list-card {
-  background: white;
-  width: 320px;
-  border-radius: 8px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.2);
-  margin: 5px;
-  padding: 8px;
-  position: relative;
+    background: white;
+    width: 91%;
+    margin: 0 auto;
+    margin-right: 12px;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    /* margin: 5px; */
+    padding: 8px;
+    position: relative;
 }
 
 .datecard {
@@ -80,22 +89,11 @@
   background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
   color:black;
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
-  // position: absolute;
-  // bottom: 20px;
-  // right: 45px;
-  // height: 40px;
-  // width: 240px;
-
 }
 
 #addactbtn {
   background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
   color:black;
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
-  // position: absolute;
-  // bottom: 20px;
-  // right: 45px;
-  // width: 240px;
-
 }
 
