@@ -4,6 +4,10 @@ class CollabsController < ApplicationController
     @collab = Collab.find_by(user_id: params[:id])
     authorize @collab
     @collab.destroy
-    redirect_to trail_path(@trail)
+    if current_user == @collab.user
+      redirect_to root_path
+    else
+      redirect_to trail_path(@trail)
+    end
   end
 end

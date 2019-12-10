@@ -24,11 +24,6 @@ const form = document.getElementById('new_activity');
 const checkboxes = document.querySelectorAll('.checkbox');
 const delegates = document.querySelectorAll('.delegate-checkbox');
 
-initMapbox();
-previewImageOnFileSelect();
-initSelect2();
-backArrowFadeOut();
-
 if (categoryItems) {
   changeCategory();
 }
@@ -48,5 +43,11 @@ if (checkboxes) {
 if (delegates) {
   checkDelegates();
 }
+
+initSelect2();
+initMapbox();
+previewImageOnFileSelect();
+friendsearchbar();
+backArrowFadeOut();
 
 export { categoryItems, customItems, customBtn, form, checkboxes, delegates };

@@ -1,93 +1,112 @@
-<div class="d-flex justify-content-center">
-  <div class="d-flex flex-column align-items-center justify-content-center" style="border: 1px solid black; width: 90%">
-    <h1><%= @trail.name %></h1>
-    <p><%= @trail.start_date.strftime("%a, %b %d %Y")  %> - <%= @trail.end_date.strftime("%a, %b %d %Y")  %><%= link_to " Edit", edit_trail_path(@trail) %></p>
-    <% if (@trail.start_date - Date.today).to_i > 0 %>
-          <p>Countdown: Trail begins in <%= (@trail.start_date - Date.today).to_i %> more days!</p>
-        <% elsif (@trail.start_date - Date.today).to_i == 0 %>
-          <p>First day of your trail! Have fun!</p>
-        <% elsif (@trail.end_date - @trail.start_date).to_i > 0 %>
-          <p><%= (@trail.end_date - Date.today).to_i %> more days left in this trail!</p>
-        <% else %>
-          <p>This trail is completed!</p>
-    <% end %>
+  <div class="header">
+    <div class="header-detail">
+      <div class="header-title"><h3>Trail: </h3></div>
+      <div class="header-name"><h3><%= @trail.name %></h3></div>
+    </div>
+    <div class="border-top">
+      <div class="header-date"><h5 class="text-muted"><%= @trail.start_date.strftime("%a, %b %d %Y") %> - <%= @trail.end_date.strftime("%a, %b %d %Y") %></h5></div>
+      <% if (@trail.start_date - Date.today).to_i > 0 %>
+        <h5>Countdown:</h5><h5 class="text-muted">Trail begins in <%= (@trail.start_date - Date.today).to_i %> more days!</h5>
+      <% elsif (@trail.start_date - Date.today).to_i == 0 %>
+        <h5 class="text-muted">First day of your trail! Have fun!</h5>
+      <% elsif (@trail.end_date - @trail.start_date).to_i > 0 %>
+        <h5 class="text-muted"><%= (@trail.end_date - Date.today).to_i %> more days left in this trail!</h5>
+      <% else %>
+        <h5 class="text-muted">This trail is completed!</h5>
+      <% end %>
+    </div>
   </div>
-</div>
 
-<br>
-
-<div class="d-flex justify-content-center">
-  <div class="d-flex flex-column align-items-center justify-content-center" style="border: 1px solid black; width: 90%">
-    <h2>Trail group (<%= @trail.users.count + 1 %>)</h2>
-    <p>Owner: <%= @trail.user.name %></p>
-    <% @trail.users.each do |collab_user| %>
-      <p>
-        <%= collab_user.name %>
-        <% if current_user == @trail.user %>
-          <%= link_to "remove", trail_collab_path(@trail, collab_user), method: :delete, data: { confirm: "Are you sure?" } %>
+<div class="trail-group">
+  <h3 class="border-bottom pb-2">Trail group (<%= @trail.users.count + 1 %>)</h3>
+  <%= cl_image_tag @trail.user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
+  <% @trail.users.each do |collab_user| %>
+    <% if current_user == @trail.user %>
+      <%= link_to trail_collab_path(@trail, collab_user), method: :delete, data: { confirm: "Remove this friend from group?" }, class: "text-decoration-none" do %>
+        <%= cl_image_tag collab_user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
+      <% end %>
+    <% else %>
+      <% if current_user == collab_user %>
+        <%= link_to trail_collab_path(@trail, collab_user), method: :delete, data: { confirm: "Remove myself from group?" }, class: "text-decoration-none" do %>
+          <%= cl_image_tag collab_user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
         <% end %>
-      </p>
+      <% else %>
+        <%= cl_image_tag collab_user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="container">
+  <div class="card-headers d-flex justify-content-center pt-1">
+    <h3>Planning <%= "List".pluralize(@trail.lists.count) %> (<%= @trail.lists.count %>)</h3>
+  </div>
+
+  <div class="activity-horizontal-container d-flex flex-row align-items-center" style="flex-wrap: nowrap; overflow: auto;">
+    <% @lists&.each do |list| %>
+      <div class ="list-card" style="flex: 0 0 auto">
+        <%= link_to list_path(list), class: "text-decoration-none" do %>
+          <div class="list-name">
+            <h3><%= list.name %></h3>
+          </div>
+        <% end %>
+        <div class="list-delete">
+          <%= link_to "Delete", trail_list_path(@trail, list), method: :delete, data: { confirm: "Remove this list?" }, class: "btn btn-sm" %>
+        </div>
+      </div>
+    <% end %>
+    <%= link_to new_trail_list_path(@trail), class: "text-decoration-none" do %>
+      <div class="list-card-add" style="flex: 0 0 auto">
+        <h3>Add a list</h3>
+      </div>
     <% end %>
   </div>
-</div>
 
-<br>
-
-<div class="d-flex justify-content-center">
-  <div class="d-flex flex-column align-items-center justify-content-center" style="border: 1px solid black; width: 90%">
-  <h2>Planning List</h2>
-
-  <!-- add template codes here -->
-  <%= link_to "Add a template", new_trail_list_path(@trail), class: "btn btn-primary my-2" %>
-  <% @lists.each do |list| %>
-    <div class="card-body d-flex flex-column text-center justify-content-between m-3" style="border: 1px solid black; width: 60%">
-      <h2><%= list.name %></h2>
-      <%= link_to "Show", list_path(list) %>
-      <%= link_to "Delete", trail_list_path(@trail, list), method: :delete, data: { confirm: "Are you sure?" } %>
-    </div>
-  <% end %>
+  <div class="card-headers d-flex justify-content-center pt-1">
+    <h3>Activity Lists</h3>
   </div>
-</div>
 
-
-
-<div class="container d-flex flex-row align-items-center" id="activity-horizontal-container" style="flex-wrap: nowrap; overflow: auto;">
-  <% @activities.each do |date, activities|%>
-    <div class ="datecard d-flex justify-content-center align-items-center" style = "flex: 0 0 auto">
-      <div data-id='card-container-<%= date.strftime('%Y-%m-%e') %>'class="d-flex justify-content-center" style="width: 18rem; height:300px" >
-        <%= render 'activities/small_card_content', activities: activities, date: date, trail: @trail %>
+  <div class="activity-horizontal-container d-flex align-items-center pb-5" style="flex-wrap: nowrap; overflow: auto;">
+    <% @activities.each do |date, activities|%>
+      <div class ="datecard d-flex justify-content-center align-items-center" style = "flex: 0 0 auto">
+        <div data-id='card-container-<%= date.strftime('%Y-%m-%e') %>'class="d-flex justify-content-center" style="width: 18rem; height:220px" >
+          <%= render 'activities/small_card_content', activities: activities, date: date, trail: @trail %>
+        </div>
       </div>
+    <% end %>
+    <div id="gap" class="pb-5">
     </div>
-  <% end %>
-</div>
+  </div>
 
-<div class="modal animated zoomIn" id="exampleModalLong"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog m-0 modal-dialog-centered" role="document">
-    <div class="activity-modal-content modal-content d-flex align-items-center" style= "position: relative">
-      <i class="far fa-times-circle" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true"></span>
-        </i>
-      <div class="modal-header border-0 d-flex justify-content-center align-items-center t-5 mx-3">
-        <i class="fas fa-calendar-day"></i>
-        <h2 class="modal-title my-1 mx-2 py-3 " id="activity-modal-title"></h2>
-      </div>
-      <div id='activity-modal-content' class="d-flex flex-column modal-body">
-       </div>
-      <div class="modal-footer border-0">
-        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+  <div class="modal animated zoomIn" id="exampleModalLong"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog m-0 modal-dialog-centered" role="document">
+      <div class="activity-modal-content modal-content d-flex align-items-center" style= "position: relative">
+        <i class="far fa-times-circle" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"></span>
+          </i>
+        <div class="modal-header border-0 d-flex justify-content-center align-items-center t-5 mx-3">
+          <i class="fas fa-calendar-day"></i>
+          <h2 class="modal-title my-1 mx-2 py-3 " id="activity-modal-title"></h2>
+        </div>
+        <div id='activity-modal-content' class="d-flex flex-column modal-body">
+         </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-info" style="color: black" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<nav class="navbar fixed-bottom navbar-light bg-light d-flex justify-content-around align-items-center animated bounceIn">
-    <button type="button" id="locations" class="btn btn-outline-dark">
-      <%= link_to "", trail_activities_path(@trail), class: "fas fa-map-marked-alt"  %>
-    </button>
-    <button type="button" id="home" class="btn btn-outline-dark">
-      <%= link_to "", root_path, class: "fas fa-home" %>
-    </button>
-    <button type="button" id="friends" class="btn btn-outline-dark">
+  <nav class="navbar fixed-bottom navbar-light bg-dark d-flex justify-content-between align-items-center animated bounceIn px-5">
+    <div id="navimap">
+        <%= link_to "", trail_activities_path(@trail), class: "fas fa-map-marked-alt text-decoration-none" %>
+    </div>
+    <div id="navifriends">
       <i class="fas fa-users"></i>
-    </button>
-</nav>
+    </div>
+  </nav>
+
+  <div id="navihome" class="cardone fixed-bottom d-flex justify-content-center align-items-center animated slideInUp delay-1s">
+    <%= link_to "", root_path, class: "fas fa-home text-decoration-none" %>
+  </div>
+</div>

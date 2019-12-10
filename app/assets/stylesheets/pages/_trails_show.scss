@@ -1,18 +1,16 @@
-#activity-horizontal-container::-webkit-scrollbar {
+.card {
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.activity-horizontal-container::-webkit-scrollbar {
   display: none;
 }
-#activity-horizontal-container{
-  padding: 0 auto;
-  margin-right: 0 auto;
-}
 
-
-#activity-modal-content {
-	background-color: #F5F5F5;
-	border-radius: 8px;
-	margin: 5px;
-	padding: 8px;
-	box-shadow: 0 0 8px rgba(0,0,0,0.2);
+.activity-horizontal-container{
+    flex-wrap: nowrap;
+    overflow: auto;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .fa-times-circle {
@@ -24,6 +22,14 @@
 	opacity: 0.7;
 }
 
+#activity-modal-content {
+	background-color: #F5F5F5;
+	border-radius: 8px;
+	margin: 5px;
+	padding: 8px;
+	box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
 #activity-modal-title {
 	font-size: 1.5rem;
 }
@@ -33,45 +39,69 @@
 	font-size: 40px
 }
 
-#activity-modal-content {
-  min-width: 90vw;
+.datecard, .list-card {
+  background: white;
+  width: 91%;
+  margin: 0 auto;
+  margin-right: 12px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  /* margin: 5px; */
+  padding: 8px;
+  position: relative;
 }
-
 
 .datecard {
   height: 320px;
-  width: 320px;
-  background-color: #F5F5F5;
+}
+
+.list-card {
+  height: fit-content;
+  min-height: 125px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .list-name {
+    text-align: center;
+    min-height: 75px;
+  }
+
+  .list-delete {
+    text-align: right;
+    margin-bottom: 4px;
+
+    .btn {
+      background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
+    }
+  }
+}
+
+.list-card-add {
+  background: white;
   border-radius: 8px;
-  margin: 5px;
-  padding: 8px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.2);
-  position: relative;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  width: 200px;
+  height: 125px;
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#activity-modal-content {
+  min-width: 90vw;
 }
 
 #seemorebtn {
   background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
   color:black;
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
-  // position: absolute;
-  // bottom: 20px;
-  // right: 45px;
-  // height: 40px;
-  // width: 240px;
-
 }
 
 #addactbtn {
   background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
   color:black;
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
-  // position: absolute;
-  // bottom: 20px;
-  // right: 45px;
-  // width: 240px;
-
 }
 
-.card {
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}

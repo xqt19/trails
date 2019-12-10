@@ -2,11 +2,14 @@ class DelegationsController < ApplicationController
   def create
     @list_item = ListItem.find(params[:list_item_id])
     @user = User.find(params[:user_id])
-
+    @list = @list_item.list
     @delegation = Delegation.new(user_id: params[:user_id], list_item_id: params[:list_item_id])
     authorize @delegation
     flash[:alert] = "You have already delegated to #{@user.name}!" unless @delegation.save
-    redirect_to list_path(@list_item.list)
+    respond_to do |format|
+      format.html {redirect_to list_path(@list_item.list)}
+      format.js
+    end
   end
 
   def update
@@ -16,11 +19,10 @@ class DelegationsController < ApplicationController
   end
 
   def destroy
-    @list_item = ListItem.find(params[:list_item_id])
-    @delegation = @list_item.delegations.find_by(user_id: params[:user_id])
+    @delegation = Delegation.find(params[:id])
     authorize @delegation
     @delegation.destroy
-    redirect_to list_path(@list_item.list)
+    redirect_to list_path(@delegation.list_item.list)
   end
 
   private

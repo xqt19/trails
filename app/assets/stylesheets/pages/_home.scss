@@ -4,27 +4,23 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 270px;
+  height: fit-content;
   width: 300px;
-  margin: 20px auto 0px;
+  margin: 20px auto 12px;
   border-radius: 8px;
   box-shadow: 1px 1px 0 #dfdfdf;
   position: relative;
 
-  h1 {
-    font-family: 'Concert One', cursive;
-    color: #666666;
-  }
-
   .btn-info {
-    margin-top: 8px;
     box-shadow: 1px 1px 0 #dfdfdf;
+    margin: 8px 0;
   }
 
   .logout {
-    position: absolute;
-    top: 0;
-    right: 8px;
+    width: -webkit-fill-available;
+    height: fit-content;
+    text-align: right;
+    margin-right: 8px;
   }
 }
 
@@ -42,7 +38,7 @@
   align-items: center;
   width: -webkit-fill-available;
   border-bottom: 2px inset #dfdfdf;
-  margin: 4px 0;
+  margin-bottom: 8px;
   padding-left: 10px;
 
   .collab-count {
@@ -59,10 +55,9 @@
     border-right: 2px inset #dfdfdf;
 
     h2 {
-      font-family: 'Concert One', cursive;
       text-align: left;
-      color: #666666;
       margin: 8px 0px;
+      padding: 0 8px;
     }
   }
 
@@ -82,7 +77,7 @@
   width: -webkit-fill-available;
   border-bottom: 2px inset #dfdfdf;
   box-shadow: 1px 1px 0 #dfdfdf;
-  margin: 4px 0;
+  margin-bottom: 8px;
 
   a {
     color: inherit;
@@ -116,7 +111,6 @@
     padding: 2px 8px;
 
     h5 {
-      color: #dfdfdf;
       margin-bottom: 2px;
     }
   }
