@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container animated fadeIn">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <div class="form-template">
@@ -8,11 +8,39 @@
         <h1>Update Profile</h1>
         <%= simple_form_for(current_user) do |f| %>
           <%= f.input :name %>
-          <%= f.input :photo, label: "Upload a photo" %>
-          <%= f.input :photo_cache, as: :hidden %>
+          <div class="d-flex flex-column justify-content-center align-items-center">
+          <% if current_user.photo.blank? %>
+            <%= image_tag "placeholder.png", id: "photo-preview", class: "avatar-large", crop: :fill %>
+          <% else %>
+            <%= cl_image_tag current_user.photo, class: "hidden", id: "photo-preview", radius: :max, width: 300, height: 300, crop: :fill, gravity: :face  %>
+          <% end %>
+          <%= f.input :photo, input_html: { class: 'd-none', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
+          </div>
           <%= f.button :submit, "Update Profile", class: "btn btn-info" %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
+
+
+<style>
+
+.upload-photo {
+  border: 1px solid #d3d3d3;
+  margin-top: 0px;
+  padding: 16px 24px;
+  cursor: pointer;
+  font-weight: 500;
+  background: white;
+  border-radius: 35px;
+}
+
+#photo-preview {
+  margin-bottom: 10px;
+  border-radius: 200px;
+  height: 300px;
+  width : 300px;
+}
+
+</style>

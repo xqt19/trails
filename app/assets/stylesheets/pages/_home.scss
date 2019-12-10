@@ -165,7 +165,6 @@
 
 #login-buttons {
   width: 280px;
-  margin-top: 16px;
 
   .btn-info {
     background: white;
@@ -174,7 +173,8 @@
     font-size: 30px;
     text-shadow: 1px 1px 0 #dfdfdf;
     box-shadow: 1px 1px 0 #dfdfdf;
-    padding: 16px 0;
+    padding-bottom: 20px;
+    padding-top: 10px;
   }
 }
 
