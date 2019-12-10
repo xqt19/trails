@@ -12,7 +12,7 @@
                   <button id="addactbtn" class="btn btn-sm btn-block" type="submit" data-toggle="modal" data-target="#exampleModalLong">Add an activity</button>
                <% end %>
              <% else %>
-                  <% activities.take(3).each do |activity| %>
+                  <% activities.take(2).each do |activity| %>
                     <div class="card m-2" style="border-radius: 5px; background-color: white;">
                       <p class="card-text m-3"><%= activity.name %></p>
                     </div>
