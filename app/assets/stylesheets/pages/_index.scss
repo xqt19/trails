@@ -1,3 +1,17 @@
 // Import page-specific CSS files here.
 @import "home";
 @import "trails_show";
+@font-face {
+   font-family: 'SF-Pro-Text-Regular';
+   src: url('assets/fonts/SF-Pro-Text-Regular.ttf')
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Concert One';
+}
+
+p {
+  color: #333333;
+  font-family: 'SF-Pro-Text-Regular';
+  font-size: 16px;
+}
