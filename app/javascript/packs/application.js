@@ -12,6 +12,8 @@ import { changeCategory } from '../components/button';
 import { createCustom } from '../components/custom';
 import { submitButtonForm } from '../components/submit-button-form';
 import { checkListItems, checkDelegates } from '../components/checkbox';
+import { friendsearchbar } from '../components/friendsearchbar';
+import { backArrowFadeOut } from '../components/backArrowFadeOut';
 
 // element initializers
 const categoryItems = document.querySelector('.category-items');
@@ -23,6 +25,8 @@ const delegates = document.querySelectorAll('.delegate-checkbox');
 
 initMapbox();
 initSelect2();
+friendsearchbar();
+backArrowFadeOut();
 
 if (categoryItems) {
   changeCategory();
