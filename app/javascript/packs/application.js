@@ -12,7 +12,6 @@ import { changeCategory } from '../components/button';
 import { createCustom } from '../components/custom';
 import { submitButtonForm } from '../components/submit-button-form';
 import { checkListItems, checkDelegates } from '../components/checkbox';
-import { friendsearchbar } from '../components/friendsearchbar';
 import { backArrowFadeOut } from '../components/backArrowFadeOut';
 import { previewImageOnFileSelect } from '../components/photo_preview';
 
@@ -24,7 +23,6 @@ const customBtn = document.querySelector('.custom-btn');
 const form = document.getElementById('new_activity');
 const checkboxes = document.querySelectorAll('.checkbox');
 const delegates = document.querySelectorAll('.delegate-checkbox');
-
 
 if (categoryItems) {
   changeCategory();

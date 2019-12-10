@@ -1,39 +1,54 @@
 <div class="container">
   <h1 class ="text-center">All My Friends</h1>
   <% @pending_friendships.each do |friendship| %>
-  <div class="d-flex justify-content-center p-3 m-3" style="width 70%; border: 1px solid black" >
-    <div class = "d-flex flex-column text-center align-items-center justify-content-center">
-      <u><strong><%= friendship.sender.name %></strong> has added you as a friend!</u>
-      <br><%= friendship.sender.email %>
-      <div class="d-flex justify-content-between">
-        <%= link_to "Accept", user_friendship_path(current_user, friendship), method: :patch, class: "btn btn-success mx-3" %>
-        <%= link_to "Reject", user_friendship_path(current_user, friendship), method: :delete, class: "btn btn-danger mx-3", data: { confirm: "Are you sure?" }  %>
+    <div class="d-flex justify-content-center p-3 m-3" style="width 70%; border: 1px solid black" >
+      <div class = "d-flex flex-column text-center align-items-center justify-content-center">
+        <u><strong><%= friendship.sender.name %></strong> has added you as a friend!</u>
+        <br><%= friendship.sender.email %>
+        <div class="d-flex justify-content-between">
+          <%= link_to "Accept", user_friendship_path(current_user, friendship), method: :patch, class: "btn btn-success mx-3" %>
+          <%= link_to "Reject", user_friendship_path(current_user, friendship), method: :delete, class: "btn btn-danger mx-3", data: { confirm: "Are you sure?" }  %>
+        </div>
       </div>
     </div>
-  </div>
   <% end %>
   <% @confirmed_friendships.each do |friendship| %>
-  <div class="d-flex justify-content-center p-3 m-3" style="width 70%; border: 1px solid black" >
-    <div class = "d-flex flex-column text-center align-items-center justify-content-center">
-      <u><%= friendship.sender.name if friendship.sender != current_user %><%= friendship.receiver.name if friendship.receiver != current_user %></u>
-      <br><%= friendship.sender.email if friendship.sender != current_user %><%= friendship.receiver.email if friendship.receiver != current_user %>
-      <div class="d-flex justify-content-between">
-        <%= link_to "Chat!", root_path, class: "btn btn-success mx-3" %>
-        <%= link_to "Remove", user_friendship_path(current_user, friendship), method: :delete, class: "btn btn-danger mx-3", data: { confirm: "Are you sure?" }  %>
+    <div class="d-flex justify-content-center p-3 m-3" style="width 70%; border: 1px solid black" >
+      <div class = "d-flex flex-column text-center align-items-center justify-content-center">
+        <u><%= friendship.sender.name if friendship.sender != current_user %><%= friendship.receiver.name if friendship.receiver != current_user %></u>
+        <br><%= friendship.sender.email if friendship.sender != current_user %><%= friendship.receiver.email if friendship.receiver != current_user %>
+        <div class="d-flex justify-content-between">
+          <%= link_to "Chat!", root_path, class: "btn btn-success mx-3" %>
+          <%= link_to "Remove", user_friendship_path(current_user, friendship), method: :delete, class: "btn btn-danger mx-3", data: { confirm: "Are you sure?" }  %>
+        </div>
       </div>
     </div>
-  </div>
   <% end %>
+  <br>
+  <br>
+  <div class="" id = "pendingfriends">
+    <%= render 'pendingfriends', user: current_user, pending_adds: @pending_adds %>
+  </div>
   <br>
   <br>
   <h3 class = "text-center"><u>Connect with other users</u></h2>
-  <form>
-    <div class="form-group">
-      <label for="friendsearchbar">Find more furriends here!</label>
-      <input type="email" class="form-control" id="friendsearchbar" aria-describedby="emailHelp" placeholder="Search using name or email">
-      <small id="searchbarHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-  "Ajax some friends in here"<br>
+    <label for="search-user">Find more furriends here!</label>
+    <%= form_tag list_users_path, method: :get, remote: true, id: "search-user" do %>
+    <%= text_field_tag :query, params[:query], class:'form-control'%>
+        <small id="searchbarHelp" class="form-text text-muted">Search with name or email.</small>
+  <% end %>
+
+  <div class="d-flex flex-column justify-content-center" id="friendresults">
+  </div>
 </div>
+
+
+<script>
+
+
+  const form = document.querySelector('#search-user')
+  const input = document.querySelector('#query')
+  input.addEventListener('keyup', () =>{
+    Rails.fire(form, 'submit')
+  })
+</script>
