@@ -7,8 +7,8 @@
 // Define fonts for body and headers
 // $body-font: "Open Sans", "Helvetica", "sans-serif";
 // $headers-font: "Raleway", "Helvetica", "sans-serif";
-$body-font: "Questrial", "Helvetica", "sans-serif";
-$headers-font: "Questrial", "Helvetica", "sans-serif";
+$body-font: "Concert One", "Helvetica", "sans-serif";
+$headers-font: "Concert One", "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
@@ -19,3 +19,7 @@ $headers-font: "Questrial", "Helvetica", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+h1, h2, h3, h4, h5, h6, p {
+  color: #333333;
+}

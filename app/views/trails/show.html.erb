@@ -1,57 +1,65 @@
-<div class="d-flex justify-content-center">
-  <div class="d-flex flex-column align-items-center justify-content-center" style="border: 1px solid black; width: 90%">
-    <h1><%= @trail.name %></h1>
-    <p><%= @trail.start_date.strftime("%a, %b %d %Y")  %> - <%= @trail.end_date.strftime("%a, %b %d %Y")  %><%= link_to " Edit", edit_trail_path(@trail) %></p>
+<div class="header">
+  <div class="header-detail">
+    <div class="header-title"><h3>Trail: </h3></div>
+    <div class="header-name"><h3><%= @trail.name %></h3></div>
+  </div>
+  <div class="border-top">
+    <div class="header-date"><h5><%= @trail.start_date.strftime("%a, %b %d %Y") %> - <%= @trail.end_date.strftime("%a, %b %d %Y") %></h5></div>
     <% if (@trail.start_date - Date.today).to_i > 0 %>
-          <p>Countdown: Trail begins in <%= (@trail.start_date - Date.today).to_i %> more days!</p>
-        <% elsif (@trail.start_date - Date.today).to_i == 0 %>
-          <p>First day of your trail! Have fun!</p>
-        <% elsif (@trail.end_date - @trail.start_date).to_i > 0 %>
-          <p><%= (@trail.end_date - Date.today).to_i %> more days left in this trail!</p>
-        <% else %>
-          <p>This trail is completed!</p>
+      <h5>Countdown:<br>Trail begins in <%= (@trail.start_date - Date.today).to_i %> more days!</h5>
+    <% elsif (@trail.start_date - Date.today).to_i == 0 %>
+      <h5>First day of your trail! Have fun!</h5>
+    <% elsif (@trail.end_date - @trail.start_date).to_i > 0 %>
+      <h5><%= (@trail.end_date - Date.today).to_i %> more days left in this trail!</h5>
+    <% else %>
+      <h5>This trail is completed!</h5>
     <% end %>
   </div>
 </div>
 
-<br>
-
-<div class="d-flex justify-content-center">
-  <div class="d-flex flex-column align-items-center justify-content-center" style="border: 1px solid black; width: 90%">
-    <h2>Trail group (<%= @trail.users.count + 1 %>)</h2>
-    <p>Owner: <%= @trail.user.name %></p>
-    <% @trail.users.each do |collab_user| %>
-      <p>
-        <%= collab_user.name %>
-        <% if current_user == @trail.user %>
-          <%= link_to "remove", trail_collab_path(@trail, collab_user), method: :delete, data: { confirm: "Are you sure?" } %>
-        <% end %>
-      </p>
+<div class="trail-group">
+  <h3 class="border-bottom pb-2">Trail group (<%= @trail.users.count + 1 %>)</h3>
+  <%= cl_image_tag @trail.user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
+  <% @trail.users.each do |collab_user| %>
+    <% if current_user == @trail.user %>
+      <%= link_to trail_collab_path(@trail, collab_user), method: :delete, data: { confirm: "Remove this friend from group?" } do %>
+        <%= cl_image_tag collab_user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
+      <% end %>
+    <% else %>
+      <%= cl_image_tag collab_user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
     <% end %>
-  </div>
+  <% end %>
 </div>
 
-<br>
+<div class="card-headers d-flex justify-content-center pt-1">
+  <h3>Planning <%= "List".pluralize(@trail.lists.count) %> (<%= @trail.lists.count %>)</h3>
+</div>
 
-<div class="d-flex justify-content-center">
-  <div class="d-flex flex-column align-items-center justify-content-center" style="border: 1px solid black; width: 90%">
-  <h2>Planning List</h2>
-
-  <!-- add template codes here -->
-  <%= link_to "Add a template", new_trail_list_path(@trail), class: "btn btn-primary my-2" %>
-  <% @lists.each do |list| %>
-    <div class="card-body d-flex flex-column text-center justify-content-between m-3" style="border: 1px solid black; width: 60%">
-      <h2><%= list.name %></h2>
-      <%= link_to "Show", list_path(list) %>
-      <%= link_to "Delete", trail_list_path(@trail, list), method: :delete, data: { confirm: "Are you sure?" } %>
+<div class="container activity-horizontal-container d-flex flex-row align-items-center" style="flex-wrap: nowrap; overflow: auto;">
+  <% @lists&.each do |list| %>
+    <div class ="list-card" style="flex: 0 0 auto">
+      <%= link_to list_path(list), class: "text-decoration-none" do %>
+        <div class="list-name">
+          <h3><%= list.name %></h3>
+        </div>
+      <% end %>
+      <div class="list-delete">
+        <%= link_to "Delete", trail_list_path(@trail, list), method: :delete, data: { confirm: "Remove this list?" }, class: "btn btn-info" %>
+      </div>
     </div>
   <% end %>
-  </div>
+  <%= link_to new_trail_list_path(@trail), class: "text-decoration-none" do %>
+    <div class ="list-card greyed d-flex justify-content-center align-items-center" style="flex: 0 0 auto">
+      <h3>Add a list</h3>
+    </div>
+  <% end %>
 </div>
 
+<div class="card-headers d-flex justify-content-center pt-1">
+  <h3>Activity Lists</h3>
+</div>
 
-
-<div class="container d-flex flex-row align-items-center" id="activity-horizontal-container" style="flex-wrap: nowrap; overflow: auto;">
+<div class="container activity-horizontal-container d-flex flex-row align-items-center" style="flex-wrap: nowrap; overflow: auto;">
   <% @activities.each do |date, activities|%>
     <div class ="datecard d-flex justify-content-center align-items-center" style = "flex: 0 0 auto">
       <div data-id='card-container-<%= date.strftime('%Y-%m-%e') %>'class="d-flex justify-content-center" style="width: 18rem; height:300px" >
