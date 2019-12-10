@@ -6,11 +6,11 @@
   <div class="border-top">
     <div class="header-date"><h5 class="text-muted"><%= @trail.start_date.strftime("%a, %b %d %Y") %> - <%= @trail.end_date.strftime("%a, %b %d %Y") %></h5></div>
     <% if (@trail.start_date - Date.today).to_i > 0 %>
-      <h5>Countdown:</h5><h5 class="text-muted">Trail begins in <%= (@trail.start_date - Date.today).to_i %> more days!</h5>
+      <h5 class="text-muted">Countdown:</h5><h5>Trail begins in <%= (@trail.start_date - Date.today).to_i %> more days!</h5>
     <% elsif (@trail.start_date - Date.today).to_i == 0 %>
-      <h5 class="text-muted">First day of your trail! Have fun!</h5>
+      <h5>First day of your trail! Have fun!</h5>
     <% elsif (@trail.end_date - @trail.start_date).to_i > 0 %>
-      <h5 class="text-muted"><%= (@trail.end_date - Date.today).to_i %> more days left in this trail!</h5>
+      <h5><%= (@trail.end_date - Date.today).to_i %> more days left in this trail!</h5>
     <% else %>
       <h5 class="text-muted">This trail is completed!</h5>
     <% end %>
@@ -47,7 +47,7 @@
       <div class ="list-card" style="flex: 0 0 auto;">
         <%= link_to list_path(list), class: "text-decoration-none" do %>
           <div class="list-name">
-            <h3><%= list.name %></h3>
+            <h3 class="text-muted"><%= list.name %></h3>
           </div>
         <% end %>
         <div class="list-delete">
@@ -57,13 +57,14 @@
     <% end %>
     <%= link_to new_trail_list_path(@trail), class: "text-decoration-none" do %>
       <div class="list-card-add" style="flex: 0 0 auto;">
-        <h3>Add a list</h3>
+        <h3 class="text-muted">Add a list</h3>
       </div>
     <% end %>
   </div>
 
   <div class="card-headers d-flex justify-content-center pt-1">
-    <h3>Activity Lists</h3>
+
+    <h3>Activity <%= "Day".pluralize((@trail.end_date - @trail.start_date).to_i) %> (<%= (@trail.end_date - @trail.start_date).to_i + 1 %>)</h3>
   </div>
 
   <div class="activity-horizontal-container d-flex align-items-center pb-5" style="flex-wrap: nowrap; overflow: auto;">
