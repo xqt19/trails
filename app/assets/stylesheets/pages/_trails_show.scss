@@ -13,10 +13,6 @@
     margin: 0 auto;
 }
 
-.container {
-  padding-bottom: 50px;
-}
-
 .fa-times-circle {
 	color: red;
 	font-size: 30px;
@@ -74,6 +70,10 @@
   .list-delete {
     text-align: right;
     margin-bottom: 4px;
+
+    .btn {
+      background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
+    }
   }
 }
 

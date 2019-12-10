@@ -1,0 +1,35 @@
+.cardone {
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  width: 150px;
+  height: 80px;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.navbar {
+  height: 60px;
+}
+
+#navihome {
+  margin: auto;
+}
+
+.fa-home {
+  font-size: 30px;
+  color: black;
+}
+
+.fa-map-marked-alt {
+  font-size: 25px;
+  color: cyan;
+}
+
+.fa-users {
+  font-size: 25px;
+  color: cyan;
+}
+
+.modal-backdrop.show {
+  opacity: 0.5;
+  display: none;
+}

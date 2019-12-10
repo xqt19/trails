@@ -1,22 +1,21 @@
-<div class="container">
-<div class="header">
-  <div class="header-detail">
-    <div class="header-title"><h3>Trail: </h3></div>
-    <div class="header-name"><h3><%= @trail.name %></h3></div>
+  <div class="header">
+    <div class="header-detail">
+      <div class="header-title"><h3>Trail: </h3></div>
+      <div class="header-name"><h3><%= @trail.name %></h3></div>
+    </div>
+    <div class="border-top">
+      <div class="header-date"><h5 class="text-muted"><%= @trail.start_date.strftime("%a, %b %d %Y") %> - <%= @trail.end_date.strftime("%a, %b %d %Y") %></h5></div>
+      <% if (@trail.start_date - Date.today).to_i > 0 %>
+        <h5>Countdown:</h5><h5 class="text-muted">Trail begins in <%= (@trail.start_date - Date.today).to_i %> more days!</h5>
+      <% elsif (@trail.start_date - Date.today).to_i == 0 %>
+        <h5 class="text-muted">First day of your trail! Have fun!</h5>
+      <% elsif (@trail.end_date - @trail.start_date).to_i > 0 %>
+        <h5 class="text-muted"><%= (@trail.end_date - Date.today).to_i %> more days left in this trail!</h5>
+      <% else %>
+        <h5 class="text-muted">This trail is completed!</h5>
+      <% end %>
+    </div>
   </div>
-  <div class="border-top">
-    <div class="header-date"><h5 class="text-muted"><%= @trail.start_date.strftime("%a, %b %d %Y") %> - <%= @trail.end_date.strftime("%a, %b %d %Y") %></h5></div>
-    <% if (@trail.start_date - Date.today).to_i > 0 %>
-      <h5>Countdown:</h5><h5 class="text-muted">Trail begins in <%= (@trail.start_date - Date.today).to_i %> more days!</h5>
-    <% elsif (@trail.start_date - Date.today).to_i == 0 %>
-      <h5 class="text-muted">First day of your trail! Have fun!</h5>
-    <% elsif (@trail.end_date - @trail.start_date).to_i > 0 %>
-      <h5 class="text-muted"><%= (@trail.end_date - Date.today).to_i %> more days left in this trail!</h5>
-    <% else %>
-      <h5 class="text-muted">This trail is completed!</h5>
-    <% end %>
-  </div>
-</div>
 
 <div class="trail-group">
   <h3 class="border-bottom pb-2">Trail group (<%= @trail.users.count + 1 %>)</h3>
@@ -38,110 +37,76 @@
   <% end %>
 </div>
 
-<div class="card-headers d-flex justify-content-center pt-1">
-  <h3>Planning <%= "List".pluralize(@trail.lists.count) %> (<%= @trail.lists.count %>)</h3>
-</div>
+<div class="container">
+  <div class="card-headers d-flex justify-content-center pt-1">
+    <h3>Planning <%= "List".pluralize(@trail.lists.count) %> (<%= @trail.lists.count %>)</h3>
+  </div>
 
-<div class="activity-horizontal-container d-flex flex-row align-items-center" style="flex-wrap: nowrap; overflow: auto;">
-  <% @lists&.each do |list| %>
-    <div class ="list-card" style="flex: 0 0 auto">
-      <%= link_to list_path(list), class: "text-decoration-none" do %>
-        <div class="list-name">
-          <h3><%= list.name %></h3>
+  <div class="activity-horizontal-container d-flex flex-row align-items-center" style="flex-wrap: nowrap; overflow: auto;">
+    <% @lists&.each do |list| %>
+      <div class ="list-card" style="flex: 0 0 auto">
+        <%= link_to list_path(list), class: "text-decoration-none" do %>
+          <div class="list-name">
+            <h3><%= list.name %></h3>
+          </div>
+        <% end %>
+        <div class="list-delete">
+          <%= link_to "Delete", trail_list_path(@trail, list), method: :delete, data: { confirm: "Remove this list?" }, class: "btn btn-sm" %>
         </div>
-      <% end %>
-      <div class="list-delete">
-        <%= link_to "Delete", trail_list_path(@trail, list), method: :delete, data: { confirm: "Remove this list?" }, class: "btn btn-sm btn-info" %>
       </div>
-    </div>
-  <% end %>
-  <%= link_to new_trail_list_path(@trail), class: "text-decoration-none" do %>
-    <div class="list-card-add" style="flex: 0 0 auto">
-      <h3>Add a list</h3>
-    </div>
-  <% end %>
-</div>
-
-<div class="card-headers d-flex justify-content-center pt-1">
-  <h3>Activity Lists</h3>
-</div>
-
-<div class="activity-horizontal-container d-flex align-items-center pb-5" style="flex-wrap: nowrap; overflow: auto;">
-  <% @activities.each do |date, activities|%>
-    <div class ="datecard d-flex justify-content-center align-items-center" style = "flex: 0 0 auto">
-      <div data-id='card-container-<%= date.strftime('%Y-%m-%e') %>'class="d-flex justify-content-center" style="width: 18rem; height:220px" >
-        <%= render 'activities/small_card_content', activities: activities, date: date, trail: @trail %>
+    <% end %>
+    <%= link_to new_trail_list_path(@trail), class: "text-decoration-none" do %>
+      <div class="list-card-add" style="flex: 0 0 auto">
+        <h3>Add a list</h3>
       </div>
-    </div>
-  <% end %>
-  <div id="gap" class="pb-5">
+    <% end %>
   </div>
-</div>
 
-<div class="modal animated zoomIn" id="exampleModalLong"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog m-0 modal-dialog-centered" role="document">
-    <div class="activity-modal-content modal-content d-flex align-items-center" style= "position: relative">
-      <i class="far fa-times-circle" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true"></span>
-        </i>
-      <div class="modal-header border-0 d-flex justify-content-center align-items-center t-5 mx-3">
-        <i class="fas fa-calendar-day"></i>
-        <h2 class="modal-title my-1 mx-2 py-3 " id="activity-modal-title"></h2>
+  <div class="card-headers d-flex justify-content-center pt-1">
+    <h3>Activity Lists</h3>
+  </div>
+
+  <div class="activity-horizontal-container d-flex align-items-center pb-5" style="flex-wrap: nowrap; overflow: auto;">
+    <% @activities.each do |date, activities|%>
+      <div class ="datecard d-flex justify-content-center align-items-center" style = "flex: 0 0 auto">
+        <div data-id='card-container-<%= date.strftime('%Y-%m-%e') %>'class="d-flex justify-content-center" style="width: 18rem; height:220px" >
+          <%= render 'activities/small_card_content', activities: activities, date: date, trail: @trail %>
+        </div>
       </div>
-      <div id='activity-modal-content' class="d-flex flex-column modal-body">
-       </div>
-      <div class="modal-footer border-0">
-        <button type="button" class="btn btn-info" style="color: black" data-dismiss="modal">Close</button>
+    <% end %>
+    <div id="gap" class="pb-5">
+    </div>
+  </div>
+
+  <div class="modal animated zoomIn" id="exampleModalLong"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog m-0 modal-dialog-centered" role="document">
+      <div class="activity-modal-content modal-content d-flex align-items-center" style= "position: relative">
+        <i class="far fa-times-circle" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"></span>
+          </i>
+        <div class="modal-header border-0 d-flex justify-content-center align-items-center t-5 mx-3">
+          <i class="fas fa-calendar-day"></i>
+          <h2 class="modal-title my-1 mx-2 py-3 " id="activity-modal-title"></h2>
+        </div>
+        <div id='activity-modal-content' class="d-flex flex-column modal-body">
+         </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-info" style="color: black" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<nav class="navbar fixed-bottom navbar-light bg-dark d-flex justify-content-between align-items-center animated bounceIn px-5">
-  <div id="navimap">
-      <%= link_to "", trail_activities_path(@trail), class: "fas fa-map-marked-alt"  %>
-  </div>
-  <div id="navifriends">
+  <nav class="navbar fixed-bottom navbar-light bg-dark d-flex justify-content-between align-items-center animated bounceIn px-5">
+    <div id="navimap">
+        <%= link_to "", trail_activities_path(@trail), class: "fas fa-map-marked-alt text-decoration-none" %>
+    </div>
+    <div id="navifriends">
       <i class="fas fa-users"></i>
+    </div>
+  </nav>
+
+  <div id="navihome" class="cardone fixed-bottom d-flex justify-content-center align-items-center animated slideInUp delay-1s">
+    <%= link_to "", root_path, class: "fas fa-home text-decoration-none" %>
   </div>
-</nav>
-
-<div id="navihome" class="cardone fixed-bottom d-flex justify-content-center align-items-center animated slideInUp delay-1s">
-  <%= link_to "", root_path, class: "fas fa-home" %>
-</div>
-
-<style>
-  .cardone {
-    background-color: white;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    width: 150px;
-    height: 80px;
-    border-radius: 5px 5px 0px 0px;
-  }
-  .navbar {
-    height: 60px;
-  }
-  #navihome {
-    margin: auto;
-  }
-  .fa-home {
-    font-size: 30px;
-    color: black;
-  }
-  .fa-map-marked-alt {
-    font-size: 25px;
-    color: cyan;
-  }
-  .fa-users {
-    font-size: 25px;
-    color: cyan;
-  }
-
-.modal-backdrop.show {
-    opacity: 0.5;
-    display: none;
-}
-</style>
-
-
 </div>
