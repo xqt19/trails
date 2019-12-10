@@ -1,0 +1,5 @@
+var userCard = document.querySelector(`[data-id='<%= @friendship.receiver.id %>']`).remove()
+// console.log (`[data-id='<%= @friendship.receiver.id %>']`);
+
+var userCard = document.querySelector(`#pendingfriends`)
+userCard.innerHTML = "<%= j render 'friendships/pendingfriends',  user: @user, pending_adds: @pending_adds %>"

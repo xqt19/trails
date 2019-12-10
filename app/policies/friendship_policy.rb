@@ -9,6 +9,10 @@ class FriendshipPolicy < ApplicationPolicy
     record.sender == user
   end
 
+ def list_users?
+  user
+ end
+
   def create?
     sender = record.sender
     receiver = record.receiver

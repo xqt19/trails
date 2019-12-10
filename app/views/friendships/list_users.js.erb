@@ -1,0 +1,4 @@
+var userContainer = document.querySelector('#friendresults')
+
+userContainer.innerHTML = ''
+userContainer.innerHTML = "<%= j render 'friendcard', users: @users %>"

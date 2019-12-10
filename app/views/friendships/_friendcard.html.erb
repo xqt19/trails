@@ -1,0 +1,12 @@
+<% users.each do |user|  %>
+  <div class="card m-1 d-flex flex-column" data-id="<%= user.id %>" id= "hello" style="width: 18rem;">
+    <div class="d-flex align-items-center justify-content-around" style="border-radius: 10%">
+      <h5 class="card-title"><%= user.name %></h5>
+      <%= link_to "", user_friendships_path(user), method: :post, class: "fas fa-user-plus", remote: true, data: { confirm: "Add this friend?" } %>
+    </div>
+    <div class="d-flex align-items-center justify-content-center" style="border-radius: 10%">
+      <%= user.email %>
+    </div>
+  </div>
+
+<% end %>
