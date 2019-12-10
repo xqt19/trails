@@ -35,7 +35,7 @@
   <h3>Planning <%= "List".pluralize(@trail.lists.count) %> (<%= @trail.lists.count %>)</h3>
 </div>
 
-<div class="container activity-horizontal-container d-flex flex-row align-items-center" style="flex-wrap: nowrap; overflow: auto;">
+<div class="activity-horizontal-container d-flex flex-row align-items-center" style="flex-wrap: nowrap; overflow: auto;">
   <% @lists&.each do |list| %>
     <div class ="list-card" style="flex: 0 0 auto">
       <%= link_to list_path(list), class: "text-decoration-none" do %>
@@ -59,15 +59,19 @@
   <h3>Activity Lists</h3>
 </div>
 
-<div class="container activity-horizontal-container d-flex flex-row align-items-center" style="flex-wrap: nowrap; overflow: auto;">
+<div class="activity-horizontal-container d-flex align-items-center pb-5" style="flex-wrap: nowrap; overflow: auto;">
   <% @activities.each do |date, activities|%>
     <div class ="datecard d-flex justify-content-center align-items-center" style = "flex: 0 0 auto">
-      <div data-id='card-container-<%= date.strftime('%Y-%m-%e') %>'class="d-flex justify-content-center" style="width: 18rem; height:300px" >
+      <div data-id='card-container-<%= date.strftime('%Y-%m-%e') %>'class="d-flex justify-content-center" style="width: 18rem; height:220px" >
         <%= render 'activities/small_card_content', activities: activities, date: date, trail: @trail %>
       </div>
     </div>
   <% end %>
+  <div id="gap" class="pb-5">
+  </div>
 </div>
+
+
 
 <div class="modal animated zoomIn" id="exampleModalLong"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog m-0 modal-dialog-centered" role="document">
@@ -82,7 +86,7 @@
       <div id='activity-modal-content' class="d-flex flex-column modal-body">
        </div>
       <div class="modal-footer border-0">
-        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-info" style="color: black" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -100,13 +104,15 @@
     </div>
 </nav>
 
-  <div id="navihome" class="card fixed-bottom d-flex justify-content-center align-items-center animated slideInUp delay-1s">
+  <div id="navihome" class="cardone fixed-bottom d-flex justify-content-center align-items-center animated slideInUp delay-1s">
         <%= link_to "", root_path, class: "fas fa-home" %>
   </div>
 
 
 <style>
-  .card {
+  .cardone {
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
     width: 150px;
     height: 80px;
     border-radius: 5px 5px 0px 0px;
@@ -129,5 +135,11 @@
     font-size: 25px;
     color: cyan;
   }
+
+.modal-backdrop.show {
+    opacity: 0.5;
+    display: none;
+}
+
 
 </style>

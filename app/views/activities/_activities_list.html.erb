@@ -4,8 +4,17 @@
   <div class="modal-footer d-flex justify-content-center align-items-center border-0" >
     <%= form_tag new_trail_activity_path(@trail), method: :get, remote:true do %>
        <%= hidden_field_tag 'date', date %>
-        <button type="submit" class="btn btn-outline-dark" id="plus"> Add an activity </button>
+        <button type="submit" class="btn btn-info" id="plus"> Add an activity </button>
     <% end %>
   </div>
   <div id= "modal-form-box" class="">
   </div>
+
+
+<style>
+  #plus {
+    color:black;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  }
+
+</style>
