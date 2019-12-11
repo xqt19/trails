@@ -18,7 +18,7 @@
         <h2>My <%= "Trail".pluralize(@trails_count) %></h2>
       </div>
       <div class="trail-options">
-        <a class="fas fa-sliders-h fa-lg" style="text-shadow: 1px 1px 0 #dfdfdf; color: blue;" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+        <a class="fas fa-sliders-h fa-lg text-decoration-none" style="text-shadow: 1px 1px 0 #dfdfdf; color: blue;" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           <%= link_to "Sort by Name", index_path(sort_by: 'name'), class:"dropdown-item", id:"unhideoption1", remote: true %>
@@ -36,7 +36,6 @@
     <% @trails&.each do |trail| %>
       <%= render 'trail_cards', trail: trail %>
     <% end %>
-    </div>
 
     <% if !@collabs.empty? %>
       <div class="collab-heading">
@@ -69,7 +68,7 @@
   .text-muted {
     background: 0;
   }
-  
+
   .hidden {
     display: none;
   }
