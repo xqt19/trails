@@ -6,7 +6,7 @@
   align-items: center;
   height: fit-content;
   width: 300px;
-  margin: 20px auto 14px;
+  margin: 20px auto 16px;
   border-radius: 8px;
   box-shadow: 1px 1px 0 #dfdfdf;
   position: relative;
@@ -37,7 +37,7 @@
   align-items: center;
   width: -webkit-fill-available;
   border-bottom: 2px inset #dfdfdf;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   padding-left: 10px;
 
   .collab-count {
@@ -74,12 +74,12 @@
   display: flex;
   justify-content: space-around;
   // width: -webkit-fill-available;
-  width: 97%;
+  width: 95%;
   border-radius: 6px;
   border-bottom: 2px inset #dfdfdf;
   border-left: 2px solid #dfdfdf;
   box-shadow: 1px 1px 0 #dfdfdf;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   opacity: 0.95;
 
 
@@ -100,7 +100,8 @@
   }
 
   .trail-name {
-    background: #343a40e0;
+    background: rgb(0,39,255);
+    background: linear-gradient(90deg, rgba(0,39,255,1) 0%, rgba(13,13,106,1) 10%, rgba(17,17,111,1) 90%, rgba(0,0,249,1) 100%);
     //background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
     width: auto;
     padding: 8px 22px;
@@ -113,11 +114,12 @@
 
   .info-link {
     width: 75px;
+    height: 47px;
     padding: 2px 8px;
 
-    h5 {background: 0;
+    h5 {
+      background: 0;
       margin-bottom: 2px;
-      padding-bottom: 11px;
     }
   }
 
@@ -178,7 +180,6 @@
     color: cyan;
     background: rgb(2,0,36);
     background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(22,31,145,1) 0%, rgba(7,7,61,1) 92%, rgba(0,152,255,1) 100%);
-
   }
 }
 
