@@ -134,15 +134,18 @@
 </style>
 
 <script>
+  const unhideoption = () => {
+    hide.classList.remove('hidden');
+  };
   const hideoption = () => {
-    hide.classList.toggle('hidden');
+    hide.classList.add('hidden');
   };
   var hide = document.querySelector(`#hideoption`);
   var unhide1 = document.querySelector(`#unhideoption1`);
   var unhide2 = document.querySelector(`#unhideoption2`);
   hide.addEventListener("click", hideoption);
-  unhide1.addEventListener("click", hideoption);
-  unhide2.addEventListener("click", hideoption);
+  unhide1.addEventListener("click", unhideoption);
+  unhide2.addEventListener("click", unhideoption);
   // document.querySelectorAll(`.unhideoption`).addEventListener("click", hide.classList.remove('hidden'));
 </script>
 
