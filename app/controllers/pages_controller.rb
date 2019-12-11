@@ -8,6 +8,7 @@ class PagesController < ApplicationController
     @trails = Trail.where(user_id: current_user.id)
     @trails = @trails.order(name: :asc) if params[:sort_by] == "name"
     @trails = @trails.order(start_date: :asc) if params[:sort_by] == "date"
+    @trails = [] if params[:sort_by] == "hide"
     @trails_count = @trails.count
     @collabs = Collab.where(user_id: current_user.id)
     @collabs_count = @collabs.count
