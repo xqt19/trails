@@ -1,10 +1,6 @@
 class TrailsController < ApplicationController
   before_action :set_trail, only: %i[show edit update destroy list_activity]
 
-  def index
-    policy_scope(Trail)
-  end
-
   def show
     authorize @trail
     @lists = List.where(trail_id: @trail.id)
