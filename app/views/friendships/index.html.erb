@@ -1,8 +1,10 @@
-<div class="container">
-  <%= link_to root_path do %>
-    <i class="fas fa-arrow-circle-left fa-2x btn-back"></i>
-  <% end %>
-  <h1 class ="text-center">All My Friends</h1>
+<div class="container friendcontainer d-flex flex-column justify-content-center align-items-center">
+  <div class="d-flex justify-content-center align-items-center py-2">
+    <%= link_to :back do %>
+      <i class="fas fa-arrow-circle-left fa-2x btn-back"></i>
+    <% end %>
+    <h1 class ="mx-4 text-center allfriendstext">All My Friends</h1>
+  </div>
   <% @pending_friendships.each do |friendship| %>
     <div class="d-flex justify-content-center p-3 m-3" data-inpending-id="<%= friendship.sender.id %>" style="width 70%; border: 1px solid black" >
       <div class = "d-flex flex-column text-center align-items-center justify-content-center">
@@ -25,12 +27,14 @@
   </div>
   <br>
   <br>
-  <h3 class = "text-center"><u>Connect with other users</u></h3>
-    <label for="search-user">Find more furriends here!</label>
-    <%= form_tag list_users_path, method: :get, remote: true, id: "search-user" do %>
-    <%= text_field_tag :query, params[:query], class:'form-control'%>
-        <small id="searchbarHelp" class="form-text text-muted">Search with name or email.</small>
-  <% end %>
+  <div class="card friendcard">
+    <h3 class = "text-center"><u>Connect with other users</u></h3>
+      <label for="search-user">Find more friends here!</label>
+      <%= form_tag list_users_path, method: :get, remote: true, id: "search-user" do %>
+      <%= text_field_tag :query, params[:query], class:'form-control'%>
+          <small id="searchbarHelp" class="form-text text-muted">Search with name or email.</small>
+    <% end %>
+  </div>
 
   <div class="d-flex flex-column justify-content-center" id="friendresults">
   </div>
@@ -48,9 +52,3 @@
 </script>
 
 
-
-<style>
-  body, h1, h2, h3{
-    color: white;
-  }
-</style>
