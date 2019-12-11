@@ -115,9 +115,9 @@
     width: 75px;
     padding: 2px 8px;
 
-    h5 {background: rgb(2,0,36);
-    background: radial-gradient(circle, rgba(2,0,36,1) 15%, rgba(1,56,93,1) 26%, rgba(0,212,255,1) 40%, rgba(7,7,61,1) 47%);
+    h5 {background: 0;
       margin-bottom: 2px;
+      padding-bottom: 11px;
     }
   }
 
@@ -160,20 +160,25 @@
   align-items: center;
   min-width: 100vw;
   min-height: 100vh;
+  background: rgb(2,0,36);
+  background: radial-gradient(circle, rgba(2,0,36,1) 15%, rgba(1,56,93,1) 26%, rgba(0,212,255,1) 40%, rgba(7,7,61,1) 47%);
 }
 
 #login-buttons {
   width: 280px;
 
   .btn-info {
-    background: 0;
     font-family: 'Concert One';
     font-weight: bold;
     font-size: 30px;
-    text-shadow: 1px 1px 0 #dfdfdf;
-    box-shadow: 1px 1px 0 #dfdfdf;
+    text-shadow: 1px 1px 0 darkblue;
+    box-shadow: 1px 1px 0 darkblue;
     padding-bottom: 20px;
     padding-top: 10px;
+    color: cyan;
+    background: rgb(2,0,36);
+    background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(22,31,145,1) 0%, rgba(7,7,61,1) 92%, rgba(0,152,255,1) 100%);
+
   }
 }
 
