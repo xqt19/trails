@@ -12,13 +12,13 @@
             <h1>Create List</h1>
           <% end %>
           <%= simple_form_for [trail, list] do |f| %>
-            <%= f.input :name, input_html: { class: "form-rounded mb-2" }, label: "Template Name", placeholder: "Travel List" %>
+            <%= f.input :name, input_html: { class: "form-rounded mb-2" }, label: "List Name", placeholder: "e.g. Travel List" %>
 
             <%= f.simple_fields_for :others do |o| %>
-              <%= o.input :category, as: :select, input_html: { class: "form-control select-category form-rounded" }, required: false,
+              <%= o.input :category, label: "Select a category", as: :select, input_html: { class: "form-control select-category form-rounded" }, required: false,
                 collection: Category.all.map { |category| [category.name, category.id] }, selected: Category.find_by(name: "Custom") %>
               <div class="custom-container">
-                <%= o.input :custom_item, as: :string, label: false, input_html: { class: "custom-field form-rounded" }, required: false, placeholder: "Phone Charger" %>
+                <%= o.input :custom_item, as: :string, label: false, input_html: { class: "custom-field form-rounded" }, required: false, placeholder: "e.g. Charger" %>
                 <button type ="button" class="btn btn-blue custom-btn">Add item</button>
               </div>
             <% end %>
