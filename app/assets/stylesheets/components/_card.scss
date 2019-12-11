@@ -28,8 +28,10 @@
 
 .card-items {
   flex-direction: column;
-  width: 95%;
+  width: 97%;
   border-radius: 6px;
+  border-bottom: 2px inset #dfdfdf;
+  border-left: 2px solid #dfdfdf;
 }
 
 .card-item {

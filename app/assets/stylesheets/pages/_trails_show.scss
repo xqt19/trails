@@ -57,9 +57,9 @@
     text-align: right;
     margin: 0 4px 4px 0;
 
-
     .btn {
-      background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
+      // background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
+      background: #bec0c5f2;
       border-radius: 6px;
     }
   }
@@ -71,7 +71,7 @@
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   width: 335px;
   height: 125px;
-  opacity: 0.8;
+  opacity: 0.5;
   display: flex;
   justify-content: center;
   align-items: center;
