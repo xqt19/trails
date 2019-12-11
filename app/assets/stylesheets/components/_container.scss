@@ -10,6 +10,12 @@
   padding-bottom: 100px;
 }
 
+.list-item-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
 .custom-item-container {
   position: relative;
 

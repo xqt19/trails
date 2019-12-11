@@ -7,7 +7,7 @@ class DelegationsController < ApplicationController
     authorize @delegation
     flash[:alert] = "You have already delegated to #{@user.name}!" unless @delegation.save
     respond_to do |format|
-      format.html {redirect_to list_path(@list_item.list)}
+      format.html { redirect_to list_path(@list_item.list) }
       format.js
     end
   end
