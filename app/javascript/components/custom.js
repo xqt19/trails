@@ -16,8 +16,8 @@ const toggleButtons = () => {
 
 const appendButton = (custom) => {
   customItems.insertAdjacentHTML('beforeend', ` <div class="custom-item-container">
-                                                  <label class="custom-item" for="${custom}">${custom}</label>
-                                                  <input value="${custom}" id="${custom}" name="items[]" type="checkbox" style="display:none"/>
+                                                  <label class="custom-item active" for="${custom}">${custom}</label>
+                                                  <input value="${custom}" id="${custom}" name="items[]" type="checkbox" style="display:none" checked="checked">
                                                   <div class="deletable">+</div>
                                                 </div>`);
 }
