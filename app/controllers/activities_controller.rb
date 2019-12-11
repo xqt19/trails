@@ -1,10 +1,11 @@
 class ActivitiesController < ApplicationController
-  before_action :set_trail, only: %i[new create edit update destroy]
+  before_action :set_trail, only: %i[index new create edit update destroy]
   before_action :set_activity, only: %i[show edit update destroy]
 
   def index
-    @activities = policy_scope(Activity).geocoded #returns activities with coordinates
+    @activities = policy_scope(Activity).geocoded # returns activities with coordinates
     authorize @activities
+    @activities = @activities.where(trail_id: @trail.id)
 
     @markers = @activities.map do |activity|
       {
