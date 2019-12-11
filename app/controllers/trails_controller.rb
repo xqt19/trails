@@ -71,6 +71,10 @@ class TrailsController < ApplicationController
     @activities = @trail.activities.where(date: @date)
   end
 
+  def sort_by
+    raise
+  end
+
   private
 
   def set_trail
