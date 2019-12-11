@@ -6,8 +6,8 @@ Rails.application.routes.draw do
     resources :friendships, only: %i[index create update destroy]
   end
   get 'list_user', to: "friendships#list_users", as: "list_users"
-
-  resources :trails, except: [:index] do
+  get 'pages/index', to: "pages#index", as: "index"
+  resources :trails do
     member do
       get :list_activity
     end
