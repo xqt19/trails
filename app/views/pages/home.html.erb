@@ -35,9 +35,9 @@
           </div>
           <div class="trail-info">
             <div class="d-flex align-items-center">
-              <div class="date-card"><h6 class="text-muted"><%= trail.start_date.strftime("%d %b %Y") %></h6></div>
-              <h6 class="mx-2 mb-0 text-muted">to</h6>
-              <div class="date-card"><h6 class="text-muted"><%= trail.end_date.strftime("%d %b %Y") %></h6></div>
+              <div class="date-card"><p class="text-muted"><%= trail.start_date.strftime("%d %b %Y") %></p></div>
+              <p class="mx-2 mb-0 text-muted">to</p>
+              <div class="date-card"><p class="text-muted"><%= trail.end_date.strftime("%d %b %Y") %></p></div>
             </div>
             <h6 class="text-muted">Trail group count: <%= trail.users.count + 1 %></h6>
           </div>
