@@ -41,9 +41,9 @@
           <div data-delegation="<%= list_item.id %>" class="delegation-box">
             <%= render 'delegation_list', list_item: list_item, list: @list %>
           </div>
-          <div>
-            <!-- <label for="">Male</label> -->
+          <div class="list-item-buttons">
             <%= link_to "Remove", list_item_path(list_item), method: :delete, class: "btn-sm btn-info" ,data: { confirm: "Remove item from list?" } %>
+            <label for="delegate-check-<%= list_item.id %>" class="btn btn-sm btn-info mb-0">I brought this!</label>
           </div>
         </div>
 

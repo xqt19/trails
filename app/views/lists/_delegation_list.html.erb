@@ -7,7 +7,8 @@
 
     <%= simple_form_for(delegation, url: delegation_path(delegation)) do |f| %>
       <% if delegation.user == current_user %>
-        <%= f.input :checked, label: false, input_html: { class: "delegate-checkbox", onchange: "this.form.submit()" } %>
+        <% delegation_id = "delegate-check-#{delegation.list_item.id}" %>
+        <%= f.input :checked, label: false, input_html: { class: "delegate-checkbox", id: delegation_id, onchange: "this.form.submit()" } %>
       <% else %>
         <%= f.input :checked, label: false, input_html: { class: "delegate-checkbox", disabled: true } %>
       <% end %>
