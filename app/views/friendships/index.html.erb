@@ -25,7 +25,7 @@
   </div>
   <br>
   <br>
-  <h3 class = "text-center"><u>Connect with other users</u></h2>
+  <h3 class = "text-center"><u>Connect with other users</u></h3>
     <label for="search-user">Find more furriends here!</label>
     <%= form_tag list_users_path, method: :get, remote: true, id: "search-user" do %>
     <%= text_field_tag :query, params[:query], class:'form-control'%>
@@ -46,3 +46,11 @@
     Rails.fire(form, 'submit')
   })
 </script>
+
+
+
+<style>
+  body, h1, h2, h3{
+    color: white;
+  }
+</style>
