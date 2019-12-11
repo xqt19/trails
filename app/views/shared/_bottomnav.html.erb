@@ -9,7 +9,9 @@
     <% end %>
   </div>
   <div id="navifriends">
-    <i class="fas fa-users"></i>
+    <%= link_to user_friendships_path(current_user) do %>
+      <i class="fas fa-users"></i>
+    <% end %>
   </div>
 </nav>
 
