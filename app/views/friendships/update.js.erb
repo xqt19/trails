@@ -1,0 +1,10 @@
+var userinpendingCard = document.querySelector(`[data-inpending-id='<%= @friendship.sender.id %>']`)
+userinpendingCard.classList.add('animated')
+userinpendingCard.classList.add('fadeOutRight')
+setTimeout(() => {  userinpendingCard.remove() }, 500);
+
+
+var userconfirmedCard = document.querySelector(`#confirmedfriends`)
+setTimeout(() => {  userconfirmedCard.innerHTML = "<%= j render 'friendships/confirmedfriends',  user: @user, confirmed_friendships: @confirmed_friendships %>" }, 500);
+
+

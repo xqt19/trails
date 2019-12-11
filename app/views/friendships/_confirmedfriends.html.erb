@@ -1,0 +1,12 @@
+ <% confirmed_friendships.each do |friendship| %>
+    <div class="d-flex justify-content-center p-3 m-3" style="width 70%; border: 1px solid black" >
+      <div class = "d-flex flex-column text-center align-items-center justify-content-center">
+        <u><%= friendship.sender.name if friendship.sender != user %><%= friendship.receiver.name if friendship.receiver != user %></u>
+        <br><%= friendship.sender.email if friendship.sender != user %><%= friendship.receiver.email if friendship.receiver != user %>
+        <div class="d-flex justify-content-between">
+          <%= link_to "Chat!", root_path, class: "btn btn-success mx-3" %>
+          <%= link_to "Remove", user_friendship_path(current_user, friendship), method: :delete, class: "btn btn-danger mx-3", data: { confirm: "Are you sure?" }  %>
+        </div>
+      </div>
+    </div>
+  <% end %>
