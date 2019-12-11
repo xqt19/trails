@@ -6,14 +6,13 @@
   align-items: center;
   height: fit-content;
   width: 300px;
-  margin: 20px auto 12px;
+  margin: 20px auto 14px;
   border-radius: 8px;
   box-shadow: 1px 1px 0 #dfdfdf;
   position: relative;
 
   .btn-info {
-    box-shadow: 1px 1px 0 #dfdfdf;
-    margin: 8px 0;
+    margin: 16px 0;
   }
 
   .logout {
@@ -38,7 +37,7 @@
   align-items: center;
   width: -webkit-fill-available;
   border-bottom: 2px inset #dfdfdf;
-  margin-bottom: 8px;
+  margin-bottom: 14px;
   padding-left: 10px;
 
   .collab-count {
@@ -74,10 +73,15 @@
   background: white;
   display: flex;
   justify-content: space-around;
-  width: -webkit-fill-available;
+  // width: -webkit-fill-available;
+  width: 97%;
+  border-radius: 6px;
   border-bottom: 2px inset #dfdfdf;
+  border-left: 2px solid #dfdfdf;
   box-shadow: 1px 1px 0 #dfdfdf;
-  margin-bottom: 8px;
+  margin-bottom: 14px;
+  opacity: 0.95;
+
 
   a {
     color: inherit;
@@ -92,17 +96,18 @@
     border: 1px solid #dfdfdf;
     border-radius: 30px;
     box-shadow: 1px 1px 0 #dfdfdf;
-    margin: 14px 0 8px 0;
+    margin: 14px 0;
   }
 
   .trail-name {
+    background: #343a40e0;
+    //background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
     width: auto;
-    padding: 4px 10px;
-    background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
+    padding: 8px 22px;
 
     h5 {
-      font-weight: bold;
-      margin-bottom: 0;
+      color: white;
+      margin-bottom: 4px;
     }
   }
 
@@ -119,12 +124,15 @@
   .trail-info {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     height: 70px;
     padding: 0 4px 4px;
 
-    h6 {
-      margin: 0;
+    p {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 0;
+      letter-spacing: .5px;
     }
   }
 
@@ -162,8 +170,8 @@
     font-family: 'Concert One';
     font-weight: bold;
     font-size: 30px;
-    text-shadow: 1px 1px 0 black;
-    box-shadow: 1px 1px 0 black;
+    text-shadow: 1px 1px 0 #dfdfdf;
+    box-shadow: 1px 1px 0 #dfdfdf;
     padding-bottom: 20px;
     padding-top: 10px;
   }

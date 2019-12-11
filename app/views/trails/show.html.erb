@@ -3,7 +3,7 @@
     <div class="header-title"><h3>Trail: </h3></div>
     <div class="header-name"><h3><%= @trail.name %></h3></div>
   </div>
-  <div class="border-top">
+  <div class="border-top mt-2 pt-2">
     <div class="header-date"><h5 class="text-muted"><%= @trail.start_date.strftime("%a, %b %d %Y") %> - <%= @trail.end_date.strftime("%a, %b %d %Y") %></h5></div>
     <% if (@trail.start_date - Date.today).to_i > 0 %>
       <h5 class="text-muted">Countdown:</h5><h5>Trail begins in <%= (@trail.start_date - Date.today).to_i %> more days!</h5>

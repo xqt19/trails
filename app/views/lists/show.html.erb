@@ -42,6 +42,7 @@
             <%= render 'delegation_list', list_item: list_item, list: @list %>
           </div>
           <div>
+            <!-- <label for="">Male</label> -->
             <%= link_to "Remove", list_item_path(list_item), method: :delete, class: "btn-sm btn-info" ,data: { confirm: "Remove item from list?" } %>
           </div>
         </div>
