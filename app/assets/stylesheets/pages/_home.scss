@@ -115,7 +115,8 @@
     width: 75px;
     padding: 2px 8px;
 
-    h5 {
+    h5 {background: rgb(2,0,36);
+    background: radial-gradient(circle, rgba(2,0,36,1) 15%, rgba(1,56,93,1) 26%, rgba(0,212,255,1) 40%, rgba(7,7,61,1) 47%);
       margin-bottom: 2px;
     }
   }
@@ -165,11 +166,12 @@
   width: 280px;
 
   .btn-info {
-    background: white;
-    font-family: 'Concert One', cursive;
+    background: 0;
+    font-family: 'Concert One';
     font-weight: bold;
     font-size: 30px;
     text-shadow: 1px 1px 0 #dfdfdf;
+    box-shadow: 1px 1px 0 #dfdfdf;
     padding-bottom: 20px;
     padding-top: 10px;
   }
