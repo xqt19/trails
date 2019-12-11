@@ -1,5 +1,9 @@
 .card {
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
+
+  p {
+  font-size: .8rem;
+}
 }
 
 .activity-horizontal-container::-webkit-scrollbar {
@@ -59,28 +63,19 @@
 
     .btn {
       // background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
-      background: #bec0c5f2;
+      background: rgb(0,39,255);
+      background: linear-gradient(90deg, rgba(0,39,255,1) 0%, rgba(13,13,106,1) 10%, rgba(17,17,111,1) 90%, rgba(0,0,249,1) 100%);
       border-radius: 6px;
+      color: white;
     }
   }
 }
 
-.list-card-add {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-  width: 335px;
-  height: 125px;
-  opacity: 0.5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .modal-btn {
-  background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
+  background: rgb(0,39,255);
+    background: linear-gradient(90deg, rgba(0,39,255,1) 0%, rgba(13,13,106,1) 10%, rgba(17,17,111,1) 90%, rgba(0,0,249,1) 100%);
   height: 44px;
-  color: black;
+  color: white;
   font-size: 16px;
   border-radius: 6px;
   box-shadow: 0 0 8px rgba(0,0,0,0.1);

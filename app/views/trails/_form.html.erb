@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <div class="form-template">
         <%= link_to :back do %>
-          <i class="fas fa-arrow-circle-left fa-2x btn-back"></i>
+          <i class="fas fa-arrow-circle-left btn-back"></i>
         <% end %>
         <%= simple_form_for trail do |f| %>
           <% if trail.id %>
@@ -23,10 +23,10 @@
           <% end %>
 
           <% if trail.id %>
-            <%= f.button :submit, "Update Trail", class: "btn btn-info" %>
-            <%= link_to "Delete", trail_path(trail), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-info mt-3" if trail.user == current_user %>
+            <%= f.button :submit, "Update Trail", class: "btn btn-blue" %>
+            <%= link_to "Delete", trail_path(trail), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-grey mt-3" if trail.user == current_user %>
           <% else %>
-            <%= f.button :submit, "Create Trail", class: "btn btn-info" %>
+            <%= f.button :submit, "Create Trail", class: "btn btn-blue", style: "background: blue;" %>
           <% end %>
 
         <% end %>

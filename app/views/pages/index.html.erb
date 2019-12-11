@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <div class="profile-container">
     <div class="logout">
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: "Confirm Logout?" }, class: "btn btn-info text-dark" %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: "Confirm Logout?" }, class: "btn btn-lg btn-grey" %>
     </div>
     <h1><%= current_user.name %></h1>
     <% if current_user.photo.blank? %>
@@ -9,13 +9,13 @@
     <% else %>
       <%= cl_image_tag current_user.photo, radius: :max, width: 150, height: 150, crop: :fill, gravity: :face %>
     <% end %>
-    <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-info text-dark" %>
+    <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-lg btn-grey" %>
   </div>
 
   <div class="trail-container">
     <div class="trail-heading">
       <div class="trail-count">
-        <h2>My <%= "Trail".pluralize(@trails_count) %> (<%= @trails_count %>)</h2>
+        <h2>My <%= "Trail".pluralize(@trails_count) %></h2>
       </div>
       <div class="trail-options">
         <i class="fas fa-sliders-h fa-lg" style="text-shadow: 1px 1px 0 #dfdfdf; color: blue;"></i>
@@ -28,41 +28,13 @@
     </div>
 
     <% @trails&.each do |trail| %>
-      <div class="trail-card">
-        <%= link_to trail_path(trail) do %>
-          <div class="trail-name">
-            <h5><%= trail.name %></h5>
-          </div>
-          <div class="trail-info">
-            <div class="d-flex align-items-center">
-              <div class="date-card"><p class="text-muted"><%= trail.start_date.strftime("%d %b %Y") %></p></div>
-              <h6 class="mx-2 mb-0 text-muted">to</h6>
-              <div class="date-card"><p class="text-muted"><%= trail.end_date.strftime("%d %b %Y") %></p></div>
-            </div>
-            <h6 class="text-muted">Trail group count: <%= trail.users.count + 1 %></h6>
-          </div>
-        <% end %>
-
-        <div>
-          <%= link_to edit_trail_path(trail) do %>
-            <div class="info-link">
-              <i class="fas fa-info-circle fa-2x mr-2" style="text-shadow: 1px 1px 0 #dfdfdf; color: blue;"></i>
-              <h5 class="text-muted" style="font-size: 30px;">></h5>
-            </div>
-          <% end %>
-
-          <div class="trail-starter">
-            <h6>Started by</h6>
-            <%= cl_image_tag trail.user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
-          </div>
-        </div>
-      </div>
+      <%= render 'trail_cards', trail: trail %>
     <% end %>
 
     <% if !@collabs.empty? %>
       <div class="collab-heading">
         <div class="collab-count">
-          <h2>My <%= "Collab".pluralize(@collabs_count) %> (<%= @collabs_count %>)</h2>
+          <h2>My <%= "Collab".pluralize(@collabs_count) %></h2>
         </div>
         <div class="collab-options">
           <i class="fas fa-sliders-h fa-lg" style="text-shadow: 1px 1px 0 #dfdfdf; color: blue;"></i>
@@ -70,35 +42,7 @@
       </div>
 
       <% @collabs.each do |collab| %>
-        <div class="trail-card">
-          <%= link_to trail_path(collab.trail) do %>
-            <div class="trail-name">
-              <h5><%= collab.trail.name %></h5>
-            </div>
-            <div class="trail-info">
-              <div class="d-flex align-items-center">
-                <div class="date-card"><p class="text-muted"><%= collab.trail.start_date.strftime("%d %b %Y") %></p></div>
-                <h6 class="text-muted mx-2 mb-0">to</h6>
-                <div class="date-card"><p class="text-muted"><%= collab.trail.end_date.strftime("%d %b %Y") %></p></div>
-              </div>
-              <h6 class="text-muted">Trail group count: <%= collab.trail.users.count + 1 %></h6>
-            </div>
-          <% end %>
-
-          <div>
-            <%= link_to edit_trail_path(collab.trail) do %>
-              <div class="info-link">
-                <i class="fas fa-info-circle fa-2x mr-2" style="text-shadow: 1px 1px 0 #dfdfdf; color: blue;"></i>
-                <h5 class="text-muted" style="font-size: 25px;">></h5>
-              </div>
-            <% end %>
-
-            <div class="trail-starter">
-              <h6>Started by</h6>
-              <%= cl_image_tag collab.trail.user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
-            </div>
-          </div>
-        </div>
+        <%= render 'trail_cards', trail: collab.trail %>
       <% end %>
     <% end %>
   </div>
@@ -107,8 +51,8 @@
   <div class="login-elements">
     <div class="animated bounceIn"><%= image_tag "trailexport.png", height: 220, width: 280, crop: :fill%></div>
     <div id="login-buttons" class="m-2 p-2 d-flex flex-column justify-content-center align-items-center text-center animated fadeIn delay-1s">
-      <%= link_to "Login", new_user_session_path, class: "btn btn-lg btn-block btn-info text-decoration-none" %>
-      <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-lg btn-block btn-info text-decoration-none" %>
+      <%= link_to "Login", new_user_session_path, class: "btn btn-lg btn-block btn-grey text-decoration-none" %>
+      <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-lg btn-block btn-grey text-decoration-none" %>
     </div>
   </div>
 <% end %>
@@ -118,6 +62,5 @@
   .text-muted {
     background: 0;
   }
-
 </style>
 
