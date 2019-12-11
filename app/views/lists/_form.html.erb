@@ -19,7 +19,7 @@
                 collection: Category.all.map { |category| [category.name, category.id] }, selected: Category.find_by(name: "Custom") %>
               <div class="custom-container">
                 <%= o.input :custom_item, as: :string, label: false, input_html: { class: "custom-field form-rounded" }, required: false, placeholder: "Phone Charger" %>
-                <button type ="button" class="btn btn-info custom-btn">Add item</button>
+                <button type ="button" class="btn btn-blue custom-btn">Add item</button>
               </div>
             <% end %>
 
@@ -28,9 +28,10 @@
             </div>
 
             <% if list.id %>
-              <%= f.button :submit, "Edit list", class: "btn btn-info", id: "list-submit" %>
+              <%= f.button :submit, "Edit list", id: "list-submit",class: "btn btn-blue mb-3" %>
+              <%= link_to "Delete", trail_list_path(@trail, list), method: :delete, data: { confirm: "Remove this list?" }, class: "btn btn-grey" %>
             <% else %>
-              <%= f.button :submit, "Add list", class: "btn btn-info", id: "list-submit" %>
+              <%= f.button :submit, "Add list", class: "btn btn-blue", id: "list-submit" %>
             <% end %>
           <% end %>
         </div>

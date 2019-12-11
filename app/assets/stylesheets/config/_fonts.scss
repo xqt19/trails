@@ -20,6 +20,12 @@ $headers-font: "Concert One", "Helvetica", "sans-serif";
 // }
 // $my-font: "Font Name";
 
-h1, h2, h3, h4, h5, h6, p {
+h1, h2, h3, h4, h5, h6 {
   color: #292929;
+}
+
+p {
+  color: #6c757d;
+  font-size: 18px;
+  letter-spacing: .5px;
 }

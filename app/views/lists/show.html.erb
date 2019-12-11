@@ -8,8 +8,8 @@
     <div class="header-name"><h3><%= @list.name %></h3></div>
   </div>
   <div class="header-link">
-    <%= link_to "Back to Trail", trail_path(@list.trail), class: "btn btn-info text-decoration-none" %>
-    <%= link_to "Edit List", edit_trail_list_path(@list.trail), class: "btn btn-info text-decoration-none" %>
+    <%= link_to "Back to Trail", trail_path(@list.trail), class: "btn btn-blue text-decoration-none" %>
+    <%= link_to "Edit List", edit_trail_list_path(@list.trail), class: "btn btn-grey text-decoration-none" %>
   </div>
 </div>
 
@@ -42,7 +42,7 @@
             <%= render 'delegation_list', list_item: list_item, list: @list %>
           </div>
           <div class="list-item-buttons">
-            <%= link_to "Remove", list_item_path(list_item), method: :delete, class: "btn-sm btn-info" ,data: { confirm: "Remove item from list?" } %>
+            <%= link_to "Remove", list_item_path(list_item), method: :delete, class: "btn-sm btn-grey" ,data: { confirm: "Remove item from list?" } %>
             <label for="delegate-check-<%= list_item.id %>" class="btn btn-sm btn-info mb-0">I brought this!</label>
           </div>
         </div>

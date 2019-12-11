@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     authorize User.find(params[:id])
     if current_user.update(user_params)
       flash[:notice] = "Profile updated!"
-      redirect_to root_path
+      redirect_to index_path
     else
       flash[:alert] = "Something went wrong!"
       render :edit

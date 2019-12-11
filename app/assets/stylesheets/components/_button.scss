@@ -35,19 +35,20 @@
   background: #3d7ef1;
 }
 
-.btn-info {
+.btn-grey, .btn-blue {
   // font-family: Raleway-SemiBold;
   font-size: 16px;
+  color: #292929;
   // color: rgba(91, 192, 222, 0.75);
-  color: black;
   letter-spacing: .5px;
   line-height: 15px;
   // border: 2px solid rgba(91, 192, 222, 0.75);
-  border: 2px solid blue;
   border-radius: 40px;
+  border: none;
   box-shadow: 1px 1px 0 #dfdfdf;
-  background: transparent;
+  color: white;
   transition: all 0.3s ease 0s;
+  padding: 8px;
 
   &:hover {
     background: rgba(91, 192, 222, 0.75);
@@ -55,9 +56,18 @@
   }
 }
 
+.btn-blue {
+  background: blue;
+}
+
+.btn-grey {
+  background: #7c7c7c;
+}
+
 .btn-back {
-  color: rgba(91, 192, 222, 0.75);
+  color: blue;
   background: transparent;
+  font-size: 40px;
   transition: all 0.3s ease 0s;
 
   &:hover {

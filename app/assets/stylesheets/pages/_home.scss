@@ -11,8 +11,9 @@
   box-shadow: 1px 1px 0 #dfdfdf;
   position: relative;
 
-  .btn-info {
-    margin: 16px 0;
+  .btn-grey {
+    margin: 14px 0;
+    padding: 12px;
   }
 
   .logout {
@@ -35,17 +36,22 @@
   background: white;
   display:flex;
   align-items: center;
-  width: -webkit-fill-available;
+  width: 95%;
+  border-radius: 8px;
   border-bottom: 2px inset #dfdfdf;
   margin-bottom: 16px;
   padding-left: 10px;
 
   .collab-count {
+    display: flex;
     flex-basis: 80%;
+    justify-content: center;
   }
 
   .trail-count {
+    display: flex;
     flex-basis: 60%;
+    justify-content: center;
   }
 
   .trail-count, .collab-count {
@@ -75,13 +81,12 @@
   justify-content: space-around;
   // width: -webkit-fill-available;
   width: 95%;
-  border-radius: 6px;
+  border-radius: 8px;
   border-bottom: 2px inset #dfdfdf;
   border-left: 2px solid #dfdfdf;
   box-shadow: 1px 1px 0 #dfdfdf;
   margin-bottom: 16px;
-  opacity: 0.95;
-
+  padding: 6px;
 
   a {
     color: inherit;
@@ -93,21 +98,20 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid #dfdfdf;
     border-radius: 30px;
-    box-shadow: 1px 1px 0 #dfdfdf;
-    margin: 14px 0;
+    margin: 10px 0;
   }
 
   .trail-name {
-    background: rgb(0,39,255);
-    background: linear-gradient(90deg, rgba(0,39,255,1) 0%, rgba(13,13,106,1) 10%, rgba(17,17,111,1) 90%, rgba(0,0,249,1) 100%);
-    //background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
+    // background: rgba(91, 192, 222, 0.75);
+    // background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
+    background: white;
     width: auto;
     padding: 8px 22px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
 
     h5 {
-      color: white;
+      font-size: 24px;
       margin-bottom: 4px;
     }
   }
@@ -115,7 +119,7 @@
   .info-link {
     width: 75px;
     height: 47px;
-    padding: 2px 8px;
+    padding: 6px 17px;
 
     h5 {
       background: 0;
@@ -130,20 +134,22 @@
     height: 70px;
     padding: 0 4px 4px;
 
+    h6 {
+      font-size: 18px;
+    }
+
     p {
-      font-weight: bold;
       font-size: 16px;
       margin-bottom: 0;
-      letter-spacing: .5px;
     }
   }
 
   .date-card {
-    border: 1px solid #dfdfdf;
     border-radius: 4px;
-    box-shadow: 1px 1px 0 #dfdfdf;
-    width: fit-content;
-    padding: 2px 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    width: -webkit-fill-available;
+    padding: 4px;
+    margin-bottom: 6px;
   }
 
   .trail-starter {

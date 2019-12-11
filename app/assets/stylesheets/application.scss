@@ -32,8 +32,10 @@ $theme-colors: ( "bootstrap": #563d7c, "simpleform": #00617f );
 body {
   // width: 100vw;
   // height: 100vh;
+  background: #9CC4E9;
+
   // background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
   // background: #292929;
-  background: rgb(0,39,255);
-  background: linear-gradient(90deg, rgba(0,39,255,1) 0%, rgba(13,13,106,1) 10%, rgba(17,17,111,1) 90%, rgba(0,0,249,1) 100%);
+  // background: rgb(0,39,255);
+  // background: linear-gradient(90deg, rgba(0,39,255,1) 0%, rgba(13,13,106,1) 10%, rgba(17,17,111,1) 90%, rgba(0,0,249,1) 100%);
 }
