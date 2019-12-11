@@ -13,7 +13,7 @@
           <% end %>
 
           <%= f.error_notification %>
-          <%= f.input :name, input_html: { class: "form-rounded" }, label: "Trail name", placeholder: "Trail #{ Trail.count + 1 }" %>
+          <%= f.input :name, input_html: { class: "form-rounded" }, label: "Trail name", placeholder: "e.g. Trail #{ Trail.count + 1 }" %>
           <%= f.input :start_date, input_html: { class: "form-rounded" } %>
           <%= f.input :end_date, input_html: { class: "form-rounded" } %>
 
