@@ -18,7 +18,12 @@
         <h2>My <%= "Trail".pluralize(@trails_count) %> (<%= @trails_count %>)</h2>
       </div>
       <div class="trail-options">
-        <i class="fas fa-sliders-h fa-lg" style="text-shadow: 1px 1px 0 #dfdfdf; color: blue;"></i>
+        <a class="fas fa-sliders-h fa-lg" style="text-shadow: 1px 1px 0 #dfdfdf; color: blue;" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <%= link_to "Sort by Name", index_path(sort_by: 'name'), class:"dropdown-item", remote: true %>
+          <%= link_to "Sort by Start Date", index_path(sort_by: 'date'), class:"dropdown-item", remote: true %>
+        </div>
       </div>
       <%= link_to new_trail_path do %>
         <div class="trail-options">
@@ -27,7 +32,8 @@
       <% end %>
     </div>
 
-    <% @trails&.each do |trail| %>
+    <div class = "d-flex flex-column justify-content-center align-items-center" style = "width: 100%" id = "trailsindex">
+      <% @trails.each do |trail| %>
       <div class="trail-card">
         <%= link_to trail_path(trail) do %>
           <div class="trail-name">
@@ -39,7 +45,7 @@
               <h6 class="mx-2 mb-0 text-muted">to</h6>
               <div class="date-card"><p class="text-muted"><%= trail.end_date.strftime("%d %b %Y") %></p></div>
             </div>
-            <h6 class="text-muted">Trail group count: <%= trail.users.count + 1 %></h6>
+            <h6 class="text-muted">Participants on this trail: <%= trail.users.count + 1 %></h6>
           </div>
         <% end %>
 
@@ -58,6 +64,7 @@
         </div>
       </div>
     <% end %>
+    </div>
 
     <% if !@collabs.empty? %>
       <div class="collab-heading">
@@ -81,7 +88,7 @@
                 <h6 class="text-muted mx-2 mb-0">to</h6>
                 <div class="date-card"><p class="text-muted"><%= collab.trail.end_date.strftime("%d %b %Y") %></p></div>
               </div>
-              <h6 class="text-muted">Trail group count: <%= collab.trail.users.count + 1 %></h6>
+              <h6 class="text-muted">Participants on this trail: <%= collab.trail.users.count + 1 %></h6>
             </div>
           <% end %>
 
