@@ -6,12 +6,10 @@ Rails.application.routes.draw do
     resources :friendships, only: %i[index create update destroy]
   end
   get 'list_user', to: "friendships#list_users", as: "list_users"
-  get 'pages/index', to: "pages#index", as: "index"
-  # get 'trails/sort_by', to: "trails#sort_by", as: "sort"
+  get 'dashboard', to: "pages#index", as: :index
   resources :trails, except: [:index] do
     member do
       get :list_activity
-      get :sort_by
     end
     resources :activities, only: %i[index new create edit update destroy]
     resources :lists, only: %i[new create edit update destroy]

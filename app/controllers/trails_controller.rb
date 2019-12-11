@@ -30,7 +30,7 @@ class TrailsController < ApplicationController
         create_collab(collab_users_arr, @trail)
       end
       flash[:notice] = "You created a new trail"
-      redirect_to root_path
+      redirect_to index_path
     else
       render :new
     end
@@ -62,17 +62,13 @@ class TrailsController < ApplicationController
     authorize @trail
     @trail.activities.destroy_all
     @trail.destroy
-    redirect_to root_path
+    redirect_to index_path
   end
 
   def list_activity
     authorize @trail
     @date = Date.parse(params[:date])
     @activities = @trail.activities.where(date: @date)
-  end
-
-  def sort_by
-    raise
   end
 
   private
