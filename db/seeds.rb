@@ -14,6 +14,8 @@ puts "Destroying Items..."
 Item.destroy_all
 puts "Destroying trails...along with lists (list_items, delegations), activities, and collabs"
 Trail.destroy_all
+puts "Destroying friendships..."
+Friendship.destroy_all
 puts "Destroying users..."
 User.destroy_all
 
@@ -190,5 +192,19 @@ Activity.create(trail_id: zache.trails.last.id, name: "Onsen bath at Oyus", desc
 Activity.create(trail_id: zache.trails.last.id, name: "Eat Tsukemen at Tokyo Station", description: "There's a super good Tsukemen stall near Tokyo Station!", date: Date.new(2020, 3, 28), start_time: Time.now + 3600 * 6, end_time: Time.now + 3600 * 7)
 Activity.create(trail_id: zache.trails.last.id, name: "Climb Mt.Fuji", description: "I will be climbing Mt. Fuji for the whole day today!", date: Date.new(2020, 3, 29))
 Activity.create(trail_id: zache.trails.last.id, name: "Flight back to Singapore", description: "Can't bear to leave Japan, its a blast though!", date: Date.new(2020, 4, 8), start_time: Time.now + 3600 * 3, end_time: Time.now + 3600 * 10)
+
+puts "adding friendships"
+Friendship.create(sender: xq, receiver: nesh, confirmed: true)
+Friendship.create(sender: xq, receiver: zache, confirmed: true)
+Friendship.create(sender: zache, receiver: nesh, confirmed: true)
+Friendship.create(sender: xq, receiver: yifan, confirmed: false)
+Friendship.create(sender: xq, receiver: michael, confirmed: false)
+Friendship.create(sender: xq, receiver: charmaine, confirmed: false)
+Friendship.create(sender: xq, receiver: vibhuti, confirmed: false)
+Friendship.create(sender: xq, receiver: najihah, confirmed: false)
+Friendship.create(sender: xq, receiver: dirk, confirmed: false)
+Friendship.create(sender: xq, receiver: prima, confirmed: false)
+Friendship.create(sender: xq, receiver: guido, confirmed: false)
+Friendship.create(sender: xq, receiver: rachael, confirmed: false)
 
 puts "Seeding finished!"

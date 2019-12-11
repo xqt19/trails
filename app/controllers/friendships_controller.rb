@@ -46,8 +46,17 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.find(params[:id])
     authorize @friendship
     @friendship.confirmed = true
-    @friendship.save
-    redirect_to user_friendships_path(current_user)
+    @user = current_user
+    @confirmed_friendships = current_user.friendships.where(confirmed: "true")
+    if @friendship.save
+      respond_to do |format|
+        format.html { redirect_to user_friendships_path(current_user) }
+        format.js
+      end
+    else
+      redirect_to user_friendships_path(current_user)
+      flash[:alert] = "Something went wrong!"
+    end
   end
 
   def destroy

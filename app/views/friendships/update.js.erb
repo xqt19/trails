@@ -1,0 +1,4 @@
+var userpendingCard = document.querySelector(`[data-pending-id='<%= @friendship.sender.id %>']`).remove()
+
+var userconfirmedCard = document.querySelector(`#confirmedfriends`)
+userconfirmedCard.innerHTML = "<%= j render 'friendships/confirmedfriends',  user: @user, confirmed_friendships: @confirmed_friendships %>"
