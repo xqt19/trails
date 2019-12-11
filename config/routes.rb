@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   get 'list_user', to: "friendships#list_users", as: "list_users"
   get 'pages/index', to: "pages#index", as: "index"
-  resources :trails do
+  resources :trails, except: [:index] do
     member do
       get :list_activity
     end
