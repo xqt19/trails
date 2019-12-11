@@ -21,8 +21,9 @@
         <a class="fas fa-sliders-h fa-lg" style="text-shadow: 1px 1px 0 #dfdfdf; color: blue;" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <%= link_to "Sort by Name", index_path(sort_by: 'name'), class:"dropdown-item", remote: true %>
-          <%= link_to "Sort by Start Date", index_path(sort_by: 'date'), class:"dropdown-item", remote: true %>
+          <%= link_to "Sort by Name", index_path(sort_by: 'name'), class:"dropdown-item", id:"unhideoption1", remote: true %>
+          <%= link_to "Sort by Start Date", index_path(sort_by: 'date'), class:"dropdown-item", id:"unhideoption2", remote: true %>
+          <%= link_to "Hide", index_path(sort_by: 'hide'), class:"dropdown-item", id:"hideoption", remote: true %>
         </div>
       </div>
       <%= link_to new_trail_path do %>
@@ -126,5 +127,22 @@
     background: 0;
   }
 
+  .hidden {
+    display: none;
+  }
+
 </style>
+
+<script>
+  const hideoption = () => {
+    hide.classList.toggle('hidden');
+  };
+  var hide = document.querySelector(`#hideoption`);
+  var unhide1 = document.querySelector(`#unhideoption1`);
+  var unhide2 = document.querySelector(`#unhideoption2`);
+  hide.addEventListener("click", hideoption);
+  unhide1.addEventListener("click", hideoption);
+  unhide2.addEventListener("click", hideoption);
+  // document.querySelectorAll(`.unhideoption`).addEventListener("click", hide.classList.remove('hidden'));
+</script>
 
