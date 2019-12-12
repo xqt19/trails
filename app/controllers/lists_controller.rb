@@ -15,7 +15,7 @@ class ListsController < ApplicationController
       all_count = list_item.delegations.all.count
       if checked_count == all_count && all_count != 0
         list_item.checked = true
-      else
+      elsif !list_item.checked?
         list_item.checked = false
       end
     end

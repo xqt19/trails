@@ -1,7 +1,6 @@
 <div class="pb-5">
     <div class="card friendcard mb-3 d-flex text-center align-items-center">
-        <h1><%= link_to index_path do %><i class="fas fa-home fa-2x"></i><% end %></h1>
-        <h1 class ="header" style="color: black;">All My Friends</h1>
+      <h1 class ="header" style="color: black;">Friends List</h1>
     </div>
 
   <div id="confirmedfriends">
@@ -38,6 +37,8 @@
 
   <div class="d-flex flex-column justify-content-center align-items-center" id="friendresults">
   </div>
+
+<%= render 'shared/bottomnav' %>
 
 
 <script>

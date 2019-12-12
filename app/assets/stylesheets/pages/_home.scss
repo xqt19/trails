@@ -18,12 +18,14 @@
   }
 
   .logout {
-    display: flex;
-    justify-content: space-between;
     width: -webkit-fill-available;
     height: fit-content;
     text-align: right;
     margin-right: 8px;
+  }
+
+  img {
+    margin: 4px 0 20px 0;
   }
 }
 
@@ -33,6 +35,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 8px;
+  padding-bottom: 80px;
 }
 
 .trail-heading, .collab-heading {
@@ -47,24 +50,31 @@
 
   .collab-count {
     display: flex;
+    flex-direction: column;
     flex-basis: 80%;
     justify-content: center;
   }
 
   .trail-count {
     display: flex;
+    flex-direction: column;
     flex-basis: 60%;
     justify-content: center;
   }
 
   .trail-count, .collab-count {
     text-align: center;
-
-    border-right: 2px inset #dfdfdf;
+    //border-right: 2px inset #dfdfdf;
 
     h2 {
       text-align: left;
-      margin: 8px 0px;
+      margin: 8px 0px 0 0;
+      padding: 0 8px;
+    }
+
+    p {
+      text-align: left;
+      margin-bottom: 6px;
       padding: 0 8px;
     }
   }
@@ -74,7 +84,6 @@
     border-right: 2px inset #dfdfdf;
     width: 80px;
     padding: 15px 0;
-    flex-basis: 20%;
   }
 }
 
@@ -101,8 +110,6 @@
   }
 
   .trail-name {
-    // background: rgba(91, 192, 222, 0.75);
-    // background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
     background: white;
     width: 255px;
     padding: 8px 22px;

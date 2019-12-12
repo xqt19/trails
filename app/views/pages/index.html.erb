@@ -2,11 +2,6 @@
 
   <div class="profile-container">
     <div class="logout">
-      <div style="padding: 16px 0 0 16px">
-    <%= link_to user_friendships_path(current_user) do %>
-      <i class="fas fa-users"  style="color: #e2b85d"></i>
-    <% end %>
-  </div>
       <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: "Confirm Logout?" }, class: "btn btn-grey" %>
     </div>
     <h1><%= current_user.name %></h1>
@@ -15,15 +10,15 @@
     <% else %>
       <%= cl_image_tag current_user.photo, radius: :max, width: 150, height: 150, crop: :fill, gravity: :face %>
     <% end %>
-    <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-grey" %>
   </div>
 
   <div class="trail-container">
     <div class="trail-heading">
       <div class="trail-count">
         <h2>My <%= "Trail".pluralize(@trails_count) %></h2>
+        <p>You have <%= @trails_count %> <%= "trail".pluralize(@trails_count) %></p>
       </div>
-      <div class="trail-options">
+      <div class="trail-options border-left border-right">
         <a class="fas fa-sliders-h fa-lg text-decoration-none" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -39,7 +34,6 @@
       <% end %>
     </div>
 
-
     <div id="trailsindex">
         <%= render 'trail_cards', trails: @trails %>
     </div>
@@ -48,9 +42,10 @@
       <div class="collab-heading">
         <div class="collab-count">
           <h2>My <%= "Collab".pluralize(@collabs_count) %></h2>
+          <p>You have <%= @collabs_count %> <%= "collab".pluralize(@collabs_count) %></p>
         </div>
 
-        <div class="collab-options">
+        <div class="collab-options border-left">
           <a class="fas fa-sliders-h fa-lg text-decoration-none" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
 
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -77,6 +72,8 @@
     </div>
   </div>
 <% end %>
+
+<%= render 'shared/bottomnav', trail: @trail %>
 
 <style>
   .text-muted {

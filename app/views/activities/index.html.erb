@@ -5,7 +5,7 @@
   <div class="card animated zoomInDown" id="map" style="width: 99%;  height: 710px; width: 100vw;"  data-markers="<%= @markers.to_json %>"s data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 </div>
 
-<%= render 'shared/bottomnav' %>
+<%= render 'shared/bottomnav', trail: @trail %>
 
 <style>
   .mapboxgl-ctrl-top-right {

@@ -15,8 +15,9 @@ class DelegationsController < ApplicationController
   def update
     @delegation = Delegation.find(params[:id])
     authorize @delegation
-    @delegation.update(delegation_params)
-    redirect_to list_path(@delegation.list)
+    if @delegation.update(delegation_params)
+      redirect_to list_path(@delegation.list_item.list)
+    end
   end
 
   def destroy
