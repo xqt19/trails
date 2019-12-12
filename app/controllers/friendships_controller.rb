@@ -14,9 +14,8 @@ class FriendshipsController < ApplicationController
     authorize Friendship.new
     if query != ""
       results = User.search_by_name_and_email(query) # update here to restrict the search scope
-      @users = []
       results.each do |user|
-        @users << user if current_user.friends.include?(user) == false && user != current_user && current_user.pending_friends.include?(user) == false
+        @users << user if  !current_user.friends.include?(user) && user != current_user && !current_user.pending_friends.include?(user) && !current_user.pending_request_friends.include?(user)
       end
     end
     respond_to do |format|

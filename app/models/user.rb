@@ -26,7 +26,12 @@ class User < ApplicationRecord
     Friendship.where(confirmed: false).where("sender_id = :self_id OR receiver_id = :self_id", self_id: id)
   end
 
-  def pending_friends
+  def pending_request_friends #pending friends who requested me
+    ids_list = Friendship.where(confirmed: false).where("receiver_id = :self_id", self_id: id).pluck(:sender_id, :receiver_id).flatten
+    return User.where(id: ids_list).where.not(id: id)
+  end
+
+  def pending_friends #friend requests i have sent
     ids_list = Friendship.where(confirmed: false).where("sender_id = :self_id", self_id: id).pluck(:sender_id, :receiver_id).flatten
     return User.where(id: ids_list).where.not(id: id)
   end
