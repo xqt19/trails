@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   get 'list_user', to: "friendships#list_users", as: "list_users"
   get 'dashboard', to: "pages#index", as: :index
+  get 'sortcollab', to: "pages#sortcollab", as: :sortcollab
   resources :trails, except: [:index] do
     member do
       get :list_activity
