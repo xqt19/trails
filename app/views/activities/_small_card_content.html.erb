@@ -1,24 +1,38 @@
 <div class="card-body d-flex flex-column p-1 <%= activities.empty? ? 'justify-content-center': 'justify-content-between' %> text-center" style="height: 210px">
   <div>
-    <h3 class="card-title text-muted"><%= date.strftime('%a, %b %d %Y')%></h3>
+    <h3 class="card-title"><%= date.strftime('%a, %b %d %Y')%></h3>
     <% if activities.empty? %>
       <div></div>
       <h3 class="text-muted">No Activities</h3>
       <%= form_tag list_activity_trail_path(@trail), method: :get, remote:true do %>
         <%= hidden_field_tag 'date', date %>
-        <button class="modal-btn btn btn-sm btn-block" type="submit" data-toggle="modal" data-target="#exampleModalLong">Add an activity</button>
+        <button class="modal-btn btn btn-info btn-sm btn-block" type="submit" data-toggle="modal" data-target="#exampleModalLong">Add an activity</button>
       <% end %>
+    <% elsif activities.count > 2 %>
+      <% activities.take(2).each do |activity| %>
+        <div class="card innercard m-1" style="border-radius: 5px; border: white; background-color: white;">
+          <p class="card-innertext m-1"><%= activity.name %></p>
+        </div>
+      <% end %>
+       <p>...</p>
+       <div>
+        <%= form_tag list_activity_trail_path(trail), method: :get, remote:true do %>
+          <%= hidden_field_tag 'date', date %>
+          <button class="modal-btn btn btn-info btn-sm btn-block" type="submit" data-toggle="modal" data-target="#exampleModalLong">See more</button>
+        <% end %>
+       </div>
+
     <% else %>
       <% activities.take(2).each do |activity| %>
-        <div class="card m-2" style="border-radius: 5px; background-color: white;">
-          <p class="card-text m-3"><%= activity.name %></p>
+        <div class="card innercard m-1" style="border-radius: 5px; border: white; background-color: white;">
+          <p class="card-innertext m-1"><%= activity.name %></p>
         </div>
       <% end %>
     </div>
     <div>
       <%= form_tag list_activity_trail_path(trail), method: :get, remote:true do %>
         <%= hidden_field_tag 'date', date %>
-        <button class="modal-btn btn btn-sm btn-block" type="submit" data-toggle="modal" data-target="#exampleModalLong">See more</button>
+        <button class="modal-btn btn btn-info btn-sm btn-block" type="submit" data-toggle="modal" data-target="#exampleModalLong">See more</button>
       <% end %>
     <% end %>
   </div>
