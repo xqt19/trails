@@ -1,13 +1,36 @@
 .friendcard {
   color: black;
-  padding: 20px;
   border-radius: 5px;
+  width: 100vw;
+  border-radius: 0 0 20px 20px;
 }
 
-.friendcontainer {
-  padding-bottom: 20px;
+.cardfriendstitle {
+  width: 100vw;
 }
 
-.allfriendstext {
-  color: white;
+.cffriendcard {
+  background: white;
+  width: 93%;
+  margin-right: 12px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  padding: 8px;
+  position: relative;
+
+  height: fit-content;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.friendsearchcard {
+  margin-left: 13px;
+}
+
+.fa-check {
+  color: green;
+  font-size: 30px;
 }

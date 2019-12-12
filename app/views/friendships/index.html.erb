@@ -1,34 +1,30 @@
-<div class="container friendcontainer d-flex flex-column justify-content-center align-items-center">
-  <div class="d-flex justify-content-center align-items-center py-2">
-    <%= link_to :back do %>
-      <i class="fas fa-arrow-circle-left fa-2x btn-back"></i>
-    <% end %>
-    <h1 class ="mx-4 text-center allfriendstext">All My Friends</h1>
-  </div>
+
+    <div class="card friendcard mb-3 d-flex text-center align-items-center">
+        <h1><%= link_to :back do %><i class="fas fa-arrow-circle-left fa-2x btn-back"></i><% end %></h1>
+        <h1 class ="header" style="color: black;">All My Friends</h1>
+    </div>
+  <div class="activity-horizontal-container d-flex flex-row align-items-center mb-3 px-2" style="flex-wrap: nowrap; overflow: auto;">
   <% @pending_friendships.each do |friendship| %>
-    <div class="d-flex justify-content-center p-3 m-3" data-inpending-id="<%= friendship.sender.id %>" style="width 70%; border: 1px solid black" >
-      <div class = "d-flex flex-column text-center align-items-center justify-content-center">
-        <u><strong><%= friendship.sender.name %></strong> has added you as a friend!</u>
-        <br><%= friendship.sender.email %>
-        <div class="d-flex justify-content-between">
-          <%= link_to "Accept", user_friendship_path(current_user, friendship), remote: true, method: :patch, class: "btn btn-success mx-3" %>
-          <%= link_to "Reject", user_friendship_path(current_user, friendship), method: :delete, class: "btn btn-danger mx-3", data: { confirm: "Are you sure?" }  %>
+    <div class="cffriendcard d-flex text-center align-items-center" data-inpending-id="<%= friendship.sender.id %>">
+        <p><strong><%= friendship.sender.name %></strong> has added you as a friend!</p>
+        <p><%= friendship.sender.email %></p>
+        <div class="d-flex justify-content-between align-items-center">
+          <%= link_to "", user_friendship_path(current_user, friendship), remote: true, method: :patch, class: "btn btn-light fas fa-check mx-3" %>
+          <%= link_to "", user_friendship_path(current_user, friendship), method: :delete, class: "btn btn-light fas fa-trash mx-3", style: "color: red; font-size: 30px", data: { confirm: "Are you sure?" }  %>
         </div>
-      </div>
     </div>
   <% end %>
-  <div class="" id = "confirmedfriends">
-    <%= render 'confirmedfriends', user: current_user, confirmed_friendships: @confirmed_friendships%>
   </div>
-  <br>
-  <br>
+  <div id="confirmedfriends">
+      <%= render 'confirmedfriends', user: current_user, confirmed_friendships: @confirmed_friendships%>
+  </div>
+
   <div class="" id = "pendingfriends">
-    <%= render 'pendingfriends', user: current_user, pending_adds: @pending_adds %>
+      <%= render 'pendingfriends', user: current_user, pending_adds: @pending_adds %>
   </div>
   <br>
-  <br>
-  <div class="card friendcard">
-    <h3 class = "text-center"><u>Connect with other users</u></h3>
+  <div class="card cffriendcard friendsearchcard px-4">
+    <h3 class = "text-center">Connect with other users</h3>
       <label for="search-user">Find more friends here!</label>
       <%= form_tag list_users_path, method: :get, remote: true, id: "search-user" do %>
       <%= text_field_tag :query, params[:query], class:'form-control'%>
@@ -38,7 +34,6 @@
 
   <div class="d-flex flex-column justify-content-center" id="friendresults">
   </div>
-</div>
 
 
 <script>
