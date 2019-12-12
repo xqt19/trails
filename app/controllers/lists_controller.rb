@@ -9,6 +9,16 @@ class ListsController < ApplicationController
     @collabs = Collab.where(trail_id: @list.trail)
     @collabs = @collabs.map(&:user)
     @collabs = [@list.trail.user] + @collabs
+    # uncomment for auto-check feature
+    @list_items.each do |list_item|
+      checked_count = list_item.delegations.where(checked: true).count
+      all_count = list_item.delegations.all.count
+      if checked_count == all_count && all_count != 0
+        list_item.checked = true
+      else
+        list_item.checked = false
+      end
+    end
   end
 
   def new
