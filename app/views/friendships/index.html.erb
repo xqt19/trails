@@ -1,10 +1,10 @@
-<div class="container friendcontainer d-flex flex-column justify-content-center align-items-center">
-  <div class="d-flex justify-content-center align-items-center py-2">
-    <%= link_to :back do %>
-      <i class="fas fa-arrow-circle-left fa-2x btn-back"></i>
-    <% end %>
-    <h1 class ="mx-4 text-center allfriendstext">All My Friends</h1>
-  </div>
+<div class="container d-flex flex-column justify-content-center align-items-center">
+    <div class="card friendcard mb-3 d-flex text-center align-items-center">
+        <h1>
+          <%= link_to :back do %><i class="fas fa-arrow-circle-left fa-2x btn-back"></i><% end %>
+        </h1>
+        <h1 class ="header" style="color: black;">All My Friends</h1>
+    </div>
   <% @pending_friendships.each do |friendship| %>
     <div class="d-flex justify-content-center p-3 m-3" data-inpending-id="<%= friendship.sender.id %>" style="width 70%; border: 1px solid black" >
       <div class = "d-flex flex-column text-center align-items-center justify-content-center">
@@ -18,16 +18,20 @@
     </div>
   <% end %>
   <div class="" id = "confirmedfriends">
-    <%= render 'confirmedfriends', user: current_user, confirmed_friendships: @confirmed_friendships%>
+    <div class="activity-horizontal-container d-flex align-items-center" style="flex-wrap: nowrap; overflow: auto;">
+      <%= render 'confirmedfriends', user: current_user, confirmed_friendships: @confirmed_friendships%>
+    </div>
   </div>
   <br>
   <br>
   <div class="" id = "pendingfriends">
-    <%= render 'pendingfriends', user: current_user, pending_adds: @pending_adds %>
+    <div class="activity-horizontal-container d-flex flex-row align-items-center" style="flex-wrap: nowrap; overflow: auto;">
+      <%= render 'pendingfriends', user: current_user, pending_adds: @pending_adds %>
+    </div>
   </div>
   <br>
   <br>
-  <div class="card friendcard">
+  <div class="card">
     <h3 class = "text-center"><u>Connect with other users</u></h3>
       <label for="search-user">Find more friends here!</label>
       <%= form_tag list_users_path, method: :get, remote: true, id: "search-user" do %>
