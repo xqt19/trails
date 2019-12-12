@@ -13,7 +13,8 @@
 
   .btn-grey {
     margin: 14px 0;
-    padding: 12px;
+    padding: 10px;
+    opacity: .9;
   }
 
   .logout {
@@ -79,8 +80,7 @@
   background: white;
   display: flex;
   justify-content: space-around;
-  // width: -webkit-fill-available;
-  width: 95%;
+  width: 100%;
   border-radius: 8px;
   border-bottom: 2px inset #dfdfdf;
   border-left: 2px solid #dfdfdf;
@@ -94,9 +94,6 @@
   }
 
   .trail-name, .info-link {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     border-radius: 30px;
     margin: 10px 0;
   }
@@ -117,12 +114,18 @@
 
   .info-link {
     width: 75px;
-    height: 47px;
-    padding: 6px 17px;
+    display: flex;
+    justify-content: flex-end;
+
 
     h5 {
       background: 0;
       margin-bottom: 2px;
+    }
+
+    i {
+      color: #7c7c7cba;
+      font-size: 30px;
     }
   }
 
