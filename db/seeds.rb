@@ -165,7 +165,7 @@ puts "creating trails"
 # Trail.create(user_id: zache.id, name: "Barbeque Plan", start_date: Date.new(2019, 12, 8), end_date: Date.new(2019, 12, 8))
 # Trail.create(user_id: zache.id, name: "Japan Trip", start_date: Date.new(2020, 3, 27), end_date: Date.new(2020, 4, 8))
 Trail.create(user_id: nesh.id, name: "Chalet Plan", start_date: Date.new(2020, 1, 9), end_date: Date.new(2020, 1, 11))
-Trail.create(user_id: xq.id, name: "School camping trip", start_date: Date.new(2019, 12, 26), end_date: Date.new(2019, 12, 30))
+# Trail.create(user_id: xq.id, name: "School camping trip", start_date: Date.new(2019, 12, 26), end_date: Date.new(2019, 12, 30))
 
 puts "adding collaborators"
 # Collab.create(user_id: nesh.id, trail_id: zache.trails.first.id)
@@ -182,7 +182,7 @@ puts "adding collaborators"
 # Collab.create(user_id: guido.id, trail_id: zache.trails.last.id)
 # Collab.create(user_id: rachael.id, trail_id: zache.trails.last.id)
 Collab.create(user_id: zache.id, trail_id: nesh.trails.first.id)
-Collab.create(user_id: zache.id, trail_id: xq.trails.first.id)
+# Collab.create(user_id: zache.id, trail_id: xq.trails.first.id)
 
 puts "adding activities to test bbq plan"
 # Activity.create(trail_id: zache.trails.first.id, name: "Preparing to start fire", description: "Get the thongs and coal", date:Date.today, start_time: Time.now, end_time: Time.now + 3600)
@@ -199,14 +199,12 @@ puts "adding activities to japan trip"
 
 puts "adding friendships"
 Friendship.create(sender: zache, receiver: nesh, confirmed: true)
-Friendship.create(sender: zache, receiver: xq, confirmed: true)
+# Friendship.create(sender: zache, receiver: xq, confirmed: true)
 Friendship.create(sender: xq, receiver: nesh, confirmed: true)
-
-
-
-
+Friendship.create(sender: zache, receiver: charmaine, confirmed: false)
+Friendship.create(sender: zache, receiver: yifan, confirmed: false)
+Friendship.create(sender: zache, receiver: michael, confirmed: false)
 Friendship.create(receiver: zache, sender: yifan, confirmed: false)
-Friendship.create(receiver: zache, sender: charmaine, confirmed: false)
 Friendship.create(receiver: zache, sender: vibhuti, confirmed: false)
 Friendship.create(receiver: zache, sender: najihah, confirmed: false)
 Friendship.create(receiver: zache, sender: dirk, confirmed: false)
