@@ -2,9 +2,9 @@
 
   <div class="profile-container">
     <div class="logout">
-      <div id="navifriends">
+      <div id="navifriends" style="padding: 16px 0 0 16px">
     <%= link_to user_friendships_path(current_user) do %>
-      <i class="fas fa-users"></i>
+      <i class="fas fa-users"  style="color: #e2b85d"></i>
     <% end %>
   </div>
       <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: "Confirm Logout?" }, class: "btn btn-grey" %>
