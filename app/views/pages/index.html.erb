@@ -35,9 +35,7 @@
 
 
     <div id="trailsindex">
-      <% @trails&.each do |trail| %>
-        <%= render 'trail_cards', trail: trail %>
-      <% end %>
+        <%= render 'trail_cards', trails: @trails %>
     </div>
 
     <% if !@collabs.empty? %>
@@ -45,14 +43,22 @@
         <div class="collab-count">
           <h2>My <%= "Collab".pluralize(@collabs_count) %></h2>
         </div>
-        <div class="collab-options">
-          <i class="fas fa-sliders-h fa-lg"></i>
+
+        <div class="collabs-options">
+          <a class="fas fa-sliders-h fa-lg text-decoration-none" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <%= link_to "Sort by Name", sortcollab_path(sort_by: 'name'), class:"dropdown-item", id:"unhideoptionCollab1", remote: true %>
+            <%= link_to "Sort by Start Date", sortcollab_path(sort_by: 'date'), class:"dropdown-item", id:"unhideoptionCollab2", remote: true %>
+            <%= link_to "Hide", sortcollab_path(sort_by: 'hide'), class:"dropdown-item", id:"hideoptionCollab", remote: true %>
+          </div>
         </div>
       </div>
 
-      <% @collabs.each do |collab| %>
-        <%= render 'trail_cards', trail: collab.trail %>
-      <% end %>
+      <div id="collabIndex">
+          <%= render 'collab_cards', collabtrails: @collabtrails %>
+      </div>
+
     <% end %>
   </div>
 
@@ -83,12 +89,24 @@
   const hideoption = () => {
     hide.classList.add('hidden');
   };
+  const unhideoptionCollab = () => {
+    hideCollab.classList.remove('hidden');
+  };
+  const hideoptionCollab = () => {
+    hideCollab.classList.add('hidden');
+  };
   var hide = document.querySelector(`#hideoption`);
   var unhide1 = document.querySelector(`#unhideoption1`);
   var unhide2 = document.querySelector(`#unhideoption2`);
   hide.addEventListener("click", hideoption);
   unhide1.addEventListener("click", unhideoption);
   unhide2.addEventListener("click", unhideoption);
+  var hideCollab = document.querySelector(`#hideoptionCollab`);
+  var unhideCollab1 = document.querySelector(`#unhideoptionCollab1`);
+  var unhideCollab2 = document.querySelector(`#unhideoptionCollab2`);
+  hideCollab.addEventListener("click", hideoptionCollab);
+  unhideCollab1.addEventListener("click", unhideoptionCollab);
+  unhideCollab2.addEventListener("click", unhideoptionCollab);
   // document.querySelectorAll(`.unhideoption`).addEventListener("click", hide.classList.remove('hidden'));
 </script>
 
