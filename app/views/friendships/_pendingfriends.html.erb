@@ -1,20 +1,14 @@
-<div class="card pendingfriendcard pb-2">
-  <% if user.pending_friends.empty? == false %>
-    <h3 class = "text-center">Pending Friends</h3>
-  <% end %>
-  <div class="row">
-    <% pending_adds.each do |friendship| %>
-      <div class="col-12">
-            <div class="d-flex justify-content-center" style="width 70%;" >
-      <div class = "d-flex flex-column text-center align-items-center justify-content-center">
-        <p>You have added <strong><%= friendship.receiver.name %></strong> as a friend!</p>
-        <%= friendship.receiver.email %>
-        <div class="btn btn-info d-flex justify-content-between align-items-center">
-          <%= link_to "Cancel Request", user_friendship_path(user,friendship), method: :delete, class: "", data: { confirm: "Are you sure?" } %>
-        </div>
-      </div>
-    </div>
-      </div>
+<div class="activity-horizontal-container d-flex align-items-center mb-3 px-2" style="flex-wrap: nowrap; overflow: auto;">
+    <% if user.pending_friends.empty? == false %>
+      <h3 class="text-center">Pending Friends <i class="fas fa-arrow-right"></i></h3>
     <% end %>
-  </div>
+      <% pending_adds.each do |friendship| %>
+          <div class = "pendingreq d-flex text-center justify-content-center align-items-center">
+            <p>You have added <strong><%= friendship.receiver.name %></strong> as a friend!</p>
+            <%= friendship.receiver.email %>
+            <div class="btn btn-info d-flex justify-content-between align-items-center">
+            <%= link_to "Cancel Request", user_friendship_path(user,friendship), method: :delete, class: "", data: { confirm: "Are you sure?" } %>
+            </div>
+          </div>
+      <% end %>
 </div>
