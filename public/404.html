@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
+  <title> Trails - Page not found!</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   .rails-default-error-page {
@@ -57,11 +57,20 @@
 <body class="rails-default-error-page">
   <!-- This file lives in public/404.html -->
   <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+    <div class="login-elements d-flex align-items-center">
+    <div class="animated bounceIn"><%= image_tag "newlogo.png", height: 270, width: 280, crop: :fill%></div>
+    <%= flash[:alert] = "Oops this page does not exist!" %>
+<% if user_signed_in? %>
+    <div id="login-buttons" class="m-0 p-0 d-flex flex-column justify-content-center align-items-center text-center animated fadeIn delay-1s">
+      <%= link_to "Back to Safety!", index_path, class: "btn btn-lg btn-block btn-info text-decoration-none" %>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
+<% else %>
+    <div id="login-buttons" class="m-0 p-0 d-flex flex-column justify-content-center align-items-center text-center animated fadeIn delay-1s">
+      <%= link_to "Login", new_user_session_path, class: "btn btn-lg btn-block btn-info text-decoration-none" %>
+      <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-lg btn-block btn-info text-decoration-none" %>
+    </div>
+  </div>
+<% end %>
   </div>
 </body>
 </html>

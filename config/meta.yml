@@ -1,0 +1,5 @@
+meta_product_name: "Trails App"
+meta_title: "Welcome to Trails - We Put Your Journeys on Rails!"
+meta_description: "Trails is an easy-to-use one-stop application for planning all your travel needs and activities. Find out where your trails will take you today!"
+meta_image: "newlogo.png" # should exist in `app/assets/images/`
+twitter_account: "@realdonaldtrump"   # required for Twitter Cards
