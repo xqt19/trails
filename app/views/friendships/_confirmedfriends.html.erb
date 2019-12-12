@@ -3,9 +3,9 @@
     <div class = "cffriendcard d-flex text-center align-items-center">
                 <div class = "d-flex align-items-end w-100 justify-content-end">
                    <a style="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="btn btn-info fas fa-user-cog" style="font-size: 16px"></i></a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <%= link_to "", index_path, class: "btn btn-light far fa-comments mx-3", style: "font-size: 30px; color: purple; " %>
-                        <%= link_to "", user_friendship_path(current_user, friendship), method: :delete, class: "btn btn-light fas fa-trash mx-3", style: "font-size: 30px; color: red;", data: { confirm: "Are you sure?" }  %>
+                      <div class="dropdown-menu d-flex justify-content-around p-0 m-0" style="width: 100px !important;" aria-labelledby="dropdownMenuButton">
+                        <%= link_to "", index_path, class: "btn btn-light far fa-comments", style: "font-size: 24px; color: purple; " %>
+                        <%= link_to "", user_friendship_path(current_user, friendship), method: :delete, class: "btn btn-light fas fa-user-slash", style: "font-size: 24px; color: red;", data: { confirm: "Are you sure?" }  %>
                       </div>
                   </div>
           <div>
