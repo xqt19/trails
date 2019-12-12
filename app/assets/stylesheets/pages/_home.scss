@@ -18,6 +18,8 @@
   }
 
   .logout {
+    display: flex;
+    justify-content: space-between;
     width: -webkit-fill-available;
     height: fit-content;
     text-align: right;
@@ -189,5 +191,9 @@
     background: rgb(2,0,36);
     background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(22,31,145,1) 0%, rgba(7,7,61,1) 92%, rgba(0,152,255,1) 100%);
   }
+}
+
+#navifriends{
+  padding: 16px 0 0 16px;
 }
 

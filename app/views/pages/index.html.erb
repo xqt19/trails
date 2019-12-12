@@ -1,6 +1,12 @@
 <% if user_signed_in? %>
+
   <div class="profile-container">
     <div class="logout">
+      <div id="navifriends">
+    <%= link_to user_friendships_path(current_user) do %>
+      <i class="fas fa-users"></i>
+    <% end %>
+  </div>
       <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: "Confirm Logout?" }, class: "btn btn-grey" %>
     </div>
     <h1><%= current_user.name %></h1>
