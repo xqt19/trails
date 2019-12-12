@@ -1,12 +1,22 @@
 <div class="activity-horizontal-container d-flex flex-row align-items-center mb-3 px-2" style="flex-wrap: nowrap; overflow: auto;">
 <% confirmed_friendships.each do |friendship| %>
     <div class = "cffriendcard d-flex text-center align-items-center">
-      <h3><%= friendship.sender.name if friendship.sender != user %><%= friendship.receiver.name if friendship.receiver != user %></h3>
-      <p><%= friendship.sender.email if friendship.sender != user %><%= friendship.receiver.email if friendship.receiver != user %></p>
-      <div class="d-flex mt-2 justify-content-between">
-        <%= link_to "", index_path, class: "btn btn-light far fa-comments mx-3", style: "font-size: 30px; color: purple; " %>
-        <%= link_to "", user_friendship_path(current_user, friendship), method: :delete, class: "btn btn-light fas fa-trash mx-3", style: "font-size: 30px; color: red;", data: { confirm: "Are you sure?" }  %>
-      </div>
+                <div class = "d-flex align-items-end w-100 justify-content-end">
+                   <a style="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="btn btn-info fas fa-user-cog" style="font-size: 16px"></i></a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <%= link_to "", index_path, class: "btn btn-light far fa-comments mx-3", style: "font-size: 30px; color: purple; " %>
+                        <%= link_to "", user_friendship_path(current_user, friendship), method: :delete, class: "btn btn-light fas fa-trash mx-3", style: "font-size: 30px; color: red;", data: { confirm: "Are you sure?" }  %>
+                      </div>
+                  </div>
+          <div>
+            <% if friendship.receiver != user %>
+              <h3><%= friendship.receiver.name %>  <%= cl_image_tag friendship.receiver.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %></h3>
+              <p><%= friendship.receiver.email %></p>
+            <% else %>
+              <h3><%= friendship.sender.name %><%= cl_image_tag friendship.sender.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %></h3>
+              <p><%= friendship.sender.email %></p>
+            <% end %>
+          </div>
     </div>
 <% end %>
 </div>
