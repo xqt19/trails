@@ -3,21 +3,25 @@
         <h1><%= link_to index_path do %><i class="fas fa-home fa-2x"></i><% end %></h1>
         <h1 class ="header" style="color: black;">All My Friends</h1>
     </div>
+
+  <div id="confirmedfriends">
+      <%= render 'confirmedfriends', user: current_user, confirmed_friendships: @confirmed_friendships%>
+  </div>
+
+
   <div class="activity-horizontal-container d-flex flex-row align-items-center mb-3 px-2" style="flex-wrap: nowrap; overflow: auto;">
   <% @pending_friendships.each do |friendship| %>
     <div class="cffriendcard d-flex text-center align-items-center" data-inpending-id="<%= friendship.sender.id %>">
         <p><strong><%= friendship.sender.name %></strong> has added you as a friend!</p>
         <p><%= friendship.sender.email %></p>
         <div class="d-flex justify-content-between align-items-center">
-          <%= link_to "", user_friendship_path(current_user, friendship), remote: true, method: :patch, class: "btn btn-light fas fa-check mx-3" %>
-          <%= link_to "", user_friendship_path(current_user, friendship), method: :delete, class: "btn btn-light fas fa-trash mx-3", style: "color: red; font-size: 30px", data: { confirm: "Are you sure?" }  %>
+          <%= link_to "", user_friendship_path(current_user, friendship), remote: true, method: :patch, class: "btn btn-light fas fa-user-plus mx-3", style: "color: green; font-size: 24px" %>
+          <%= link_to "", user_friendship_path(current_user, friendship), method: :delete, class: "btn btn-light fas fa-user-slash mx-3", style: "color: red; font-size: 24px", data: { confirm: "Are you sure?" }  %>
         </div>
     </div>
   <% end %>
   </div>
-  <div id="confirmedfriends">
-      <%= render 'confirmedfriends', user: current_user, confirmed_friendships: @confirmed_friendships%>
-  </div>
+
 
   <div class="" id = "pendingfriends">
       <%= render 'pendingfriends', user: current_user, pending_adds: @pending_adds %>
@@ -32,7 +36,7 @@
     <% end %>
   </div>
 
-  <div class="d-flex flex-column justify-content-center" id="friendresults">
+  <div class="d-flex flex-column justify-content-center align-items-center" id="friendresults">
   </div>
 
 
