@@ -24,7 +24,11 @@
 
     <div class="trail-starter">
       <h6>Started by</h6>
-      <%= cl_image_tag trail.user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
+      <% if trail.user.photo.blank? %>
+        <%= image_tag "placeholder.png", class: "avatar", crop: :fill %>
+      <% else %>
+        <%= cl_image_tag trail.user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
+      <% end %>
     </div>
   </div>
 </div>

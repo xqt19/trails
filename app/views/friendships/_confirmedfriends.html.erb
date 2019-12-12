@@ -9,11 +9,20 @@
                       </div>
                   </div>
           <div>
+
             <% if friendship.receiver != user %>
-              <h3><%= friendship.receiver.name %>  <%= cl_image_tag friendship.receiver.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %></h3>
+              <% if friendship.receiver.photo.blank? %>
+                <h3><%= friendship.receiver.name %><%= image_tag "placeholder.png", class: "avatar", crop: :fill %></h3>
+              <% else %>
+                <h3><%= friendship.receiver.name %><%= cl_image_tag friendship.receiver.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %></h3>
+              <% end %>
               <p><%= friendship.receiver.email %></p>
             <% else %>
-              <h3><%= friendship.sender.name %><%= cl_image_tag friendship.sender.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %></h3>
+              <% if friendship.sender.photo.blank? %>
+                <h3><%= friendship.sender.name %><%= image_tag "placeholder.png", class: "avatar", crop: :fill %></h3>
+              <% else %>
+                <h3><%= friendship.sender.name %><%= cl_image_tag friendship.sender.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %></h3>
+              <% end %>
               <p><%= friendship.sender.email %></p>
             <% end %>
           </div>

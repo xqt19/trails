@@ -2,7 +2,11 @@
   <div class="delegate <%= 'delegate-checked' if delegation.checked? %>">
 
     <%= link_to delegation_path(delegation.id), method: :delete, data: { confirm: "Remove delegation?" } do %>
-      <%= cl_image_tag delegation.user.photo, class: "avatar", crop: :fill, gravity: :face %>
+      <% if delegation.user.photo.blank? %>
+        <%= image_tag "placeholder.png", class: "avatar", crop: :fill %>
+      <% else %>
+        <%= cl_image_tag delegation.user.photo, class: "avatar", crop: :fill, gravity: :face %>
+      <% end %>
     <% end %>
 
     <%= simple_form_for(delegation, url: delegation_path(delegation)) do |f| %>

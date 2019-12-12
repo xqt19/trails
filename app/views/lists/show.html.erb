@@ -51,7 +51,11 @@
           <h2 class="mb-1">Trail group (<%= @collabs.size %>)</h2>
           <% @collabs&.each do |collab_user| %>
             <%= link_to list_item_delegations_path(list_item, user_id: collab_user.id), method: :post, remote: :true do %>
-              <%= cl_image_tag collab_user.photo, class: "avatar", crop: :fill, gravity: :face %>
+              <% if collab_user.photo.blank? %>
+                <%= image_tag "placeholder.png", class: "avatar", crop: :fill %>
+              <% else %>
+                <%= cl_image_tag collab_user.photo, class: "avatar", crop: :fill, gravity: :face %>
+              <% end %>
             <% end %>
           <% end %>
         </div>

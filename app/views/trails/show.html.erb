@@ -20,19 +20,35 @@
 <div class="trail-group">
   <h3 class="border-bottom pb-2">Trail group</h3>
   <p><%= @trail.users.count + 1 %> people are set for this trail!</p>
-  <%= cl_image_tag @trail.user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
+  <% if @trail.user.photo.blank? %>
+    <%= image_tag "placeholder.png", class: "avatar", crop: :fill %>
+  <% else %>
+    <%= cl_image_tag @trail.user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
+  <% end %>
   <% @trail.users.each do |collab_user| %>
     <% if current_user == @trail.user %>
       <%= link_to trail_collab_path(@trail, collab_user), method: :delete, data: { confirm: "Remove this friend from group?" }, class: "text-decoration-none" do %>
-        <%= cl_image_tag collab_user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
+        <% if collab_user.photo.blank? %>
+          <%= image_tag "placeholder.png", class: "avatar", crop: :fill %>
+        <% else %>
+          <%= cl_image_tag collab_user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
+        <% end %>
       <% end %>
     <% else %>
       <% if current_user == collab_user %>
         <%= link_to trail_collab_path(@trail, collab_user), method: :delete, data: { confirm: "Remove myself from group?" }, class: "text-decoration-none" do %>
-          <%= cl_image_tag collab_user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
+          <% if collab_user.photo.blank? %>
+            <%= image_tag "placeholder.png", class: "avatar", crop: :fill %>
+          <% else %>
+            <%= cl_image_tag collab_user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
+          <% end %>
         <% end %>
       <% else %>
-        <%= cl_image_tag collab_user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
+        <% if collab_user.photo.blank? %>
+          <%= image_tag "placeholder.png", class: "avatar", crop: :fill %>
+        <% else %>
+          <%= cl_image_tag collab_user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>

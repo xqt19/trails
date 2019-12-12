@@ -13,7 +13,11 @@
   <% @pending_friendships.each do |friendship| %>
     <div class="cffriendcard d-flex text-center align-items-center" data-inpending-id="<%= friendship.sender.id %>" data-id="#<%= friendship.id %>">
         <p><strong><%= friendship.sender.name %></strong> has added you as a friend!</p>
-        <%= cl_image_tag friendship.sender.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
+        <% if friendship.sender.photo.blank? %>
+          <%= image_tag "placeholder.png", class: "avatar", crop: :fill %>
+        <% else %>
+          <%= cl_image_tag friendship.sender.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %>
+        <% end %>
         <p><%= friendship.sender.email %></p>
         <div class="d-flex justify-content-between align-items-center">
           <%= link_to "", user_friendship_path(current_user, friendship), remote: true, method: :patch, class: "btn btn-light fas fa-user-plus mx-3", style: "color: green; font-size: 24px" %>
