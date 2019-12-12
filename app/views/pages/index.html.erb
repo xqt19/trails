@@ -33,9 +33,12 @@
       <% end %>
     </div>
 
-    <% @trails&.each do |trail| %>
-      <%= render 'trail_cards', trail: trail %>
-    <% end %>
+
+    <div id="trailsindex">
+      <% @trails&.each do |trail| %>
+        <%= render 'trail_cards', trail: trail %>
+      <% end %>
+    </div>
 
     <% if !@collabs.empty? %>
       <div class="collab-heading">
@@ -62,7 +65,6 @@
     </div>
   </div>
 <% end %>
-
 
 <style>
   .text-muted {
