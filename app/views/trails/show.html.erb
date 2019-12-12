@@ -41,7 +41,7 @@
 <div class="trail-navbar-offset">
   <div class="card-headers d-flex flex-column justify-content-center pt-1">
     <h3>Planning <%= "List".pluralize(@trail.lists.count) %></h3>
-    <p>There are <%= @trail.lists.count %> <%= "list".pluralize(@trail.lists.count) %></p>
+    <p>There <%= "is".pluralize(@trail.lists.count) %> <%= @trail.lists.count %> <%= "list".pluralize(@trail.lists.count) %></p>
     <%= link_to new_trail_list_path(@trail), class: "list-add text-decoration-none" do %>
       <i class="fas fa-clipboard-check" style="font-size: 35px;"></i>
       <i class="fas fa-plus fa-lg"></i>

@@ -51,7 +51,7 @@ class TrailsController < ApplicationController
       @trail.activities.all.each do |activity|
         activity.destroy if activity.date > @trail.end_date || activity.date < @trail.start_date
       end
-      redirect_to trail_path(@trail)
+      redirect_to index_path
     else
       flash[:alert] = "Something went wrong!"
       render :edit
