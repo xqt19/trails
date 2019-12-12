@@ -37,7 +37,7 @@
   background: white;
   display:flex;
   align-items: center;
-  width: 100%;
+  width: 95%;
   border-radius: 8px;
   border-bottom: 2px inset #dfdfdf;
   margin-bottom: 16px;
@@ -102,7 +102,7 @@
     // background: rgba(91, 192, 222, 0.75);
     // background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
     background: white;
-    width: auto;
+    width: 255px;
     padding: 8px 22px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.15);
 
@@ -150,7 +150,6 @@
   .date-card {
     border-radius: 4px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-    width: -webkit-fill-available;
     padding: 4px;
     margin-bottom: 6px;
   }

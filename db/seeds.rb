@@ -161,37 +161,41 @@ prima = User.create(name: "Prima", email: "prima@lewagon.com", password: "passwo
 guido = User.create(name: "Guido", email: "guido@lewagon.com", password: "password", remote_photo_url: 'https://res.cloudinary.com/be6sky/image/upload/v1575017253/ojwyd1jkye7x7nuipwv8.jpg')
 rachael = User.create(name: "Rachael", email: "rachael@lewagon.com", password: "password", remote_photo_url: 'https://res.cloudinary.com/be6sky/image/upload/v1575017242/uadschvxy8avbuvlwp2b.jpg')
 
-puts "creating 2 trails under Zache"
-Trail.create(user_id: zache.id, name: "Test Barbeque Plan", start_date: Date.new(2019, 12, 8), end_date: Date.new(2019, 12, 8))
-Trail.create(user_id: zache.id, name: "Japan Trip", start_date: Date.new(2020, 3, 27), end_date: Date.new(2020, 4, 8))
+puts "creating trails"
+# Trail.create(user_id: zache.id, name: "Barbeque Plan", start_date: Date.new(2019, 12, 8), end_date: Date.new(2019, 12, 8))
+# Trail.create(user_id: zache.id, name: "Japan Trip", start_date: Date.new(2020, 3, 27), end_date: Date.new(2020, 4, 8))
+Trail.create(user_id: nesh.id, name: "Chalet Plan", start_date: Date.new(2020, 1, 9), end_date: Date.new(2020, 1, 11))
+Trail.create(user_id: xq.id, name: "School camping trip", start_date: Date.new(2019, 12, 26), end_date: Date.new(2019, 12, 30))
 
-puts "adding collaborators to trail 1 and 2"
-Collab.create(user_id: nesh.id, trail_id: zache.trails.first.id)
-Collab.create(user_id: xq.id, trail_id: zache.trails.first.id)
-Collab.create(user_id: nesh.id, trail_id: zache.trails.last.id)
-Collab.create(user_id: xq.id, trail_id: zache.trails.last.id)
-Collab.create(user_id: yifan.id, trail_id: zache.trails.last.id)
-Collab.create(user_id: michael.id, trail_id: zache.trails.last.id)
-Collab.create(user_id: charmaine.id, trail_id: zache.trails.last.id)
-Collab.create(user_id: vibhuti.id, trail_id: zache.trails.last.id)
-Collab.create(user_id: najihah.id, trail_id: zache.trails.last.id)
-Collab.create(user_id: dirk.id, trail_id: zache.trails.last.id)
-Collab.create(user_id: prima.id, trail_id: zache.trails.last.id)
-Collab.create(user_id: guido.id, trail_id: zache.trails.last.id)
-Collab.create(user_id: rachael.id, trail_id: zache.trails.last.id)
+puts "adding collaborators"
+# Collab.create(user_id: nesh.id, trail_id: zache.trails.first.id)
+# Collab.create(user_id: xq.id, trail_id: zache.trails.first.id)
+# Collab.create(user_id: nesh.id, trail_id: zache.trails.last.id)
+# Collab.create(user_id: xq.id, trail_id: zache.trails.last.id)
+# Collab.create(user_id: yifan.id, trail_id: zache.trails.last.id)
+# Collab.create(user_id: michael.id, trail_id: zache.trails.last.id)
+# Collab.create(user_id: charmaine.id, trail_id: zache.trails.last.id)
+# Collab.create(user_id: vibhuti.id, trail_id: zache.trails.last.id)
+# Collab.create(user_id: najihah.id, trail_id: zache.trails.last.id)
+# Collab.create(user_id: dirk.id, trail_id: zache.trails.last.id)
+# Collab.create(user_id: prima.id, trail_id: zache.trails.last.id)
+# Collab.create(user_id: guido.id, trail_id: zache.trails.last.id)
+# Collab.create(user_id: rachael.id, trail_id: zache.trails.last.id)
+Collab.create(user_id: zache.id, trail_id: nesh.trails.first.id)
+Collab.create(user_id: zache.id, trail_id: xq.trails.first.id)
 
 puts "adding activities to test bbq plan"
-Activity.create(trail_id: zache.trails.first.id, name: "Preparing to start fire", description: "Get the thongs and coal", date:Date.today, start_time: Time.now, end_time: Time.now + 3600)
-Activity.create(trail_id: zache.trails.first.id, name: "Cook the meats", description: "Marinate chicken, then skewer it, then put in on the fire!", date: Date.today, start_time: Time.now + 3600, end_time: Time.now + 3600 * 2)
+# Activity.create(trail_id: zache.trails.first.id, name: "Preparing to start fire", description: "Get the thongs and coal", date:Date.today, start_time: Time.now, end_time: Time.now + 3600)
+# Activity.create(trail_id: zache.trails.first.id, name: "Cook the meats", description: "Marinate chicken, then skewer it, then put in on the fire!", date: Date.today, start_time: Time.now + 3600, end_time: Time.now + 3600 * 2)
 
 puts "adding activities to japan trip"
-Activity.create(trail_id: zache.trails.last.id, name: "Touchdown in Tokyo, check in hotel", description: "After the flight, head to capsule hotel to check in at Shinjuku", date: Date.new(2020, 3, 27), start_time: Time.now + 3600 * 6, end_time: Time.now + 3600 * 7)
-Activity.create(trail_id: zache.trails.last.id, name: "Shop anime district at Akihabara", description: "Shop at Akihabaras famous anime district", date: Date.new(2020, 3, 27), start_time: Time.now + 3600 * 3, end_time: Time.now + 3600 * 4)
-Activity.create(trail_id: zache.trails.last.id, name: "Ichiran Ramen at Akihabara", description: "Eat at Ichiran Ramen, the best of all times", date: Date.new(2020, 3, 28), start_time: Time.now, end_time: Time.now + 3600)
-Activity.create(trail_id: zache.trails.last.id, name: "Onsen bath at Oyus", description: "Relaxing soak at onsen is heavenly!", date: Date.new(2020, 3, 28), start_time: Time.now + 3600, end_time: Time.now + 3600 * 2)
-Activity.create(trail_id: zache.trails.last.id, name: "Eat Tsukemen at Tokyo Station", description: "There's a super good Tsukemen stall near Tokyo Station!", date: Date.new(2020, 3, 28), start_time: Time.now + 3600 * 6, end_time: Time.now + 3600 * 7)
-Activity.create(trail_id: zache.trails.last.id, name: "Climb Mt.Fuji", description: "I will be climbing Mt. Fuji for the whole day today!", date: Date.new(2020, 3, 29))
-Activity.create(trail_id: zache.trails.last.id, name: "Flight back to Singapore", description: "Can't bear to leave Japan, its a blast though!", date: Date.new(2020, 4, 8), start_time: Time.now + 3600 * 3, end_time: Time.now + 3600 * 10)
+# Activity.create(trail_id: zache.trails.last.id, name: "Touchdown in Tokyo, check in hotel", description: "After the flight, head to capsule hotel to check in at Shinjuku", date: Date.new(2020, 3, 27), start_time: Time.now + 3600 * 6, end_time: Time.now + 3600 * 7)
+# Activity.create(trail_id: zache.trails.last.id, name: "Shop anime district at Akihabara", description: "Shop at Akihabaras famous anime district", date: Date.new(2020, 3, 27), start_time: Time.now + 3600 * 3, end_time: Time.now + 3600 * 4)
+# Activity.create(trail_id: zache.trails.last.id, name: "Ichiran Ramen at Akihabara", description: "Eat at Ichiran Ramen, the best of all times", date: Date.new(2020, 3, 28), start_time: Time.now, end_time: Time.now + 3600)
+# Activity.create(trail_id: zache.trails.last.id, name: "Onsen bath at Oyus", description: "Relaxing soak at onsen is heavenly!", date: Date.new(2020, 3, 28), start_time: Time.now + 3600, end_time: Time.now + 3600 * 2)
+# Activity.create(trail_id: zache.trails.last.id, name: "Eat Tsukemen at Tokyo Station", description: "There's a super good Tsukemen stall near Tokyo Station!", date: Date.new(2020, 3, 28), start_time: Time.now + 3600 * 6, end_time: Time.now + 3600 * 7)
+# Activity.create(trail_id: zache.trails.last.id, name: "Climb Mt.Fuji", description: "I will be climbing Mt. Fuji for the whole day today!", date: Date.new(2020, 3, 29))
+# Activity.create(trail_id: zache.trails.last.id, name: "Flight back to Singapore", description: "Can't bear to leave Japan, its a blast though!", date: Date.new(2020, 4, 8), start_time: Time.now + 3600 * 3, end_time: Time.now + 3600 * 10)
 
 puts "adding friendships"
 Friendship.create(sender: xq, receiver: nesh, confirmed: true)
