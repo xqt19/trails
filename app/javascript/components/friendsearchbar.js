@@ -13,4 +13,4 @@ const friendsearchbar= () =>{
 
 export { friendsearchbar }
 
-// no longer using this component, now using AJAX instead of js
+"no longer using this component, now using AJAX instead of js"

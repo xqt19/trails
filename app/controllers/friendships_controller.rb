@@ -31,6 +31,7 @@ class FriendshipsController < ApplicationController
     @pending_adds = current_user.pending_friendships.where(sender: current_user)
     authorize @friendship
     if @friendship.save
+      @newfriendship = Friendship.last
       respond_to do |format|
         format.html { redirect_to user_friendships_path(current_user) }
         format.js
@@ -61,7 +62,16 @@ class FriendshipsController < ApplicationController
   def destroy
     @friendship = Friendship.find(params[:id])
     authorize @friendship
-    @friendship.destroy
-    redirect_to user_friendships_path(current_user)
+    @user = current_user
+    @pending_adds = current_user.pending_friendships.where(sender: current_user)
+    if @friendship.destroy
+      respond_to do |format|
+        format.html { redirect_to user_friendships_path(current_user) }
+        format.js
+      end
+    else
+      redirect_to user_friendships_path(current_user)
+      flash[:alert] = "Something went wrong!"
+    end
   end
 end
