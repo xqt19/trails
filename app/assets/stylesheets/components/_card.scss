@@ -6,6 +6,7 @@
   display: flex;
   margin: 12px auto;
   position: relative;
+  opacity: .95;
 
   .list-add {
     width: 50px;
@@ -42,13 +43,14 @@
 
 .card-headers {
   align-items: center;
-  width: 100%;
+  width: 97%;
+  border-radius: 8px;
 }
 
 .card-items {
   flex-direction: column;
   width: 97%;
-  border-radius: 6px;
+  border-radius: 8px;
   border-bottom: 2px inset #dfdfdf;
   border-left: 2px solid #dfdfdf;
 }
@@ -56,6 +58,7 @@
 .card-item {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   height: fit-content;
   width: 100%;
   padding: 8px 12px;
@@ -94,13 +97,13 @@
 
   >a {
     // background: linear-gradient(to bottom right, #99ffcc 41%, #66ffff 84%);
-    background: blue;
+    background: #f3c560;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     box-shadow:
-      0 0 0 3px hsl(0, 0%, 80%) inset,
-      0 0 0 3px hsl(0, 0%, 90%);
+      0 0 0 3px hsl(240, 25%, 70%) inset,
+      0 0 0 3px hsl(221, 75%, 80%);
     margin-top: 2px;
     position: relative;
 
@@ -108,7 +111,7 @@
       position: absolute;
       top: 11px;
       left: 7px;
-      color: #9ac1e5;
+      color: #424008f2;
     }
   }
 }
@@ -123,7 +126,7 @@
 }
 
 .checked {
-  opacity: 0.9;
+  opacity: 0.7;
 }
 
 .delegate-checked {

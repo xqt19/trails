@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <div class="profile-container">
     <div class="logout">
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: "Confirm Logout?" }, class: "btn btn-lg btn-grey" %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: "Confirm Logout?" }, class: "btn btn-grey" %>
     </div>
     <h1><%= current_user.name %></h1>
     <% if current_user.photo.blank? %>
@@ -9,7 +9,7 @@
     <% else %>
       <%= cl_image_tag current_user.photo, radius: :max, width: 150, height: 150, crop: :fill, gravity: :face %>
     <% end %>
-    <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-lg btn-grey" %>
+    <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-grey" %>
   </div>
 
   <div class="trail-container">

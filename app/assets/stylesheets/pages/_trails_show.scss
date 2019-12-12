@@ -1,9 +1,9 @@
 .card {
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
 
-  p {
-  font-size: .8rem;
-}
+    p {
+    font-size: .8rem;
+  }
 }
 
 .activity-horizontal-container::-webkit-scrollbar {
@@ -97,8 +97,4 @@
 
 #activity-modal-content {
   min-width: 90vw;
-}
-
-.header {
-  border-radius: 0 0 25px 25px;
 }
