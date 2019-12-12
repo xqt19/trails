@@ -10,7 +10,7 @@
         <h6 class="mx-2 mb-2 text-muted">to</h6>
         <div class="date-card"><p class="text-muted"><%= trail.end_date.strftime("%d %b %Y") %></p></div>
       </div>
-      <p class="text-muted"><%= trail.users.count + 1 %> <%= "friend".pluralize(trail.users.count + 1) %> will join this trail <i class="fas fa-search"></i></p>
+      <p class="text-muted"><%= trail.users.count + 1 %> <%= "person".pluralize(trail.users.count + 1) %> will join this trail <i class="fas fa-search"></i></p>
 
     </div>
   <% end %>
