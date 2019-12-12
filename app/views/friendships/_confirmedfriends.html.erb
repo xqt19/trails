@@ -1,11 +1,11 @@
 <div class="activity-horizontal-container d-flex flex-row align-items-center mb-3 px-2" style="flex-wrap: nowrap; overflow: auto;">
 <% confirmed_friendships.each do |friendship| %>
-    <div class = "cffriendcard d-flex text-center align-items-center">
+    <div class = "cffriendcard d-flex text-center align-items-center" data-id="#<%= friendship.id %>">
                 <div class = "d-flex align-items-end w-100 justify-content-end">
                    <a style="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="btn btn-info fas fa-user-cog" style="font-size: 16px"></i></a>
                       <div class="dropdown-menu d-flex justify-content-around p-0 m-0" style="width: 100px !important;" aria-labelledby="dropdownMenuButton">
                         <%= link_to "", index_path, class: "btn btn-light far fa-comments", style: "font-size: 24px; color: purple; " %>
-                        <%= link_to "", user_friendship_path(current_user, friendship), method: :delete, class: "btn btn-light fas fa-user-slash", style: "font-size: 24px; color: red;", data: { confirm: "Are you sure?" }  %>
+                        <%= link_to "", user_friendship_path(current_user, friendship), method: :delete, class: "btn btn-light fas fa-user-slash", style: "font-size: 24px; color: red;", data: { confirm: "Are you sure?" }, remote: true  %>
                       </div>
                   </div>
           <div>

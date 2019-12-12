@@ -47,7 +47,6 @@ if (delegates) {
 initSelect2();
 initMapbox();
 previewImageOnFileSelect();
-friendsearchbar();
 backArrowFadeOut();
 
 export { categoryItems, customItems, customBtn, form, checkboxes, delegates };

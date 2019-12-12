@@ -1,9 +1,9 @@
 <% users.each do |user|  %>
-  <div class="card m-1 d-flex flex-column" data-id="<%= user.id %>" id= "hello" style="width: 18rem;border-radius: 5px;">
+  <div class="card m-1 d-flex flex-column" data-friendcard-id="<%= user.id %>" id= "hello" style="width: 18rem;border-radius: 5px;">
     <div>
-      <div class="d-flex justify-content-around px-2" style="border-radius: 10%">
-        <h5 class="card-title"><%= cl_image_tag user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %> <%= user.name %></h5>
-        <h5><%= link_to "", user_friendships_path(user), method: :post, class: "fas fa-user-plus", remote: true, data: { confirm: "Add this friend?" } %></h5>
+      <div class="d-flex justify-content-around p-2" style="border-radius: 10%">
+        <h5 class="card-title"><%= cl_image_tag user.photo, radius: :max, width: 40, height: 40, crop: :fill, gravity: :face %> <%= user.name %></h4>
+        <h4><%= link_to "", user_friendships_path(user), method: :post, class: "fas fa-user-plus", remote: true, data: { confirm: "Add this friend?" } %></h5>
       </div>
     </div>
     <div class="d-flex align-items-center justify-content-center px-1 py-0" style="border-radius: 10%">

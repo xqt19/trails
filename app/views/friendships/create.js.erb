@@ -1,5 +1,10 @@
-var userCard = document.querySelector(`[data-id='<%= @friendship.receiver.id %>']`).remove()
+var userCard = document.querySelector(`[data-friendcard-id='<%= @friendship.receiver.id %>']`).remove()
 // console.log (`[data-id='<%= @friendship.receiver.id %>']`);
 
 var userCard = document.querySelector(`#pendingfriends`)
 userCard.innerHTML = "<%= j render 'friendships/pendingfriends',  user: @user, pending_adds: @pending_adds %>"
+var userCard = document.querySelector(`[data-id='#<%= @newfriendship.id %>']`)
+userCard.classList.add('animated')
+userCard.classList.add('fadeInRight')
+setTimeout(() => {  userCard.classList.remove('animated') }, 500);
+setTimeout(() => {  userCard.classList.remove('fadeInRight') }, 500);

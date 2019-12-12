@@ -1,0 +1,8 @@
+var destroyfriendcard = document.querySelector("[data-id='#<%= @friendship.id %>']")
+var userCard = document.querySelector(`#pendingfriends`)
+
+destroyfriendcard.classList.add('animated')
+destroyfriendcard.classList.add('fadeOutRight')
+setTimeout(() => {  destroyfriendcard.remove() }, 500);
+setTimeout(() => {  userCard.innerHTML = "<%= j render 'friendships/pendingfriends',  user: @user, pending_adds: @pending_adds %>" }, 550);
+
