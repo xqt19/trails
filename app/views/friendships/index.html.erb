@@ -1,6 +1,7 @@
-<div class="pb-5">
+<div class="friend-navbar-offset">
     <div class="card friendcard mb-3 d-flex text-center align-items-center">
       <h1 class ="header" style="color: black;">Friends List</h1>
+      <p style="font-size: 18px;">You have <%= @confirmed_friendships.count %> <%= "friend".pluralize(@confirmed_friendships.count) %> currently</p>
     </div>
 
   <div id="confirmedfriends">
@@ -29,10 +30,11 @@
   <br>
   <div class="card cffriendcard friendsearchcard px-4">
     <h3 class = "text-center">Connect with other users</h3>
-      <label for="search-user">Find more friends here!</label>
+      <label for="search-user" >Find more friends here!</label>
+
       <%= form_tag list_users_path, method: :get, remote: true, id: "search-user" do %>
-      <%= text_field_tag :query, params[:query], class:'form-control'%>
-          <small class="form-text text-muted">Search with name or email.</small>
+      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "e.g. bob@lewagon.com" %>
+        <small id="searchbarHelp" class="form-text text-muted">Search with name or email.</small>
     <% end %>
   </div>
 
@@ -43,8 +45,6 @@
 
 
 <script>
-
-
   const form = document.querySelector('#search-user')
   const input = document.querySelector('#query')
   input.addEventListener('keyup', () =>{
