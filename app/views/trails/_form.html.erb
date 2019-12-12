@@ -19,7 +19,7 @@
 
           <%= f.simple_fields_for :others do |o| %>
             <%= o.input :email, input_html: { class: "form-control select2", multiple: "multiple" }, required: false,
-              collection: current_user.friends.map { |user| user.name }, label: "Invite friends", include_hidden: false %>
+              collection: current_user.friends.map { |user| [user.name, user.email] }, label: "Invite friends from your friends list", include_hidden: false %>
           <% end %>
 
           <% if trail.id %>
