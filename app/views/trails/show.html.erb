@@ -19,7 +19,7 @@
 
 <div class="trail-group">
   <h3 class="border-bottom pb-2">Trail group</h3>
-  <p><%= @trail.users.count + 1 %> people are set for this trail!</p>
+  <p><%= @trail.users.count + 1 %> <%= "person".pluralize(@trail.users.count + 1) %> <%= "is".pluralize(@trail.users.count + 1) %> set for this trail!</p>
   <% if @trail.user.photo.blank? %>
     <%= image_tag "placeholder.png", class: "avatar", crop: :fill %>
   <% else %>
