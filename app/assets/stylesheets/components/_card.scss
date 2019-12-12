@@ -11,11 +11,15 @@
   .list-add {
     width: 50px;
     height: 50px;
-    background: #9cc4e9;
+    background: #e2b85d;
     border-radius: 50%;
     position: absolute;
     top: 8px;
     right: 15px;
+
+    .fa-plus, .fa-clipboard-check {
+      color: #987e45;
+    }
   }
 
   .fa-clipboard-check {

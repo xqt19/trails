@@ -18,7 +18,7 @@
         <h2>My <%= "Trail".pluralize(@trails_count) %></h2>
       </div>
       <div class="trail-options">
-        <a class="fas fa-sliders-h fa-lg text-decoration-none" style="text-shadow: 1px 1px 0 #dfdfdf; color: blue;" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+        <a class="fas fa-sliders-h fa-lg text-decoration-none" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           <%= link_to "Sort by Name", index_path(sort_by: 'name'), class:"dropdown-item", id:"unhideoption1", remote: true %>
@@ -28,7 +28,7 @@
       </div>
       <%= link_to new_trail_path do %>
         <div class="trail-options">
-          <i class="fas fa-plus fa-lg" style="text-shadow: 1px 1px 0 #dfdfdf; color: blue;"></i>
+          <i class="fas fa-plus fa-lg"></i>
         </div>
       <% end %>
     </div>
@@ -46,7 +46,7 @@
           <h2>My <%= "Collab".pluralize(@collabs_count) %></h2>
         </div>
         <div class="collab-options">
-          <i class="fas fa-sliders-h fa-lg" style="text-shadow: 1px 1px 0 #dfdfdf; color: blue;"></i>
+          <i class="fas fa-sliders-h fa-lg"></i>
         </div>
       </div>
 
