@@ -198,17 +198,20 @@ puts "adding activities to japan trip"
 # Activity.create(trail_id: zache.trails.last.id, name: "Flight back to Singapore", description: "Can't bear to leave Japan, its a blast though!", date: Date.new(2020, 4, 8), start_time: Time.now + 3600 * 3, end_time: Time.now + 3600 * 10)
 
 puts "adding friendships"
-Friendship.create(sender: xq, receiver: nesh, confirmed: true)
-Friendship.create(sender: xq, receiver: zache, confirmed: true)
 Friendship.create(sender: zache, receiver: nesh, confirmed: true)
-Friendship.create(sender: xq, receiver: yifan, confirmed: false)
-Friendship.create(sender: xq, receiver: michael, confirmed: false)
-Friendship.create(sender: xq, receiver: charmaine, confirmed: false)
-Friendship.create(sender: xq, receiver: vibhuti, confirmed: false)
-Friendship.create(sender: xq, receiver: najihah, confirmed: false)
-Friendship.create(sender: xq, receiver: dirk, confirmed: false)
-Friendship.create(sender: xq, receiver: prima, confirmed: false)
-Friendship.create(sender: xq, receiver: guido, confirmed: false)
-Friendship.create(sender: xq, receiver: rachael, confirmed: false)
+Friendship.create(sender: zache, receiver: xq, confirmed: true)
+Friendship.create(sender: xq, receiver: nesh, confirmed: true)
+
+
+
+
+Friendship.create(receiver: zache, sender: yifan, confirmed: false)
+Friendship.create(receiver: zache, sender: charmaine, confirmed: false)
+Friendship.create(receiver: zache, sender: vibhuti, confirmed: false)
+Friendship.create(receiver: zache, sender: najihah, confirmed: false)
+Friendship.create(receiver: zache, sender: dirk, confirmed: false)
+Friendship.create(receiver: zache, sender: prima, confirmed: false)
+Friendship.create(receiver: zache, sender: guido, confirmed: false)
+Friendship.create(receiver: zache, sender: rachael, confirmed: false)
 
 puts "Seeding finished!"
