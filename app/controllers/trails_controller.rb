@@ -89,7 +89,7 @@ class TrailsController < ApplicationController
       elsif collab_user
         Collab.create(user_id: collab_user.id, trail_id: trail.id)
       else
-        flash[:alert] = "One or more user not found!"
+        flash[:alert] = "This person is not your friend yet!"
       end
     end
   end
