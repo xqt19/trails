@@ -16,7 +16,7 @@
 
             <%= f.simple_fields_for :others do |o| %>
               <%= o.input :category, label: "Select a category", as: :select, input_html: { class: "form-control select-category form-rounded" }, required: false,
-                collection: Category.all.map { |category| [category.name, category.id] }, selected: Category.find_by(name: "Custom") %>
+                collection: ([Category.find_by(name: "Custom")] + Category.where.not(name: "Custom").order(:name)).map { |category| [category.name, category.id] }, selected: Category.find_by(name: "Custom").id %>
               <div class="custom-container">
                 <%= o.input :custom_item, as: :string, label: false, input_html: { class: "custom-field form-rounded" }, required: false, placeholder: "e.g. Charger" %>
                 <button type ="button" class="btn btn-info custom-btn">Add item</button>
