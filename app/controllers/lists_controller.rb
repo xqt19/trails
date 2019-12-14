@@ -46,7 +46,7 @@ class ListsController < ApplicationController
         else
           list_item = ListItem.new(list_id: @list.id)
           category = Category.find(params[:list][:others][:category].to_i)
-          item = Item.create(name: item, custom: true)
+          item = Item.create(name: item, custom: true, user_id: current_user.id)
           ItemCategory.create(item_id: item.id, category_id: category.id)
           list_item.item = item
           list_item.save
@@ -85,7 +85,7 @@ class ListsController < ApplicationController
         else
           list_item = ListItem.new(list_id: @list.id)
           category = Category.find(params[:list][:others][:category].to_i)
-          item = Item.create(name: item, custom: true)
+          item = Item.create(name: item, custom: true, user_id: current_user.id)
           ItemCategory.create(item_id: item.id, category_id: category.id)
           list_item.item = item
           list_item.save
