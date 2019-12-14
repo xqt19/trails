@@ -20,15 +20,15 @@ Item.where(user_id: nil).destroy_all
 # User.destroy_all
 
 puts "Creating Categories if they don't exist..."
-unless Category.any?
-  categories_array = ["Custom", "Travelling", "Day at the Beach", "Mountain Climbing", "Hiking", "Chalet", "Camping", "BBQ"]
 
-  categories_array.each do |string|
-    unless Category.any? { |a| a.name == string }
-      Category.create!(name: string)
-    end
+categories_array = ["Custom", "Travelling", "Day at the Beach", "Mountain Climbing", "Hiking", "Chalet", "Camping", "BBQ"]
+
+categories_array.each do |string|
+  unless Category.any? { |a| a.name == string }
+    Category.create!(name: string)
   end
 end
+
 travelling = Category.find_by(name: "Travelling")
 beach = Category.find_by(name: "Day at the Beach")
 mtclimbing = Category.find_by(name: "Mountain Climbing")
